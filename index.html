@@ -1,0 +1,2804 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="GLnhY0Qo5TyofEvixjF8P0XcpRlMD-SjH4oPLqjHnKI" />
+    <meta name="description" content="Gazipur Central Public College — a future-focused school community in Gazipur, Bangladesh." />
+    <meta name="theme-color" content="#072b36" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gazipur Central Public College" />
+    <meta property="og:description" content="Education, character and community — discover student life and academic opportunities at GCPC." />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gazipur Central Public College" />
+    <meta name="twitter:description" content="Education, character and community — discover student life and academic opportunities at GCPC." />
+    <meta name="twitter:image" content="/og.png" />
+    <title>Gazipur Central Public College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- FontAwesome CDN for modern, responsive iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+      /* --- Global & Base Settings --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      
+      /* --- App Loader --- */
+      #app-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #1a237e;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: #ffffff;
+        transition: opacity 0.5s ease-out, visibility 0.5s;
+      }
+      
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #ffca28;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1.5rem;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* --- Header & Navigation (Sticky) --- */
+      header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: #1a237e; /* Navy Blue */
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 2rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      
+      .logo i {
+        color: #ffca28; /* Accent Yellow */
+        font-size: 1.7rem;
+      }
+      
+      nav {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+      }
+      
+      .nav-link {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0.8rem;
+        border-radius: 4px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        cursor: pointer;
+        font-size: 0.95rem;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      
+      .nav-link:hover {
+        color: #ffca28; /* Yellow */
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      
+      .nav-link.active-link {
+        color: #ffca28; /* Yellow */
+      }
+      
+      .nav-link.active-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0.8rem;
+        right: 0.8rem;
+        height: 3px;
+        background-color: #ffca28;
+        border-radius: 2px;
+      }
+      
+      /* --- Sections & Content Blocks --- */
+      .page-section {
+        display: none;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+      }
+      
+      .page-section.active-page {
+        display: block;
+        animation: fadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
+      /* White Content Box Layout */
+      .content-box {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 3rem;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+      }
+      
+      .content-box h2 {
+        font-size: 2.1rem;
+        color: #1a237e;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.6rem;
+        position: relative;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      
+      .content-box h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #ffca28;
+        border-radius: 2px;
+      }
+      
+      /* --- Home Section Styling --- */
+      .hero {
+        position: relative;
+        height: 55vh;
+        min-height: 420px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 10px 25px rgba(26, 35, 126, 0.15);
+        transition: background-image 0.5s ease;
+      }
+      
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(17, 22, 37, 0.72); /* Dark Overlay */
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        color: #ffffff;
+        max-width: 820px;
+        padding: 2.5rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+        line-height: 1.15;
+      }
+      
+      .hero-content p {
+        font-size: 1.3rem;
+        opacity: 0.92;
+        font-weight: 400;
+        line-height: 1.5;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      
+      /* Why Choose Us Pillars */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2.5rem;
+      }
+      
+      .feature-card {
+        background-color: #f8fafc;
+        border-top: 4px solid #1a237e;
+        padding: 2rem;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(26, 35, 126, 0.06);
+      }
+      
+      .feature-card i {
+        font-size: 2.2rem;
+        color: #1a237e;
+        margin-bottom: 1.2rem;
+        display: inline-block;
+      }
+      
+      .feature-card h3 {
+        font-size: 1.25rem;
+        color: #1a237e;
+        margin-bottom: 0.7rem;
+        font-weight: 700;
+      }
+      
+      .feature-card p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      
+      /* --- About Us Page Grid --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2.5rem;
+        margin-top: 1rem;
+      }
+      
+      .about-vision-mission {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .about-card {
+        background-color: #f8fafc;
+        padding: 1.8rem;
+        border-radius: 8px;
+        border-left: 4px solid #ffca28;
+      }
+      
+      .about-card-title {
+        font-size: 1.2rem;
+        color: #1a237e;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .about-card-title i {
+        color: #ffca28;
+      }
+      
+      .about-card p {
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      
+      .about-badge-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .about-badge {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 1.2rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+      }
+      
+      .about-badge i {
+        font-size: 1.6rem;
+        color: #1a237e;
+        background-color: #eff6ff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      
+      .about-badge h4 {
+        color: #1a237e;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+      
+      /* --- Information Page --- */
+      .info-intro {
+        margin-bottom: 2rem;
+        font-size: 1.05rem;
+        color: #334155;
+      }
+      
+      .academic-streams-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+      }
+      
+      .stream-card {
+        border-left: 5px solid #1a237e;
+        background-color: #f8fafc;
+        padding: 1.5rem 2rem;
+        border-radius: 0 8px 8px 0;
+        transition: transform 0.2s ease;
+      }
+      
+      .stream-card:hover {
+        transform: translateX(4px);
+      }
+      
+      .stream-card h4 {
+        color: #1a237e;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      
+      .stream-card h4 i {
+        color: #ffca28;
+        font-size: 1rem;
+      }
+      
+      .stream-card p {
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      
+      .academic-guidelines {
+        margin-top: 2.5rem;
+        background-color: #eff6ff;
+        padding: 2rem;
+        border-radius: 8px;
+        border-left: 4px solid #1d4ed8;
+      }
+      
+      .academic-guidelines h3 {
+        color: #1e3a8a;
+        font-size: 1.25rem;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .academic-guidelines p {
+        color: #1e40af;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      /* --- Photo Gallery --- */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      
+      .gallery-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.03);
+      }
+      
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: block;
+      }
+      
+      .gallery-item:hover img {
+        transform: scale(1.08); /* Scales up slightly on hover */
+      }
+      
+      .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(17, 22, 37, 0.9));
+        color: #ffffff;
+        padding: 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+      
+      /* --- Contact Us Page Layout --- */
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 3rem;
+      }
+      
+      .contact-info-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+      }
+      
+      .contact-info-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+      
+      .contact-info-list li i {
+        font-size: 1.5rem;
+        color: #1a237e;
+        margin-top: 0.2rem;
+        width: 32px;
+        text-align: center;
+        background-color: #f1f5f9;
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      
+      .contact-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: #64748b;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      
+      .contact-value {
+        font-size: 1.05rem;
+        color: #334155;
+        font-weight: 500;
+        margin-top: 0.2rem;
+      }
+      
+      .contact-value a {
+        color: #1a237e;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      
+      .contact-value a:hover {
+        color: #ffca28;
+      }
+      
+      /* Elegant Contact Form style */
+      .contact-form-box {
+        background-color: #f8fafc;
+        padding: 2.5rem;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+      }
+      
+      .contact-form-title {
+        font-size: 1.25rem;
+        color: #1a237e;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .contact-form-title i {
+        color: #ffca28;
+      }
+      
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      
+      .form-group label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #475569;
+      }
+      
+      .form-control {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        outline: none;
+        background-color: #ffffff;
+        color: #1e293b;
+        transition: border-color 0.25s, box-shadow 0.25s;
+      }
+      
+      .form-control:focus {
+        border-color: #1a237e;
+        box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.12);
+      }
+      
+      .btn-submit {
+        background-color: #1a237e;
+        color: #ffffff;
+        padding: 0.9rem 1.8rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .btn-submit:hover {
+        background-color: #0f175a;
+        box-shadow: 0 4px 12px rgba(26, 35, 126, 0.15);
+      }
+      
+      /* --- Admin Workspace Styling --- */
+      .admin-tab-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #475569;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      .admin-tab-btn:hover {
+        background-color: #e2e8f0;
+        color: #1a237e;
+      }
+      
+      .admin-tab-btn.active {
+        background-color: #1a237e;
+        color: #ffffff;
+      }
+      
+      .admin-gallery-item-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        flex-wrap: wrap;
+      }
+      
+      .admin-gallery-item-row img {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #cbd5e1;
+      }
+      
+      .admin-gallery-item-row .details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 250px;
+      }
+      
+      .admin-gallery-item-row .actions {
+        display: flex;
+        gap: 0.5rem;
+        align-self: flex-end;
+      }
+      
+      /* --- Dynamic Saving Toast Notification --- */
+      #save-toast {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        background-color: #10b981;
+        color: #ffffff;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        transform: translateY(120px);
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+      }
+      
+      #save-toast.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      /* --- Footer --- */
+      footer {
+        background-color: #111625;
+        color: #94a3b8;
+        text-align: center;
+        padding: 2.5rem 1rem;
+        margin-top: 5rem;
+        border-top: 4px solid #1a237e;
+        font-size: 0.95rem;
+      }
+      
+      footer p {
+        max-width: 600px;
+        margin: 0.8rem auto 0;
+        line-height: 1.5;
+      }
+      
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .footer-socials a {
+        color: #64748b;
+        font-size: 1.3rem;
+        transition: color 0.3s;
+      }
+      
+      .footer-socials a:hover {
+        color: #ffca28;
+      }
+      
+      /* --- Fixed WhatsApp Floating Button --- */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366; /* Green */
+        color: #ffffff;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 34px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        z-index: 1100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, box-shadow 0.3s;
+      }
+      
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        background-color: #128c7e;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+      }
+      
+      /* --- CSS Animations --- */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(24px); /* TranslateY in keyframe */
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* --- Mobile Responsiveness (max-width: 768px) --- */
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column; /* Stack vertically */
+          gap: 1.2rem;
+          padding: 1.2rem 1rem;
+          text-align: center; /* Center the text */
+        }
+        
+        .logo {
+          font-size: 1.35rem;
+        }
+        
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.6rem;
+        }
+        
+        .nav-link {
+          font-size: 0.88rem;
+          padding: 0.4rem 0.6rem;
+        }
+        
+        .nav-link.active-link::after {
+          bottom: -2px;
+          left: 0.6rem;
+          right: 0.6rem;
+          height: 2px;
+        }
+        
+        .page-section {
+          margin: 1.2rem auto;
+          padding: 0 1rem;
+        }
+        
+        .content-box {
+          padding: 1.8rem;
+          margin-bottom: 1.2rem;
+        }
+        
+        /* Reduce heading sizes */
+        .content-box h2 {
+          font-size: 1.6rem;
+          margin-bottom: 1.2rem;
+        }
+        
+        .hero {
+          height: 45vh;
+          min-height: 320px;
+          border-radius: 8px;
+          margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 {
+          font-size: 2rem; /* Reduced heading */
+        }
+        
+        .hero-content p {
+          font-size: 1rem;
+        }
+        
+        .features-grid {
+          grid-template-columns: 1fr; /* Stack vertically */
+          gap: 1.2rem;
+          margin-top: 1.5rem;
+        }
+        
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        
+        .about-vision-mission {
+          grid-template-columns: 1fr;
+          gap: 1.2rem;
+          margin-top: 1.5rem;
+        }
+        
+        /* Adjust gallery grid to a minimum of 140px */
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 0.8rem;
+        }
+        
+        .gallery-caption {
+          font-size: 0.75rem;
+          padding: 0.6rem;
+        }
+        
+        .contact-layout {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .contact-form-box {
+          padding: 1.5rem;
+        }
+        
+        .whatsapp-float {
+          width: 50px;
+          height: 50px;
+          bottom: 20px;
+          right: 20px;
+          font-size: 28px;
+        }
+        
+        .admin-workspace {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* --- 2026 Modern School Experience --- */
+      :root {
+        --ink: #082f3a;
+        --deep: #062630;
+        --teal: #0b6873;
+        --teal-soft: #dff5f2;
+        --gold: #f4b942;
+        --cream: #f7f5ef;
+        --paper: #ffffff;
+        --muted: #66767b;
+        --line: rgba(8, 47, 58, 0.12);
+        --shadow: 0 24px 70px rgba(5, 43, 53, 0.10);
+        --radius: 24px;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'DM Sans', 'Segoe UI', sans-serif;
+        background:
+          radial-gradient(circle at 5% 10%, rgba(244,185,66,.10), transparent 24rem),
+          radial-gradient(circle at 96% 35%, rgba(11,104,115,.08), transparent 28rem),
+          var(--cream);
+        color: var(--ink);
+      }
+
+      h1, h2, h3, h4, .logo, .stat-number, .eyebrow {
+        font-family: 'Manrope', 'Segoe UI', sans-serif;
+      }
+
+      #app-loader { background: var(--deep); }
+
+      .spinner {
+        width: 58px;
+        height: 58px;
+        border: 2px solid rgba(255,255,255,.18);
+        border-top-color: var(--gold);
+      }
+
+      .school-topbar {
+        background: var(--deep);
+        color: rgba(255,255,255,.78);
+        font-size: .78rem;
+        letter-spacing: .02em;
+      }
+
+      .topbar-inner {
+        max-width: 1240px;
+        margin: auto;
+        padding: .55rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .topbar-inner span { display: flex; align-items: center; gap: .5rem; }
+      .topbar-inner i { color: var(--gold); }
+
+      header {
+        background: rgba(255,255,255,.88);
+        color: var(--ink);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(8,47,58,.08);
+        box-shadow: 0 8px 35px rgba(8,47,58,.06);
+      }
+
+      .nav-container {
+        max-width: 1240px;
+        padding: .9rem 2rem;
+      }
+
+      .logo { font-size: 1.12rem; max-width: 330px; line-height: 1.2; }
+
+      .logo i {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        color: var(--deep);
+        background: var(--gold);
+        border-radius: 15px;
+        box-shadow: 0 8px 18px rgba(244,185,66,.24);
+      }
+
+      nav { gap: .25rem; }
+
+      .nav-link {
+        color: #36545b;
+        padding: .68rem .78rem;
+        border-radius: 10px;
+        font-size: .87rem;
+        font-weight: 700;
+      }
+
+      .nav-link:hover, .nav-link.active-link {
+        color: var(--teal);
+        background: var(--teal-soft);
+      }
+
+      .nav-link.active-link::after { display: none; }
+
+      #nav-admin {
+        margin-left: .35rem;
+        color: var(--paper);
+        background: var(--ink);
+      }
+
+      #nav-admin:hover { color: var(--deep); background: var(--gold); }
+
+      .menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 12px;
+        background: var(--teal-soft);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .page-section { max-width: 1240px; margin: 2rem auto; }
+
+      .page-section.active-page { animation: pageReveal .7s cubic-bezier(.2,.8,.2,1) both; }
+
+      @keyframes pageReveal {
+        from { opacity: 0; transform: translateY(18px) scale(.995); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .content-box {
+        border-radius: var(--radius);
+        padding: clamp(1.5rem, 4vw, 3.2rem);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(8,47,58,.07);
+      }
+
+      .content-box h2 {
+        color: var(--ink);
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+        letter-spacing: -.04em;
+      }
+
+      .content-box h2::after { background: var(--gold); width: 48px; }
+
+      .hero {
+        height: min(690px, 72vh);
+        min-height: 560px;
+        border-radius: 32px;
+        justify-content: flex-start;
+        background-position: center 44%;
+        box-shadow: 0 30px 80px rgba(5,43,53,.22);
+        isolation: isolate;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: auto -8% -35% auto;
+        width: 420px;
+        aspect-ratio: 1;
+        border: 1px solid rgba(255,255,255,.20);
+        border-radius: 50%;
+        box-shadow: 0 0 0 55px rgba(255,255,255,.04), 0 0 0 110px rgba(255,255,255,.03);
+        animation: orbit 9s ease-in-out infinite alternate;
+      }
+
+      @keyframes orbit { to { transform: translate(-35px,-25px) scale(1.05); } }
+
+      .hero-overlay {
+        background: linear-gradient(90deg, rgba(4,35,44,.96) 0%, rgba(4,35,44,.78) 46%, rgba(4,35,44,.20) 100%);
+      }
+
+      .hero-content { text-align: left; max-width: 780px; padding: clamp(2rem, 7vw, 5.2rem); }
+
+      .hero-kicker, .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: .6rem;
+        color: var(--gold);
+        font-size: .76rem;
+        font-weight: 800;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+
+      .hero-kicker {
+        padding: .55rem .8rem;
+        border: 1px solid rgba(244,185,66,.38);
+        background: rgba(244,185,66,.10);
+        border-radius: 999px;
+        margin-bottom: 1.4rem;
+        animation: riseIn .8s .1s both;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(2.5rem, 5.2vw, 4.8rem);
+        line-height: 1.04;
+        letter-spacing: -.055em;
+        max-width: 740px;
+        animation: riseIn .9s .18s both;
+      }
+
+      .hero-content p {
+        margin: 0;
+        max-width: 650px;
+        font-size: clamp(1rem, 1.6vw, 1.2rem);
+        color: rgba(255,255,255,.78);
+        animation: riseIn .9s .28s both;
+      }
+
+      @keyframes riseIn {
+        from { opacity: 0; transform: translateY(26px); }
+        to { opacity: 1; transform: none; }
+      }
+
+      .hero-actions { display: flex; gap: .9rem; margin-top: 2rem; flex-wrap: wrap; animation: riseIn .9s .38s both; }
+
+      .hero-btn, .section-cta {
+        min-height: 50px;
+        padding: .9rem 1.25rem;
+        border-radius: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .65rem;
+        border: 1px solid transparent;
+        font-weight: 800;
+        font-size: .92rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform .25s, background .25s, color .25s, box-shadow .25s;
+      }
+
+      .hero-btn:hover, .section-cta:hover { transform: translateY(-3px); }
+      .hero-btn.primary { background: var(--gold); color: var(--deep); box-shadow: 0 14px 32px rgba(244,185,66,.22); }
+      .hero-btn.secondary { color: white; border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.09); backdrop-filter: blur(10px); }
+      .hero-btn.secondary:hover { background: white; color: var(--deep); }
+
+      .quick-access {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: .75rem;
+        width: min(92%, 1050px);
+        margin: -3.9rem auto 2.4rem;
+        position: relative;
+        z-index: 20;
+        background: rgba(255,255,255,.94);
+        border: 1px solid rgba(255,255,255,.8);
+        backdrop-filter: blur(16px);
+        padding: .9rem;
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(5,43,53,.15);
+      }
+
+      .quick-link {
+        border: 0;
+        background: transparent;
+        text-align: left;
+        padding: .9rem;
+        border-radius: 14px;
+        color: var(--ink);
+        display: flex;
+        gap: .8rem;
+        align-items: center;
+        cursor: pointer;
+        transition: background .25s, transform .25s;
+      }
+
+      .quick-link:hover { background: var(--teal-soft); transform: translateY(-2px); }
+      .quick-link i { width: 42px; height: 42px; display: grid; place-items: center; background: var(--ink); color: var(--gold); border-radius: 12px; flex: none; }
+      .quick-link strong { display: block; font-family: Manrope; font-size: .88rem; }
+      .quick-link small { color: var(--muted); font-size: .73rem; }
+
+      .stats-band {
+        background: var(--deep);
+        color: white;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-radius: 24px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: 0 18px 50px rgba(5,43,53,.16);
+      }
+
+      .stat { padding: 1.8rem; text-align: center; position: relative; }
+      .stat + .stat::before { content: ''; position: absolute; left: 0; top: 22%; bottom: 22%; width: 1px; background: rgba(255,255,255,.13); }
+      .stat-number { display: block; color: var(--gold); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 800; letter-spacing: -.05em; }
+      .stat-label { color: rgba(255,255,255,.65); font-size: .82rem; }
+
+      .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.6rem; }
+      .section-heading h2 { margin: .45rem 0 0; font-size: clamp(1.65rem, 3vw, 2.4rem); letter-spacing: -.045em; }
+      .section-heading p { max-width: 500px; color: var(--muted); }
+
+      .feature-showcase { margin: 2.5rem 0; }
+      .feature-showcase .content-box { overflow: hidden; }
+      .features-grid { gap: 1rem; }
+
+      .feature-card {
+        background: linear-gradient(145deg, #f7fbfa, #eef6f4);
+        border: 1px solid rgba(8,47,58,.07);
+        border-top: 0;
+        border-radius: 18px;
+        padding: 1.7rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::after { content: ''; position: absolute; width: 90px; height: 90px; border-radius: 50%; right: -35px; top: -35px; background: rgba(244,185,66,.16); transition: transform .35s; }
+      .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(8,47,58,.10); }
+      .feature-card:hover::after { transform: scale(1.35); }
+      .feature-card i { width: 52px; height: 52px; display: grid; place-items: center; background: var(--ink); color: var(--gold); border-radius: 15px; font-size: 1.3rem; }
+      .feature-card h3 { color: var(--ink); }
+
+      .school-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 1.25rem; margin: 2rem 0; }
+      .news-panel, .events-panel { background: white; border-radius: 24px; padding: clamp(1.4rem,3vw,2.2rem); border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(8,47,58,.07); }
+      .mini-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.15rem; }
+      .mini-title h3 { font-size: 1.25rem; }
+      .text-link { border: 0; background: none; color: var(--teal); font-weight: 800; cursor: pointer; }
+      .notice { display: grid; grid-template-columns: 64px 1fr auto; gap: 1rem; align-items: center; padding: 1rem 0; border-top: 1px solid var(--line); }
+      .notice:first-of-type { border-top: 0; }
+      .notice-date { background: var(--teal-soft); color: var(--teal); border-radius: 12px; text-align: center; padding: .55rem .35rem; font-weight: 800; line-height: 1.15; font-size: 1rem; }
+      .notice-date small { display: block; font-size: .64rem; letter-spacing: .08em; }
+      .notice h4 { font-size: .94rem; margin-bottom: .2rem; }
+      .notice p { color: var(--muted); font-size: .78rem; }
+      .notice > i { color: #a7b7ba; }
+
+      .event-card { display: grid; grid-template-columns: 115px 1fr; gap: 1rem; padding: 1rem; background: #f4f8f7; border-radius: 16px; margin-top: .8rem; transition: transform .25s, background .25s; }
+      .event-card:hover { transform: translateX(5px); background: var(--teal-soft); }
+      .event-card img { width: 100%; height: 90px; object-fit: cover; border-radius: 12px; }
+      .event-card span { color: var(--teal); font-weight: 800; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+      .event-card h4 { font-size: .92rem; margin: .35rem 0; }
+      .event-card p { color: var(--muted); font-size: .75rem; }
+
+      .admission-banner {
+        margin: 2rem 0;
+        padding: clamp(2rem,5vw,4rem);
+        border-radius: 28px;
+        background: var(--gold);
+        color: var(--deep);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .admission-banner::after { content: ''; position: absolute; width: 300px; height: 300px; border: 45px solid rgba(255,255,255,.18); border-radius: 50%; right: -90px; top: -140px; }
+      .admission-banner > * { position: relative; z-index: 1; }
+      .admission-banner h2 { font-size: clamp(1.8rem,4vw,3.2rem); letter-spacing: -.05em; max-width: 650px; line-height: 1.1; }
+      .admission-banner p { margin-top: .8rem; max-width: 620px; opacity: .75; }
+      .section-cta { background: var(--deep); color: white; flex: none; }
+
+      .about-card, .stream-card, .academic-guidelines, .contact-form-box { border-radius: 16px; }
+      .about-card, .stream-card { background: #f3f8f7; }
+      .about-card { border-left-color: var(--gold); }
+      .about-card-title, .stream-card h4, .contact-form-title { color: var(--ink); }
+      .about-badge { border-radius: 15px; }
+      .about-badge i { color: var(--teal); background: var(--teal-soft); }
+      .stream-card { border-left-color: var(--teal); }
+      .academic-guidelines { background: var(--teal-soft); border-left-color: var(--teal); }
+      .academic-guidelines h3, .academic-guidelines p { color: var(--ink); }
+
+      .gallery-item { border-radius: 18px; box-shadow: 0 12px 28px rgba(8,47,58,.12); }
+      .gallery-item:nth-child(3n+1) { grid-row: span 2; aspect-ratio: auto; min-height: 430px; }
+      .gallery-item img { transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+      .gallery-caption { padding: 2.5rem 1.2rem 1.2rem; }
+
+      .form-control { border-radius: 11px; padding: .95rem 1rem; }
+      .form-control:focus { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(11,104,115,.10); }
+      .btn-submit { background: var(--ink); border-radius: 11px; }
+      .btn-submit:hover { background: var(--teal); }
+
+      footer { background: var(--deep); border-top: 0; margin-top: 4rem; padding: 3.5rem 1rem; }
+      .footer-socials a { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; }
+
+      .whatsapp-float { width: 56px; height: 56px; font-size: 28px; box-shadow: 0 12px 30px rgba(37,211,102,.32); }
+
+      .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+      .reveal.visible { opacity: 1; transform: none; }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+        .reveal { opacity: 1; transform: none; }
+      }
+
+      @media (max-width: 920px) {
+        .school-topbar { display: none; }
+        .nav-container { flex-direction: row; text-align: left; gap: 1rem; }
+        .menu-toggle { display: grid; place-items: center; flex: none; }
+        nav { position: absolute; top: 77px; left: 1rem; right: 1rem; display: grid; background: rgba(255,255,255,.98); padding: .8rem; border-radius: 18px; box-shadow: var(--shadow); transform: translateY(-12px) scale(.98); opacity: 0; visibility: hidden; transition: .25s ease; }
+        nav.open { transform: none; opacity: 1; visibility: visible; }
+        .nav-link { width: 100%; }
+        #nav-admin { margin-left: 0; }
+        .quick-access { grid-template-columns: repeat(2,1fr); margin-top: -2.6rem; }
+        .school-grid { grid-template-columns: 1fr; }
+        .hero-overlay { background: linear-gradient(90deg, rgba(4,35,44,.94), rgba(4,35,44,.58)); }
+      }
+
+      @media (max-width: 640px) {
+        .nav-container { padding: .75rem 1rem; }
+        .logo { font-size: .92rem; }
+        .logo i { width: 42px; height: 42px; border-radius: 12px; }
+        nav { top: 68px; }
+        .page-section { padding: 0 .8rem; margin-top: 1rem; }
+        .hero { min-height: 520px; height: 72vh; border-radius: 24px; }
+        .hero-content { padding: 2rem 1.5rem; }
+        .hero-content h1 { font-size: clamp(2.3rem,12vw,3.4rem); }
+        .hero-actions { display: grid; }
+        .quick-access { width: 94%; grid-template-columns: 1fr 1fr; padding: .55rem; border-radius: 16px; }
+        .quick-link { padding: .65rem; gap: .55rem; }
+        .quick-link i { width: 36px; height: 36px; }
+        .quick-link small { display: none; }
+        .stats-band { grid-template-columns: 1fr 1fr; }
+        .stat:nth-child(3)::before { display: none; }
+        .stat:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.12); }
+        .section-heading { align-items: start; flex-direction: column; }
+        .notice { grid-template-columns: 54px 1fr; }
+        .notice > i { display: none; }
+        .event-card { grid-template-columns: 92px 1fr; }
+        .admission-banner { align-items: flex-start; flex-direction: column; }
+        .features-grid { grid-template-columns: 1fr; }
+        .gallery-item:nth-child(3n+1) { min-height: 280px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Dynamic App Loader Screen -->
+    <div id="app-loader">
+      <div class="spinner"></div>
+      <h2 style="font-weight: 600; font-size: 1.25rem; letter-spacing: 0.5px; opacity: 0.95;">Initializing App Content...</h2>
+      <p style="font-size: 0.88rem; opacity: 0.7; margin-top: 4px;">Connecting to database</p>
+    </div>
+
+    <div class="school-topbar">
+      <div class="topbar-inner">
+        <span><i class="fa-solid fa-location-dot"></i> Joydebpur, Gazipur, Bangladesh</span>
+        <span><i class="fa-regular fa-clock"></i> Sunday–Thursday · 8:00 AM–3:00 PM</span>
+      </div>
+    </div>
+
+    <!-- Sticky Header & Navigation -->
+    <header id="app-header">
+      <div class="nav-container">
+        <div class="logo" id="branding-logo">
+          <!-- Populated dynamically -->
+          <i class="fa-solid fa-school"></i>
+          <span>Gazipur Central Public College</span>
+        </div>
+        <nav id="navbar-links">
+          <span class="nav-link active-link" onclick="showPage('home')" id="nav-home">Home</span>
+          <span class="nav-link" onclick="showPage('about')" id="nav-about">About Us</span>
+          <span class="nav-link" onclick="showPage('info')" id="nav-info">Information</span>
+          <span class="nav-link" onclick="showPage('gallery')" id="nav-gallery">Gallery</span>
+          <span class="nav-link" onclick="showPage('contact')" id="nav-contact">Contact Us</span>
+          <span class="nav-link" onclick="showPage('admin')" id="nav-admin" style="font-weight: 600;"><i class="fa-solid fa-lock"></i> Admin</span>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navbar-links">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area Containing SPA Sections -->
+    <main id="main-content-area">
+      
+      <!-- 1. Home Section (#home) -->
+      <div class="page-section active-page" id="home">
+        <!-- Hero Section with a dark overlay and dynamic background image -->
+        <div class="hero" id="home-hero-banner">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-kicker"><i class="fa-solid fa-sparkles"></i> Education · Character · Community</div>
+            <h1 id="hero-title-text">Gazipur Central Public College</h1>
+            <p id="hero-subtitle-text">Nurturing values, sparking intellect, and promoting academic excellence.</p>
+            <div class="hero-actions">
+              <button class="hero-btn primary" type="button" onclick="showPage('info')">Explore academics <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="hero-btn secondary" type="button" onclick="showPage('contact')"><i class="fa-regular fa-comments"></i> Admission enquiry</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-access" aria-label="Quick access">
+          <button class="quick-link" type="button" onclick="showPage('info')"><i class="fa-solid fa-file-signature"></i><span><strong>Admissions</strong><small>Start your journey</small></span></button>
+          <button class="quick-link" type="button" onclick="showPage('info')"><i class="fa-solid fa-book-open-reader"></i><span><strong>Programs</strong><small>Academic pathways</small></span></button>
+          <button class="quick-link" type="button" onclick="showPage('gallery')"><i class="fa-regular fa-images"></i><span><strong>Campus life</strong><small>See our community</small></span></button>
+          <button class="quick-link" type="button" onclick="showPage('contact')"><i class="fa-solid fa-headset"></i><span><strong>Help desk</strong><small>We are here to help</small></span></button>
+        </div>
+
+        <div class="stats-band reveal" aria-label="College at a glance">
+          <div class="stat"><span class="stat-number" data-count="1200" data-suffix="+">0</span><span class="stat-label">Active learners</span></div>
+          <div class="stat"><span class="stat-number" data-count="45" data-suffix="+">0</span><span class="stat-label">Dedicated educators</span></div>
+          <div class="stat"><span class="stat-number" data-count="3">0</span><span class="stat-label">Academic streams</span></div>
+          <div class="stat"><span class="stat-number" data-count="100" data-suffix="%">0</span><span class="stat-label">Student-focused learning</span></div>
+        </div>
+        
+        <!-- Why Choose Us Content Box -->
+        <div class="content-box feature-showcase reveal">
+          <span class="eyebrow">The GCPC advantage</span>
+          <h2 id="wcu-title">Why Choose Us?</h2>
+          <p id="wcu-description" style="color: #475569; font-size: 1.05rem; margin-bottom: 2rem;"></p>
+          
+          <div class="features-grid" id="wcu-features-container">
+            <!-- Features loaded dynamically -->
+          </div>
+        </div>
+
+        <div class="school-grid reveal">
+          <section class="news-panel" aria-labelledby="notice-heading">
+            <div class="mini-title"><h3 id="notice-heading">Latest notices</h3><button class="text-link" type="button" onclick="showPage('info')">View academics <i class="fa-solid fa-arrow-right"></i></button></div>
+            <article class="notice">
+              <div class="notice-date">15<small>JUL</small></div>
+              <div><h4>Admission information for the new session</h4><p>Eligibility, required documents and the enquiry process.</p></div>
+              <i class="fa-solid fa-chevron-right"></i>
+            </article>
+            <article class="notice">
+              <div class="notice-date">20<small>JUL</small></div>
+              <div><h4>Updated class and assessment schedule</h4><p>Students can collect the latest routine from the office.</p></div>
+              <i class="fa-solid fa-chevron-right"></i>
+            </article>
+            <article class="notice">
+              <div class="notice-date">01<small>AUG</small></div>
+              <div><h4>Parent–teacher meeting</h4><p>A collaborative session focused on student progress.</p></div>
+              <i class="fa-solid fa-chevron-right"></i>
+            </article>
+          </section>
+
+          <section class="events-panel" aria-labelledby="events-heading">
+            <div class="mini-title"><h3 id="events-heading">Campus highlights</h3><button class="text-link" type="button" onclick="showPage('gallery')">Gallery <i class="fa-solid fa-arrow-right"></i></button></div>
+            <article class="event-card">
+              <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=420&q=80" alt="Teacher guiding students in a classroom" referrerpolicy="no-referrer" />
+              <div><span>Learning</span><h4>Interactive classrooms</h4><p>Curious minds learn through discussion, teamwork and practical inquiry.</p></div>
+            </article>
+            <article class="event-card">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=420&q=80" alt="Students collaborating around a table" referrerpolicy="no-referrer" />
+              <div><span>Community</span><h4>Clubs and co-curricular life</h4><p>Students build confidence, leadership and lasting friendships.</p></div>
+            </article>
+          </section>
+        </div>
+
+        <section class="admission-banner reveal" aria-labelledby="admission-title">
+          <div><span class="eyebrow" style="color: #082f3a;">Your next chapter starts here</span><h2 id="admission-title">Ready to learn, lead and grow with us?</h2><p>Speak with our admission desk about programs, requirements and campus life at Gazipur Central Public College.</p></div>
+          <button class="section-cta" type="button" onclick="showPage('contact')">Contact admission <i class="fa-solid fa-arrow-right"></i></button>
+        </section>
+      </div>
+
+      <!-- 2. About Us Section (#about) -->
+      <div class="page-section" id="about">
+        <!-- White Content Box: About The College -->
+        <div class="content-box" id="about-college-box">
+          <h2 id="about-title-text">About The College</h2>
+          <div class="about-grid">
+            <div>
+              <p id="about-paragraph1" style="color: #334155; font-size: 1.05rem; margin-bottom: 1.2rem; line-height: 1.65;"></p>
+              <p id="about-paragraph2" style="color: #334155; font-size: 1.05rem; margin-bottom: 1.2rem; line-height: 1.65;"></p>
+              
+              <div class="about-vision-mission">
+                <div class="about-card" id="about-card-vision">
+                  <div class="about-card-title">
+                    <i class="fa-solid fa-eye"></i>
+                    <span id="vision-title-text">Our Vision</span>
+                  </div>
+                  <p id="vision-desc-text"></p>
+                </div>
+                <div class="about-card" id="about-card-mission">
+                  <div class="about-card-title">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span id="mission-title-text">Our Mission</span>
+                  </div>
+                  <p id="mission-desc-text"></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="about-badge-list" id="college-milestones">
+              <!-- Milestones populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Information Section (#info) -->
+      <div class="page-section" id="info">
+        <!-- White Content Box: Academic Information (HSC Curriculum) -->
+        <div class="content-box" id="academic-info-box">
+          <h2 id="info-title-text">Academic Information</h2>
+          <p class="info-intro" id="info-intro-text"></p>
+          
+          <div class="academic-streams-container" id="hsc-academic-streams">
+            <!-- Streams loaded dynamically -->
+          </div>
+          
+          <!-- Board Alignment Note -->
+          <div class="academic-guidelines" id="dhaka-board-alignment">
+            <h3 id="guidelines-title-text"><i class="fa-solid fa-circle-check"></i>Board Curriculum Standards</h3>
+            <p id="guidelines-desc-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Gallery Section (#gallery) -->
+      <div class="page-section" id="gallery">
+        <!-- White Content Box: Photo Gallery -->
+        <div class="content-box" id="photo-gallery-box">
+          <h2 id="gallery-header-title">Photo Gallery</h2>
+          <p id="gallery-header-desc" style="color: #475569; font-size: 1.05rem; margin-bottom: 2rem;">
+            Explore student activities, classroom events, and facilities.
+          </p>
+          
+          <!-- Responsive grid containing dynamic images -->
+          <div class="gallery-grid" id="college-gallery-grid">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Contact Us Section (#contact) -->
+      <div class="page-section" id="contact">
+        <!-- White Content Box: Get In Touch -->
+        <div class="content-box" id="get-in-touch-box">
+          <h2 id="contact-title-text">Get In Touch</h2>
+          
+          <div class="contact-layout">
+            <!-- Address, Email, and Phone List -->
+            <div>
+              <p id="contact-intro-text" style="color: #475569; font-size: 1.02rem; margin-bottom: 2rem;"></p>
+              
+              <ul class="contact-info-list" id="contact-list-details">
+                <!-- Address -->
+                <li id="contact-addr">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <span class="contact-label">Address</span>
+                    <div class="contact-value" id="val-address"></div>
+                  </div>
+                </li>
+                
+                <!-- Email -->
+                <li id="contact-mail">
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <span class="contact-label">Email</span>
+                    <div class="contact-value">
+                      <a href="#" id="val-email-link"></a>
+                    </div>
+                  </div>
+                </li>
+                
+                <!-- Phone (WhatsApp & Regular) -->
+                <li id="contact-phone">
+                  <i class="fa-solid fa-phone"></i>
+                  <div>
+                    <span class="contact-label">Phone Contacts</span>
+                    <div class="contact-value" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.3rem;">
+                      <div>
+                        <a href="#" id="val-whatsapp-link" target="_blank" rel="noopener noreferrer">
+                          <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.2rem; margin-right: 4px; vertical-align: middle; display: inline-flex; align-items: center; justify-content: center; width: auto; height: auto; background-color: transparent;"></i>
+                          <span id="val-whatsapp-text"></span>
+                        </a>
+                        <span style="color: #64748b; font-size: 0.85rem; font-weight: 400; margin-left: 6px;">(Click for WhatsApp)</span>
+                      </div>
+                      <div>
+                        <a href="#" id="val-phone-link"></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Contact Form Box -->
+            <div class="contact-form-box" id="contact-form-container">
+              <div class="contact-form-title">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Direct Inquiry Desk</span>
+              </div>
+              <form class="contact-form" id="inquiry-form" onsubmit="event.preventDefault(); alert('Your message has been logged securely and sent to the college administration team. Thank you!'); this.reset();">
+                <div class="form-group">
+                  <label for="name-input">Full Name</label>
+                  <input type="text" id="name-input" class="form-control" placeholder="E.g., Anisur Rahman" required />
+                </div>
+                <div class="form-group">
+                  <label for="email-input">Email Address</label>
+                  <input type="email" id="email-input" class="form-control" placeholder="E.g., anis@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="msg-input">Inquiry Message</label>
+                  <textarea id="msg-input" class="form-control" rows="4" placeholder="How can we assist you?" style="resize: vertical;" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="msg-submit-button">
+                  <span>Send Message</span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Admin Panel Section (#admin) -->
+      <div class="page-section" id="admin">
+        <div class="content-box">
+          <h2>Admin Control Center</h2>
+          
+          <!-- Passcode Verification Box -->
+          <div id="admin-login-form-container">
+            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 1.5rem; text-align: center;">
+              This administrative control panel allows you to dynamically edit text content, milestones, streams, contacts, and images stored in Firebase.
+            </p>
+            <div class="contact-form-box" style="max-width: 450px; margin: 0 auto;">
+              <div class="contact-form-title">
+                <i class="fa-solid fa-lock"></i>
+                <span>Security Verification</span>
+              </div>
+              <form id="admin-login-form">
+                <div class="form-group" style="margin-bottom: 1.2rem;">
+                  <label for="admin-passcode-input">Administrative Passcode</label>
+                  <input type="password" id="admin-passcode-input" class="form-control" placeholder="Enter passcode" required />
+                  <p id="admin-login-error" style="color: #ef4444; font-size: 0.85rem; margin-top: 6px; display: none; font-weight: 600;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Invalid passcode. Please try again.
+                  </p>
+                </div>
+                <button type="submit" class="btn-submit" style="width: 100%; justify-content: center; height: 46px;">
+                  <i class="fa-solid fa-unlock"></i>
+                  <span>Authenticate Session</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Logged In Admin Dashboard -->
+          <div id="admin-panel-container" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1.2rem; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h3 style="color: #1a237e; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-screwdriver-wrench"></i> Live CMS Workspace
+                </h3>
+                <p style="color: #10b981; font-size: 0.88rem; font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 0.4rem;">
+                  <span style="display: inline-block; width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                  Database Connection Live
+                </p>
+              </div>
+              <button class="btn-submit" id="admin-logout-btn" style="background-color: #ef4444; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout Session
+              </button>
+            </div>
+
+            <!-- Bento-grid admin structure -->
+            <div class="admin-workspace">
+              <!-- Sidebar Navigation -->
+              <div id="admin-tab-nav" style="background-color: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 0.5rem; height: fit-content; margin-bottom: 1.5rem;">
+                <span class="admin-tab-btn active" data-tab="branding"><i class="fa-solid fa-globe"></i> General & Branding</span>
+                <span class="admin-tab-btn" data-tab="home"><i class="fa-solid fa-house"></i> Home Page Settings</span>
+                <span class="admin-tab-btn" data-tab="about"><i class="fa-solid fa-circle-info"></i> About Page Settings</span>
+                <span class="admin-tab-btn" data-tab="info"><i class="fa-solid fa-graduation-cap"></i> Academics & Streams</span>
+                <span class="admin-tab-btn" data-tab="gallery"><i class="fa-solid fa-images"></i> Dynamic Photo Gallery</span>
+                <span class="admin-tab-btn" data-tab="contact"><i class="fa-solid fa-address-book"></i> Contacts & Address</span>
+                <span class="admin-tab-btn" data-tab="security" style="color: #b45309;"><i class="fa-solid fa-key"></i> System Passcode</span>
+              </div>
+
+              <!-- Main Admin Fields Workspace -->
+              <div style="background-color: #ffffff; border-radius: 8px; padding: 2rem; border: 1px solid #e2e8f0; min-height: 450px;">
+                
+                <!-- TAB 1: General Branding -->
+                <div id="admin-form-branding" class="admin-tab-form">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-globe"></i> General & Branding Settings
+                  </h4>
+                  <form id="form-branding-cms">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>College Name</label>
+                      <input type="text" id="inp-brand-name" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>College Icon class (FontAwesome)</label>
+                      <input type="text" id="inp-brand-icon" class="form-control" placeholder="fa-school" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Google Site Verification Meta Key</label>
+                      <input type="text" id="inp-brand-verification" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Branding Settings</button>
+                  </form>
+                </div>
+
+                <!-- TAB 2: Home Config -->
+                <div id="admin-form-home" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-house"></i> Home Page Settings
+                  </h4>
+                  <form id="form-home-cms">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Hero Welcome Title</label>
+                      <input type="text" id="inp-home-hero-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Hero Description Subtitle</label>
+                      <textarea id="inp-home-hero-subtitle" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Hero Background Banner URL</label>
+                      <input type="text" id="inp-home-hero-bg" class="form-control" required />
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
+                      <label>Why Choose Us Section Title</label>
+                      <input type="text" id="inp-home-wcu-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Why Choose Us Subtitle Description</label>
+                      <textarea id="inp-home-wcu-desc" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <h5 style="color: #1a237e; margin-bottom: 0.8rem; font-weight: 600;">Three Value Cards:</h5>
+                    <!-- Card 1 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 1: Scholastic Rigor</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-home-f1-icon" class="form-control" placeholder="Icon" required />
+                        <input type="text" id="inp-home-f1-title" class="form-control" placeholder="Title" required />
+                      </div>
+                      <textarea id="inp-home-f1-desc" class="form-control" rows="2" placeholder="Description" required></textarea>
+                    </div>
+                    <!-- Card 2 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 2: Advanced Labs</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-home-f2-icon" class="form-control" placeholder="Icon" required />
+                        <input type="text" id="inp-home-f2-title" class="form-control" placeholder="Title" required />
+                      </div>
+                      <textarea id="inp-home-f2-desc" class="form-control" rows="2" placeholder="Description" required></textarea>
+                    </div>
+                    <!-- Card 3 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 3: Skilled Mentorship</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-home-f3-icon" class="form-control" placeholder="Icon" required />
+                        <input type="text" id="inp-home-f3-title" class="form-control" placeholder="Title" required />
+                      </div>
+                      <textarea id="inp-home-f3-desc" class="form-control" rows="2" placeholder="Description" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Home Settings</button>
+                  </form>
+                </div>
+
+                <!-- TAB 3: About Config -->
+                <div id="admin-form-about" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-circle-info"></i> About Page Settings
+                  </h4>
+                  <form id="form-about-cms">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>About Us Section Title</label>
+                      <input type="text" id="inp-about-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>About Us Paragraph 1</label>
+                      <textarea id="inp-about-p1" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>About Us Paragraph 2</label>
+                      <textarea id="inp-about-p2" class="form-control" rows="4" required></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                      <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 0.9rem; font-weight: 700; color: #1a237e;">Our Vision Block</span>
+                        <div class="form-group" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                          <input type="text" id="inp-about-vision-title" class="form-control" placeholder="Vision Title" required />
+                        </div>
+                        <textarea id="inp-about-vision-desc" class="form-control" rows="3" placeholder="Vision description..." required></textarea>
+                      </div>
+                      <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                        <span style="font-size: 0.9rem; font-weight: 700; color: #1a237e;">Our Mission Block</span>
+                        <div class="form-group" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                          <input type="text" id="inp-about-mission-title" class="form-control" placeholder="Mission Title" required />
+                        </div>
+                        <textarea id="inp-about-mission-desc" class="form-control" rows="3" placeholder="Mission description..." required></textarea>
+                      </div>
+                    </div>
+
+                    <h5 style="color: #1a237e; margin-bottom: 0.8rem; font-weight: 600;">College Milestone Badges:</h5>
+                    <!-- Badge 1 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-about-m1-icon" class="form-control" placeholder="Icon Class" required />
+                        <input type="text" id="inp-about-m1-title" class="form-control" placeholder="Badge Title" required />
+                      </div>
+                      <input type="text" id="inp-about-m1-desc" class="form-control" placeholder="Short label/desc" required />
+                    </div>
+                    <!-- Badge 2 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-about-m2-icon" class="form-control" placeholder="Icon Class" required />
+                        <input type="text" id="inp-about-m2-title" class="form-control" placeholder="Badge Title" required />
+                      </div>
+                      <input type="text" id="inp-about-m2-desc" class="form-control" placeholder="Short label/desc" required />
+                    </div>
+                    <!-- Badge 3 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-about-m3-icon" class="form-control" placeholder="Icon Class" required />
+                        <input type="text" id="inp-about-m3-title" class="form-control" placeholder="Badge Title" required />
+                      </div>
+                      <input type="text" id="inp-about-m3-desc" class="form-control" placeholder="Short label/desc" required />
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save About Settings</button>
+                  </form>
+                </div>
+
+                <!-- TAB 4: Academics Config -->
+                <div id="admin-form-info" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-graduation-cap"></i> Academics & Streams
+                  </h4>
+                  <form id="form-info-cms">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Academic Info Page Title</label>
+                      <input type="text" id="inp-info-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Academic Intro text block</label>
+                      <textarea id="inp-info-intro" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <h5 style="color: #1a237e; margin-bottom: 0.8rem; font-weight: 600;">Three Curriculum Streams:</h5>
+                    <!-- Stream 1 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Science Stream Details</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-info-s1-icon" class="form-control" required />
+                        <input type="text" id="inp-info-s1-title" class="form-control" required />
+                      </div>
+                      <textarea id="inp-info-s1-desc" class="form-control" rows="2" required></textarea>
+                    </div>
+                    <!-- Stream 2 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Business Studies Stream Details</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-info-s2-icon" class="form-control" required />
+                        <input type="text" id="inp-info-s2-title" class="form-control" required />
+                      </div>
+                      <textarea id="inp-info-s2-desc" class="form-control" rows="2" required></textarea>
+                    </div>
+                    <!-- Stream 3 -->
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Humanities Stream Details</span>
+                      <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
+                        <input type="text" id="inp-info-s3-icon" class="form-control" required />
+                        <input type="text" id="inp-info-s3-title" class="form-control" required />
+                      </div>
+                      <textarea id="inp-info-s3-desc" class="form-control" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
+                      <label>Guidelines Banner Header Title</label>
+                      <input type="text" id="inp-info-guidelines-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Guidelines Banner Body Description</label>
+                      <textarea id="inp-info-guidelines-desc" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Academics Settings</button>
+                  </form>
+                </div>
+
+                <!-- TAB 5: Photo Gallery Manager -->
+                <div id="admin-form-gallery" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-images"></i> Dynamic Photo Gallery CMS
+                  </h4>
+                  <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    Upload new photos by URL and caption. Clear existing ones or edit their titles. Reflects instantly in the main college Gallery grid.
+                  </p>
+                  
+                  <!-- Form to Add Image -->
+                  <div style="background-color: #f1f5f9; padding: 1.5rem; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 2rem;">
+                    <h5 style="color: #1a237e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                      <i class="fa-solid fa-square-plus"></i> Append New Image to Gallery
+                    </h5>
+                    <form id="form-gallery-add">
+                      <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>Image URL (Unsplash or any hosted image link)</label>
+                        <input type="text" id="inp-gallery-new-url" class="form-control" placeholder="https://images.unsplash.com/photo-..." required />
+                      </div>
+                      <div class="form-group" style="margin-bottom: 1.2rem;">
+                        <label>Image Caption / Description</label>
+                        <input type="text" id="inp-gallery-new-caption" class="form-control" placeholder="E.g., Opening Ceremony of College Auditorium" required />
+                      </div>
+                      <button type="submit" class="btn-submit" style="background-color: #10b981;"><i class="fa-solid fa-plus"></i> Add Image Card</button>
+                    </form>
+                  </div>
+
+                  <!-- List of existing images to manage -->
+                  <h5 style="color: #1a237e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-trash-can"></i> Manage Current Gallery Images (<span id="gallery-count">0</span>)
+                  </h5>
+                  <div id="admin-gallery-rows-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Rows generated dynamically -->
+                  </div>
+                </div>
+
+                <!-- TAB 6: Contact & Address -->
+                <div id="admin-form-contact" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-address-book"></i> Contacts & Address CMS
+                  </h4>
+                  <form id="form-contact-cms">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Contact Section Title</label>
+                      <input type="text" id="inp-contact-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Contact Intro paragraph</label>
+                      <textarea id="inp-contact-intro" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>College Physical Address</label>
+                      <input type="text" id="inp-contact-address" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Official Email Address</label>
+                      <input type="email" id="inp-contact-email" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Administrative WhatsApp Contact (Numerical with country code, e.g., 8801776371675)</label>
+                      <input type="text" id="inp-contact-whatsapp" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>Secondary Phone Number (Clickable, e.g., 01309131217)</label>
+                      <input type="text" id="inp-contact-phone" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Contact details</button>
+                  </form>
+                </div>
+
+                <!-- TAB 7: Security Passcode Change -->
+                <div id="admin-form-security" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-key"></i> System Passcode Manager
+                  </h4>
+                  <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    Updates the administrative session passcode stored securely in the Firebase Database.
+                  </p>
+                  <form id="form-security-cms">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                      <label>New System Passcode</label>
+                      <input type="text" id="inp-security-passcode" class="form-control" placeholder="E.g., admin123" required />
+                    </div>
+                    <button type="submit" class="btn-submit" style="background-color: #b45309;"><i class="fa-solid fa-floppy-disk"></i> Update Passcode</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+    <!-- Save Dynamic Toast -->
+    <div id="save-toast">
+      <i class="fa-solid fa-cloud-arrow-up" style="font-size: 1.2rem;"></i>
+      <span id="toast-message">Database changes saved successfully!</span>
+    </div>
+
+    <!-- Footer & Copy Rights -->
+    <footer id="app-footer-area">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="footer-socials" id="social-connect">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" id="footer-whatsapp-anchor" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p>© 2026 <span id="footer-college-name">Gazipur Central Public College</span>. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; color: #475569; margin-top: 0.3rem;" id="footer-address-label"></p>
+        <a href="#admin" onclick="showPage('admin'); return false;" style="color: #64748b; font-size: 0.82rem; text-decoration: underline; margin-top: 1.2rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+          <i class="fa-solid fa-lock-open" style="font-size: 0.75rem;"></i> Admin Panel Portal
+        </a>
+      </div>
+    </footer>
+
+    <!-- Fixed, circular, green (#25d366) WhatsApp floating action button -->
+    <a href="#" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="floating-whatsapp-action">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+      (() => {
+        const menuButton = document.getElementById('menu-toggle');
+        const navigation = document.getElementById('navbar-links');
+
+        const closeMenu = () => {
+          navigation?.classList.remove('open');
+          menuButton?.setAttribute('aria-expanded', 'false');
+          const icon = menuButton?.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        };
+
+        menuButton?.addEventListener('click', () => {
+          const isOpen = navigation?.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(Boolean(isOpen)));
+          const icon = menuButton.querySelector('i');
+          if (icon) icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+
+        navigation?.addEventListener('click', closeMenu);
+        window.addEventListener('resize', () => { if (window.innerWidth > 920) closeMenu(); });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+
+        document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+        const stats = document.querySelectorAll('[data-count]');
+        let countersStarted = false;
+        const countUp = () => {
+          if (countersStarted) return;
+          countersStarted = true;
+          stats.forEach((node) => {
+            const target = Number(node.dataset.count || 0);
+            const suffix = node.dataset.suffix || '';
+            const duration = 1250;
+            const startedAt = performance.now();
+            const tick = (now) => {
+              const progress = Math.min((now - startedAt) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              node.textContent = `${Math.round(target * eased).toLocaleString()}${suffix}`;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        };
+
+        const statsBand = document.querySelector('.stats-band');
+        if (statsBand) {
+          const statsObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              countUp();
+              statsObserver.disconnect();
+            }
+          }, { threshold: .35 });
+          statsObserver.observe(statsBand);
+        }
+
+        // Ensure the public site remains usable if the live content service is slow.
+        window.setTimeout(() => {
+          const loader = document.getElementById('app-loader');
+          if (loader && loader.style.visibility !== 'hidden') {
+            loader.style.opacity = '0';
+            window.setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
+          }
+        }, 3500);
+      })();
+    </script>
+
+    <!-- Custom Single Page Application & Firebase Integration JavaScript -->
+    <script type="module">
+      // 1. Import dynamic Firebase Modules directly from the official gstatic CDN
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+      // 2. Exact user-provided web configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDvtjkcki1b_iK4BNgwSZPYmbdwndGXshM",
+        authDomain: "topupapp-e9b87.firebaseapp.com",
+        databaseURL: "https://topupapp-e9b87-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "topupapp-e9b87",
+        storageBucket: "topupapp-e9b87.firebasestorage.app",
+        messagingSenderId: "1026902365460",
+        appId: "1:1026902365460:web:c9f16cd50beeb624251e01",
+        measurementId: "G-3XB11JXKCW"
+      };
+
+      // 3. Initialize Firebase components
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      // Default fallback dataset in case the Firebase database path is currently empty / uninitialized
+      const defaultSiteData = {
+        branding: {
+          collegeName: "Gazipur Central Public College",
+          logoIcon: "fa-school",
+          verificationCode: "GLnhY0Qo5TyofEvixjF8P0XcpRlMD-SjH4oPLqjHnKI"
+        },
+        home: {
+          heroTitle: "Welcome to Gazipur Central Public College",
+          heroSubtitle: "Nurturing values, sparking intellect, and promoting absolute academic excellence to lead in an ever-advancing global society.",
+          heroBg: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
+          whyChooseUsTitle: "Why Choose Us?",
+          whyChooseUsDesc: "Gazipur Central Public College is a premier academic institution committed to preparing students for higher educational success. Built on pillars of moral code, scholastic discipline, and modern facilities, we help secondary and higher secondary candidates realize their ultimate potential.",
+          features: [
+            {
+              icon: "fa-graduation-cap",
+              title: "Scholastic Rigor",
+              desc: "Top board scores under Dhaka Board accompanied by tailored exam readiness frameworks."
+            },
+            {
+              icon: "fa-microscope",
+              title: "Advanced Labs",
+              desc: "Modern science lab tools, visual classrooms, and high-performance IT learning infrastructure."
+            },
+            {
+              icon: "fa-users-gear",
+              title: "Skilled Mentorship",
+              desc: "A highly-credentialed staff that focuses on individual students with constant feedback cycles."
+            }
+          ]
+        },
+        about: {
+          title: "About The College",
+          paragraph1: "Located in the historical heartland of Gazipur, Gazipur Central Public College has pioneered quality education. Our college is conveniently located in close proximity to the Gazipur Public Road, providing convenient commuter transport linkages while maintaining a serene, verdant, and distraction-free sanctuary for students.",
+          paragraph2: "Our core institutional belief is that true education goes beyond text replication. By implementing modern pedagogical strategies, active debate platforms, group tasks, and science exhibitions, we instill independent research capabilities in every scholar.",
+          vision: {
+            title: "Our Vision",
+            desc: "To establish a benchmark in educational standards, molding students into morally upright, academically excellent, and technologically adaptive leaders."
+          },
+          mission: {
+            title: "Our Mission",
+            desc: "To cultivate a scientific temperament, deliver robust analytical skills, and provide custom learning paths for diverse high school streams."
+          },
+          milestones: [
+            {
+              icon: "fa-certificate",
+              title: "Board Approved",
+              desc: "Fully authorized by Dhaka Board"
+            },
+            {
+              icon: "fa-user-shield",
+              title: "Secure Campus",
+              desc: "24/7 monitored safe learning environment"
+            },
+            {
+              icon: "fa-laptop-code",
+              title: "ICT-Enabled",
+              desc: "Classrooms built for smart-learning"
+            }
+          ]
+        },
+        info: {
+          title: "Academic Information (HSC Curriculum)",
+          intro: "Gazipur Central Public College offers specialized higher secondary programs registered under the Board of Intermediate and Secondary Education, Dhaka. Students receive structured, syllabus-focused classroom coaching designed to excel in board evaluations and prospective university admission campaigns.",
+          streams: [
+            {
+              icon: "fa-atom",
+              title: "Science Stream",
+              desc: "Designed for aspiring engineers, physicians, and data researchers. Course load includes Physics, Chemistry, Biology, Higher Mathematics, and ICT. Standard theory is consistently reinforced via structured weekly laboratory protocols."
+            },
+            {
+              icon: "fa-chart-line",
+              title: "Business Studies Stream",
+              desc: "Tailored for the commercial leaders, financiers, and entrepreneurs of tomorrow. Curriculum includes Accounting, Finance, Banking & Insurance, Business Organization & Management, and ICT."
+            },
+            {
+              icon: "fa-scale-balanced",
+              title: "Humanities Stream",
+              desc: "Focused on analytical thinking, historical contexts, and global civil services. Core programs cover Civics & Good Governance, Economics, Logic, Social Work, and ICT."
+            }
+          ],
+          guidelinesTitle: "Board Curriculum & Admission Standard",
+          guidelinesDesc: "Our operations adhere to the official textbook declarations of the National Curriculum and Textbook Board (NCTB), Bangladesh. Formal admission applications open instantly post SSC board results and must be lodged online through the single gateway regulated by the Dhaka Board."
+        },
+        gallery: [
+          {
+            id: "1",
+            url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80",
+            caption: "Main College Campus Building"
+          },
+          {
+            id: "2",
+            url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80",
+            caption: "Interactive Smart Classroom"
+          },
+          {
+            id: "3",
+            url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+            caption: "Resource-Rich Multimedia Library"
+          },
+          {
+            id: "4",
+            url: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80",
+            caption: "Fully Equipped Chemistry Lab"
+          },
+          {
+            id: "5",
+            url: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80",
+            caption: "Advanced Computer and IT Lab"
+          },
+          {
+            id: "6",
+            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80",
+            caption: "Annual Inter-College Science Fair"
+          },
+          {
+            id: "7",
+            url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
+            caption: "National Level Debating Competition"
+          },
+          {
+            id: "8",
+            url: "https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?auto=format&fit=crop&w=600&q=80",
+            caption: "Outdoor Sports & Athletics Ground"
+          },
+          {
+            id: "9",
+            url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80",
+            caption: "Annual Convocation Day Celebration"
+          },
+          {
+            id: "10",
+            url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
+            caption: "Career Counseling Workshop Seminars"
+          }
+        ],
+        contact: {
+          title: "Get In Touch",
+          intro: "Our administrative front desk remains accessible Sunday through Thursday from 8:00 AM to 3:00 PM. Please use the contacts below or leave a quick digital message.",
+          address: "Gazipur Pubile Road, Joydebpur, Gazipur",
+          email: "gcpc131217@gmail.com",
+          whatsapp: "8801776371675",
+          phone: "01309131217"
+        },
+        adminPasscode: "admin123"
+      };
+
+      // Live memory state
+      let siteData = null;
+      let isAdminLoggedIn = false;
+
+      // 4. Fetch/Listen for Website data in real-time from Firebase Realtime Database
+      const siteDataRef = ref(db, "college_website_data");
+      onValue(siteDataRef, (snapshot) => {
+        const val = snapshot.val();
+        if (val) {
+          siteData = val;
+          renderSite(siteData);
+        } else {
+          // If no data exists yet (fresh project setup), automatically seed defaults!
+          console.log("No existing data found in Firebase path /college_website_data. Seeding default content...");
+          set(siteDataRef, defaultSiteData)
+            .then(() => {
+              siteData = defaultSiteData;
+              renderSite(siteData);
+            })
+            .catch((err) => {
+              console.error("Error seeding default site configuration:", err);
+            });
+        }
+
+        // Hide app loader when first snapshot resolves
+        const loader = document.getElementById("app-loader");
+        if (loader) {
+          loader.style.opacity = "0";
+          setTimeout(() => {
+            loader.style.visibility = "hidden";
+          }, 500);
+        }
+      }, (error) => {
+        console.error("Error reading data from Realtime Database:", error);
+      });
+
+      // 5. Core rendering function that maps database JSON values to DOM Nodes
+      function renderSite(data) {
+        if (!data) return;
+
+        // Branding & Headers
+        document.title = data.branding.collegeName;
+        
+        const verificationMeta = document.querySelector('meta[name="google-site-verification"]');
+        if (verificationMeta) {
+          verificationMeta.setAttribute('content', data.branding.verificationCode);
+        }
+
+        const brandingLogo = document.getElementById("branding-logo");
+        if (brandingLogo) {
+          brandingLogo.innerHTML = `<i class="fa-solid ${data.branding.logoIcon}"></i><span>${data.branding.collegeName}</span>`;
+        }
+
+        const footerCollegeName = document.getElementById("footer-college-name");
+        if (footerCollegeName) {
+          footerCollegeName.innerText = data.branding.collegeName;
+        }
+
+        // Home Section
+        const heroBanner = document.getElementById("home-hero-banner");
+        if (heroBanner) {
+          heroBanner.style.backgroundImage = `url('${data.home.heroBg}')`;
+        }
+        document.getElementById("hero-title-text").innerText = data.home.heroTitle;
+        document.getElementById("hero-subtitle-text").innerText = data.home.heroSubtitle;
+        document.getElementById("wcu-title").innerText = data.home.whyChooseUsTitle;
+        document.getElementById("wcu-description").innerText = data.home.whyChooseUsDesc;
+
+        // Render Why Choose Us Features Card
+        const featuresContainer = document.getElementById("wcu-features-container");
+        if (featuresContainer && data.home.features) {
+          featuresContainer.innerHTML = "";
+          data.home.features.forEach((feat, index) => {
+            const card = document.createElement("div");
+            card.className = "feature-card";
+            card.id = `feat-card-${index}`;
+            card.innerHTML = `
+              <i class="fa-solid ${feat.icon}"></i>
+              <h3>${feat.title}</h3>
+              <p>${feat.desc}</p>
+            `;
+            featuresContainer.appendChild(card);
+          });
+        }
+
+        // About Section
+        document.getElementById("about-title-text").innerText = data.about.title;
+        document.getElementById("about-paragraph1").innerText = data.about.paragraph1;
+        document.getElementById("about-paragraph2").innerText = data.about.paragraph2;
+        document.getElementById("vision-title-text").innerText = data.about.vision.title;
+        document.getElementById("vision-desc-text").innerText = data.about.vision.desc;
+        document.getElementById("mission-title-text").innerText = data.about.mission.title;
+        document.getElementById("mission-desc-text").innerText = data.about.mission.desc;
+
+        // Milestones rendering
+        const milestonesContainer = document.getElementById("college-milestones");
+        if (milestonesContainer && data.about.milestones) {
+          milestonesContainer.innerHTML = "";
+          data.about.milestones.forEach((m) => {
+            const mBox = document.createElement("div");
+            mBox.className = "about-badge";
+            mBox.innerHTML = `
+              <i class="fa-solid ${m.icon}"></i>
+              <div>
+                <h4>${m.title}</h4>
+                <p style="color: #64748b; font-size: 0.85rem; margin-top: 2px;">${m.desc}</p>
+              </div>
+            `;
+            milestonesContainer.appendChild(mBox);
+          });
+        }
+
+        // Information Section
+        document.getElementById("info-title-text").innerText = data.info.title;
+        document.getElementById("info-intro-text").innerText = data.info.intro;
+
+        const streamsContainer = document.getElementById("hsc-academic-streams");
+        if (streamsContainer && data.info.streams) {
+          streamsContainer.innerHTML = "";
+          data.info.streams.forEach((stream, index) => {
+            const streamCard = document.createElement("div");
+            streamCard.className = "stream-card";
+            if (index === 1) streamCard.style.borderLeftColor = "#ffca28"; // Highlight color for index 1
+            streamCard.innerHTML = `
+              <h4><i class="fa-solid ${stream.icon}"></i>${stream.title}</h4>
+              <p>${stream.desc}</p>
+            `;
+            streamsContainer.appendChild(streamCard);
+          });
+        }
+        document.getElementById("guidelines-title-text").innerHTML = `<i class="fa-solid fa-circle-check"></i>${data.info.guidelinesTitle}`;
+        document.getElementById("guidelines-desc-text").innerText = data.info.guidelinesDesc;
+
+        // Gallery Rendering
+        const galleryGrid = document.getElementById("college-gallery-grid");
+        if (galleryGrid) {
+          galleryGrid.innerHTML = "";
+          if (data.gallery && data.gallery.length > 0) {
+            data.gallery.forEach((pic) => {
+              const item = document.createElement("div");
+              item.className = "gallery-item";
+              item.innerHTML = `
+                <img src="${pic.url}" alt="${pic.caption}" referrerpolicy="no-referrer" />
+                <div class="gallery-caption">${pic.caption}</div>
+              `;
+              galleryGrid.appendChild(item);
+            });
+          } else {
+            galleryGrid.innerHTML = `
+              <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #64748b;">
+                <i class="fa-regular fa-image" style="font-size: 3rem; margin-bottom: 1rem; color: #cbd5e1;"></i>
+                <p style="font-weight: 500;">No images in gallery right now.</p>
+                <p style="font-size: 0.9rem; margin-top: 4px;">Use the Admin Panel to insert beautiful image URLs.</p>
+              </div>
+            `;
+          }
+        }
+
+        // Contact Section
+        document.getElementById("contact-title-text").innerText = data.contact.title;
+        document.getElementById("contact-intro-text").innerText = data.contact.intro;
+        document.getElementById("val-address").innerText = data.contact.address;
+        
+        const emailLink = document.getElementById("val-email-link");
+        if (emailLink) {
+          emailLink.href = `mailto:${data.contact.email}`;
+          emailLink.innerText = data.contact.email;
+        }
+
+        const waLink = document.getElementById("val-whatsapp-link");
+        const waText = document.getElementById("val-whatsapp-text");
+        if (waLink && waText) {
+          waLink.href = `https://api.whatsapp.com/send?phone=${data.contact.whatsapp}`;
+          waText.innerText = data.contact.whatsapp;
+        }
+
+        const phoneLink = document.getElementById("val-phone-link");
+        if (phoneLink) {
+          phoneLink.href = `tel:${data.contact.phone}`;
+          phoneLink.innerText = data.contact.phone;
+        }
+
+        // WhatsApp Floating CTA & Footer Socials
+        const floatWhatsApp = document.getElementById("floating-whatsapp-action");
+        if (floatWhatsApp) {
+          floatWhatsApp.href = `https://api.whatsapp.com/send?phone=${data.contact.whatsapp}`;
+        }
+        const footerWhatsApp = document.getElementById("footer-whatsapp-anchor");
+        if (footerWhatsApp) {
+          footerWhatsApp.href = `https://api.whatsapp.com/send?phone=${data.contact.whatsapp}`;
+        }
+
+        // Footer Address line
+        document.getElementById("footer-address-label").innerText = `${data.contact.address} | Approved by Board of Intermediate and Secondary Education, Dhaka`;
+
+        // If logged in, reload cms form values with current database state
+        if (isAdminLoggedIn) {
+          populateCMSForms();
+        }
+      }
+
+      // 6. Navigation router
+      window.showPage = function(pageId) {
+        const sections = document.querySelectorAll('.page-section');
+        sections.forEach((section) => {
+          section.classList.remove('active-page');
+        });
+        
+        const targetSection = document.getElementById(pageId);
+        if (targetSection) {
+          targetSection.classList.add('active-page');
+        }
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach((link) => {
+          link.classList.remove('active-link');
+        });
+        
+        const targetNavLink = document.getElementById('nav-' + pageId);
+        if (targetNavLink) {
+          targetNavLink.classList.add('active-link');
+        }
+        
+        window.scrollTo(0, 0);
+      };
+
+      // Dom Loaded Trigger
+      window.addEventListener('DOMContentLoaded', () => {
+        window.showPage('home');
+      });
+
+      // 7. Admin CMS Authentication and Portal Interactions
+      const loginForm = document.getElementById("admin-login-form");
+      const passcodeInp = document.getElementById("admin-passcode-input");
+      const loginError = document.getElementById("admin-login-error");
+      
+      const loginContainer = document.getElementById("admin-login-form-container");
+      const panelContainer = document.getElementById("admin-panel-container");
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const entered = passcodeInp.value;
+        if (siteData && entered === siteData.adminPasscode) {
+          isAdminLoggedIn = true;
+          loginError.style.display = "none";
+          passcodeInp.value = "";
+          
+          // Switch view state
+          loginContainer.style.display = "none";
+          panelContainer.style.display = "block";
+          
+          populateCMSForms();
+          showToast("Authenticated! Live CMS session unlocked.");
+        } else {
+          loginError.style.display = "block";
+        }
+      });
+
+      window.logoutAdmin = function() {
+        isAdminLoggedIn = false;
+        panelContainer.style.display = "none";
+        loginContainer.style.display = "block";
+        showToast("Logged out from admin panel.");
+      };
+
+      document.getElementById("admin-logout-btn").addEventListener("click", () => {
+        window.logoutAdmin();
+      });
+
+      // Admin Tab Switcher logic
+      const tabButtons = document.querySelectorAll(".admin-tab-btn");
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const tabName = btn.getAttribute("data-tab");
+          const forms = document.querySelectorAll(".admin-tab-form");
+          forms.forEach((frm) => frm.style.display = "none");
+
+          const targetForm = document.getElementById(`admin-form-${tabName}`);
+          if (targetForm) {
+            targetForm.style.display = "block";
+          }
+        });
+      });
+
+      // Populate form values from database siteData state
+      function populateCMSForms() {
+        if (!siteData) return;
+
+        // Branding
+        document.getElementById("inp-brand-name").value = siteData.branding.collegeName;
+        document.getElementById("inp-brand-icon").value = siteData.branding.logoIcon;
+        document.getElementById("inp-brand-verification").value = siteData.branding.verificationCode;
+
+        // Home
+        document.getElementById("inp-home-hero-title").value = siteData.home.heroTitle;
+        document.getElementById("inp-home-hero-subtitle").value = siteData.home.heroSubtitle;
+        document.getElementById("inp-home-hero-bg").value = siteData.home.heroBg;
+        document.getElementById("inp-home-wcu-title").value = siteData.home.whyChooseUsTitle;
+        document.getElementById("inp-home-wcu-desc").value = siteData.home.whyChooseUsDesc;
+        // Feature Cards
+        document.getElementById("inp-home-f1-icon").value = siteData.home.features[0].icon;
+        document.getElementById("inp-home-f1-title").value = siteData.home.features[0].title;
+        document.getElementById("inp-home-f1-desc").value = siteData.home.features[0].desc;
+        document.getElementById("inp-home-f2-icon").value = siteData.home.features[1].icon;
+        document.getElementById("inp-home-f2-title").value = siteData.home.features[1].title;
+        document.getElementById("inp-home-f2-desc").value = siteData.home.features[1].desc;
+        document.getElementById("inp-home-f3-icon").value = siteData.home.features[2].icon;
+        document.getElementById("inp-home-f3-title").value = siteData.home.features[2].title;
+        document.getElementById("inp-home-f3-desc").value = siteData.home.features[2].desc;
+
+        // About Us
+        document.getElementById("inp-about-title").value = siteData.about.title;
+        document.getElementById("inp-about-p1").value = siteData.about.paragraph1;
+        document.getElementById("inp-about-p2").value = siteData.about.paragraph2;
+        document.getElementById("inp-about-vision-title").value = siteData.about.vision.title;
+        document.getElementById("inp-about-vision-desc").value = siteData.about.vision.desc;
+        document.getElementById("inp-about-mission-title").value = siteData.about.mission.title;
+        document.getElementById("inp-about-mission-desc").value = siteData.about.mission.desc;
+        // Milestones
+        document.getElementById("inp-about-m1-icon").value = siteData.about.milestones[0].icon;
+        document.getElementById("inp-about-m1-title").value = siteData.about.milestones[0].title;
+        document.getElementById("inp-about-m1-desc").value = siteData.about.milestones[0].desc;
+        document.getElementById("inp-about-m2-icon").value = siteData.about.milestones[1].icon;
+        document.getElementById("inp-about-m2-title").value = siteData.about.milestones[1].title;
+        document.getElementById("inp-about-m2-desc").value = siteData.about.milestones[1].desc;
+        document.getElementById("inp-about-m3-icon").value = siteData.about.milestones[2].icon;
+        document.getElementById("inp-about-m3-title").value = siteData.about.milestones[2].title;
+        document.getElementById("inp-about-m3-desc").value = siteData.about.milestones[2].desc;
+
+        // Academics Info
+        document.getElementById("inp-info-title").value = siteData.info.title;
+        document.getElementById("inp-info-intro").value = siteData.info.intro;
+        // Streams
+        document.getElementById("inp-info-s1-icon").value = siteData.info.streams[0].icon;
+        document.getElementById("inp-info-s1-title").value = siteData.info.streams[0].title;
+        document.getElementById("inp-info-s1-desc").value = siteData.info.streams[0].desc;
+        document.getElementById("inp-info-s2-icon").value = siteData.info.streams[1].icon;
+        document.getElementById("inp-info-s2-title").value = siteData.info.streams[1].title;
+        document.getElementById("inp-info-s2-desc").value = siteData.info.streams[1].desc;
+        document.getElementById("inp-info-s3-icon").value = siteData.info.streams[2].icon;
+        document.getElementById("inp-info-s3-title").value = siteData.info.streams[2].title;
+        document.getElementById("inp-info-s3-desc").value = siteData.info.streams[2].desc;
+        // Banner
+        document.getElementById("inp-info-guidelines-title").value = siteData.info.guidelinesTitle;
+        document.getElementById("inp-info-guidelines-desc").value = siteData.info.guidelinesDesc;
+
+        // Gallery List Rows
+        populateGalleryRows();
+
+        // Contact
+        document.getElementById("inp-contact-title").value = siteData.contact.title;
+        document.getElementById("inp-contact-intro").value = siteData.contact.intro;
+        document.getElementById("inp-contact-address").value = siteData.contact.address;
+        document.getElementById("inp-contact-email").value = siteData.contact.email;
+        document.getElementById("inp-contact-whatsapp").value = siteData.contact.whatsapp;
+        document.getElementById("inp-contact-phone").value = siteData.contact.phone;
+
+        // Security passcode
+        document.getElementById("inp-security-passcode").value = siteData.adminPasscode;
+      }
+
+      // Populate Gallery list dynamically in the Admin Tab
+      function populateGalleryRows() {
+        const rowsContainer = document.getElementById("admin-gallery-rows-container");
+        const countSpan = document.getElementById("gallery-count");
+        if (!rowsContainer) return;
+
+        rowsContainer.innerHTML = "";
+        const items = siteData.gallery || [];
+        countSpan.innerText = items.length;
+
+        if (items.length === 0) {
+          rowsContainer.innerHTML = `
+            <p style="color: #64748b; font-size: 0.95rem; font-style: italic; text-align: center; padding: 1.5rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px;">
+              No images in gallery tree. Use the form above to add your first image card!
+            </p>
+          `;
+          return;
+        }
+
+        items.forEach((pic, index) => {
+          const row = document.createElement("div");
+          row.className = "admin-gallery-item-row";
+          row.innerHTML = `
+            <img src="${pic.url}" alt="${pic.caption}" referrerpolicy="no-referrer" />
+            <div class="details">
+              <div class="form-group">
+                <label style="font-size: 0.75rem; font-weight: 700; color: #64748b;">Image Hosted URL</label>
+                <input type="text" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;" value="${pic.url}" id="inp-gal-${index}-url" />
+              </div>
+              <div class="form-group">
+                <label style="font-size: 0.75rem; font-weight: 700; color: #64748b;">Title / Caption</label>
+                <input type="text" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;" value="${pic.caption}" id="inp-gal-${index}-caption" />
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn-submit" onclick="saveGalleryRow(${index})" style="background-color: #3b82f6; padding: 0.5rem 0.8rem; font-size: 0.8rem;">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Update
+              </button>
+              <button class="btn-submit" onclick="deleteGalleryRow(${index})" style="background-color: #ef4444; padding: 0.5rem 0.8rem; font-size: 0.8rem;">
+                <i class="fa-solid fa-trash-can"></i> Delete
+              </button>
+            </div>
+          `;
+          rowsContainer.appendChild(row);
+        });
+      }
+
+      // Submit events for CRM forms to write into the Firebase database
+      document.getElementById("form-branding-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.branding.collegeName = document.getElementById("inp-brand-name").value;
+        siteData.branding.logoIcon = document.getElementById("inp-brand-icon").value;
+        siteData.branding.verificationCode = document.getElementById("inp-brand-verification").value;
+        writeSiteDataToFirebase("Branding details updated successfully!");
+      });
+
+      document.getElementById("form-home-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.home.heroTitle = document.getElementById("inp-home-hero-title").value;
+        siteData.home.heroSubtitle = document.getElementById("inp-home-hero-subtitle").value;
+        siteData.home.heroBg = document.getElementById("inp-home-hero-bg").value;
+        siteData.home.whyChooseUsTitle = document.getElementById("inp-home-wcu-title").value;
+        siteData.home.whyChooseUsDesc = document.getElementById("inp-home-wcu-desc").value;
+        // Feature cards
+        siteData.home.features[0].icon = document.getElementById("inp-home-f1-icon").value;
+        siteData.home.features[0].title = document.getElementById("inp-home-f1-title").value;
+        siteData.home.features[0].desc = document.getElementById("inp-home-f1-desc").value;
+        siteData.home.features[1].icon = document.getElementById("inp-home-f2-icon").value;
+        siteData.home.features[1].title = document.getElementById("inp-home-f2-title").value;
+        siteData.home.features[1].desc = document.getElementById("inp-home-f2-desc").value;
+        siteData.home.features[2].icon = document.getElementById("inp-home-f3-icon").value;
+        siteData.home.features[2].title = document.getElementById("inp-home-f3-title").value;
+        siteData.home.features[2].desc = document.getElementById("inp-home-f3-desc").value;
+
+        writeSiteDataToFirebase("Home Page details and columns updated!");
+      });
+
+      document.getElementById("form-about-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.about.title = document.getElementById("inp-about-title").value;
+        siteData.about.paragraph1 = document.getElementById("inp-about-p1").value;
+        siteData.about.paragraph2 = document.getElementById("inp-about-p2").value;
+        siteData.about.vision.title = document.getElementById("inp-about-vision-title").value;
+        siteData.about.vision.desc = document.getElementById("inp-about-vision-desc").value;
+        siteData.about.mission.title = document.getElementById("inp-about-mission-title").value;
+        siteData.about.mission.desc = document.getElementById("inp-about-mission-desc").value;
+        // Milestones
+        siteData.about.milestones[0].icon = document.getElementById("inp-about-m1-icon").value;
+        siteData.about.milestones[0].title = document.getElementById("inp-about-m1-title").value;
+        siteData.about.milestones[0].desc = document.getElementById("inp-about-m1-desc").value;
+        siteData.about.milestones[1].icon = document.getElementById("inp-about-m2-icon").value;
+        siteData.about.milestones[1].title = document.getElementById("inp-about-m2-title").value;
+        siteData.about.milestones[1].desc = document.getElementById("inp-about-m2-desc").value;
+        siteData.about.milestones[2].icon = document.getElementById("inp-about-m3-icon").value;
+        siteData.about.milestones[2].title = document.getElementById("inp-about-m3-title").value;
+        siteData.about.milestones[2].desc = document.getElementById("inp-about-m3-desc").value;
+
+        writeSiteDataToFirebase("About Section settings modified!");
+      });
+
+      document.getElementById("form-info-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.info.title = document.getElementById("inp-info-title").value;
+        siteData.info.intro = document.getElementById("inp-info-intro").value;
+        // Streams
+        siteData.info.streams[0].icon = document.getElementById("inp-info-s1-icon").value;
+        siteData.info.streams[0].title = document.getElementById("inp-info-s1-title").value;
+        siteData.info.streams[0].desc = document.getElementById("inp-info-s1-desc").value;
+        siteData.info.streams[1].icon = document.getElementById("inp-info-s2-icon").value;
+        siteData.info.streams[1].title = document.getElementById("inp-info-s2-title").value;
+        siteData.info.streams[1].desc = document.getElementById("inp-info-s2-desc").value;
+        siteData.info.streams[2].icon = document.getElementById("inp-info-s3-icon").value;
+        siteData.info.streams[2].title = document.getElementById("inp-info-s3-title").value;
+        siteData.info.streams[2].desc = document.getElementById("inp-info-s3-desc").value;
+        // Guidelines
+        siteData.info.guidelinesTitle = document.getElementById("inp-info-guidelines-title").value;
+        siteData.info.guidelinesDesc = document.getElementById("inp-info-guidelines-desc").value;
+
+        writeSiteDataToFirebase("Curriculum guidelines and streams saved!");
+      });
+
+      document.getElementById("form-contact-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.contact.title = document.getElementById("inp-contact-title").value;
+        siteData.contact.intro = document.getElementById("inp-contact-intro").value;
+        siteData.contact.address = document.getElementById("inp-contact-address").value;
+        siteData.contact.email = document.getElementById("inp-contact-email").value;
+        siteData.contact.whatsapp = document.getElementById("inp-contact-whatsapp").value;
+        siteData.contact.phone = document.getElementById("inp-contact-phone").value;
+
+        writeSiteDataToFirebase("Contact list and address details stored.");
+      });
+
+      document.getElementById("form-security-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nextPass = document.getElementById("inp-security-passcode").value.trim();
+        if (nextPass.length < 4) {
+          alert("Passcode must be at least 4 characters long!");
+          return;
+        }
+        siteData.adminPasscode = nextPass;
+        writeSiteDataToFirebase("Administrative passcode changed successfully!");
+      });
+
+      // Dynamic Gallery Operations: Create, Read, Update, Delete (CRUD)
+      document.getElementById("form-gallery-add").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newUrl = document.getElementById("inp-gallery-new-url").value.trim();
+        const newCaption = document.getElementById("inp-gallery-new-caption").value.trim();
+
+        if (!siteData.gallery) siteData.gallery = [];
+
+        // Generate simple incremental ID
+        const nextId = String(siteData.gallery.length + 1);
+        siteData.gallery.push({
+          id: nextId,
+          url: newUrl,
+          caption: newCaption
+        });
+
+        // Save to Database
+        writeSiteDataToFirebase("Added image card successfully to the gallery!");
+        
+        // Reset Fields
+        document.getElementById("inp-gallery-new-url").value = "";
+        document.getElementById("inp-gallery-new-caption").value = "";
+      });
+
+      window.saveGalleryRow = function(index) {
+        const urlVal = document.getElementById(`inp-gal-${index}-url`).value.trim();
+        const captionVal = document.getElementById(`inp-gal-${index}-caption`).value.trim();
+
+        if (!urlVal || !captionVal) {
+          alert("Image URL and caption cannot be empty!");
+          return;
+        }
+
+        siteData.gallery[index].url = urlVal;
+        siteData.gallery[index].caption = captionVal;
+
+        writeSiteDataToFirebase("Updated image properties in gallery!");
+      };
+
+      window.deleteGalleryRow = function(index) {
+        if (!confirm("Are you sure you want to remove this image from the gallery?")) {
+          return;
+        }
+        siteData.gallery.splice(index, 1);
+        writeSiteDataToFirebase("Removed image from photo gallery.");
+      };
+
+      // Helper function to commit memory siteData to Firebase Ref
+      function writeSiteDataToFirebase(successMessage) {
+        set(siteDataRef, siteData)
+          .then(() => {
+            showToast(successMessage);
+          })
+          .catch((err) => {
+            console.error("Firebase Database Write Error:", err);
+            alert("Error committing changes: " + err.message);
+          });
+      }
+
+      // Display customized success toast
+      function showToast(msg) {
+        const toast = document.getElementById("save-toast");
+        const toastMsg = document.getElementById("toast-message");
+        if (toast && toastMsg) {
+          toastMsg.innerText = msg;
+          toast.classList.add("visible");
+          setTimeout(() => {
+            toast.classList.remove("visible");
+          }, 4000);
+        }
+      }
+
+    </script>
+  </body>
+</html>

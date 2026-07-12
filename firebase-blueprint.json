@@ -1,0 +1,162 @@
+{
+  "entities": {
+    "BrandingConfig": {
+      "title": "Branding Configuration",
+      "description": "General settings and branding elements for the college website.",
+      "type": "object",
+      "properties": {
+        "collegeName": {
+          "type": "string",
+          "description": "The official name of the institution."
+        },
+        "logoIcon": {
+          "type": "string",
+          "description": "The FontAwesome icon class for the college logo."
+        },
+        "verificationCode": {
+          "type": "string",
+          "description": "The Google Site Verification meta tag content."
+        }
+      },
+      "required": ["collegeName", "logoIcon", "verificationCode"]
+    },
+    "FeatureCard": {
+      "title": "Feature Card",
+      "description": "A feature card highlighting a pillar of excellence.",
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string",
+          "description": "FontAwesome icon class name."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the feature."
+        },
+        "desc": {
+          "type": "string",
+          "description": "A short descriptive paragraph."
+        }
+      },
+      "required": ["icon", "title", "desc"]
+    },
+    "HomeConfig": {
+      "title": "Home Section Settings",
+      "description": "Content settings for the hero banner and key pillars section.",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroBg": { "type": "string" },
+        "whyChooseUsTitle": { "type": "string" },
+        "whyChooseUsDesc": { "type": "string" },
+        "features": {
+          "type": "array",
+          "description": "Pillars of excellence features list."
+        }
+      },
+      "required": ["heroTitle", "heroSubtitle", "heroBg", "whyChooseUsTitle", "whyChooseUsDesc", "features"]
+    },
+    "AboutConfig": {
+      "title": "About Section Settings",
+      "description": "Content settings for the institutional identity page.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "paragraph1": { "type": "string" },
+        "paragraph2": { "type": "string" },
+        "vision": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "desc": { "type": "string" }
+          }
+        },
+        "mission": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "desc": { "type": "string" }
+          }
+        },
+        "milestones": {
+          "type": "array"
+        }
+      },
+      "required": ["title", "paragraph1", "paragraph2", "vision", "mission", "milestones"]
+    },
+    "AcademicStream": {
+      "title": "Academic Stream",
+      "description": "Details for a single educational group stream.",
+      "type": "object",
+      "properties": {
+        "icon": { "type": "string" },
+        "title": { "type": "string" },
+        "desc": { "type": "string" }
+      },
+      "required": ["icon", "title", "desc"]
+    },
+    "InfoConfig": {
+      "title": "Information Page Settings",
+      "description": "Academic program and admission details.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "intro": { "type": "string" },
+        "streams": { "type": "array" },
+        "guidelinesTitle": { "type": "string" },
+        "guidelinesDesc": { "type": "string" }
+      },
+      "required": ["title", "intro", "streams", "guidelinesTitle", "guidelinesDesc"]
+    },
+    "GalleryImage": {
+      "title": "Gallery Image",
+      "description": "A single image card inside the photo gallery.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "url": { "type": "string" },
+        "caption": { "type": "string" }
+      },
+      "required": ["id", "url", "caption"]
+    },
+    "ContactConfig": {
+      "title": "Contact Page Settings",
+      "description": "Contact information and administration desk references.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "intro": { "type": "string" },
+        "address": { "type": "string" },
+        "email": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["title", "intro", "address", "email", "whatsapp", "phone"]
+    },
+    "CollegeWebsiteData": {
+      "title": "College Website Full Data Model",
+      "description": "The complete database tree for Gazipur Central Public College.",
+      "type": "object",
+      "properties": {
+        "branding": { "$ref": "#/entities/BrandingConfig" },
+        "home": { "$ref": "#/entities/HomeConfig" },
+        "about": { "$ref": "#/entities/AboutConfig" },
+        "info": { "$ref": "#/entities/InfoConfig" },
+        "gallery": {
+          "type": "array",
+          "description": "List of dynamic gallery items."
+        },
+        "contact": { "$ref": "#/entities/ContactConfig" },
+        "adminPasscode": { "type": "string" }
+      },
+      "required": ["branding", "home", "about", "info", "gallery", "contact", "adminPasscode"]
+    }
+  },
+  "firestore": {
+    "/college_website_data": {
+      "schema": "#/entities/CollegeWebsiteData",
+      "description": "Root path storing the complete, editable configuration of the college single page application."
+    }
+  }
+}

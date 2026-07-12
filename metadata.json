@@ -1,0 +1,6 @@
+{
+  "name": "Gazipur Central Public College",
+  "description": "The official single-page website for Gazipur Central Public College, featuring college information, academic curricula, galleries, and contact channels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
