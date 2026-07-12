@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Gazipur Central Public College Website
 
-# Run and deploy your AI Studio app
+This is a normal local website project. It does not require a ChatGPT sign-in.
 
-This contains everything you need to run your app locally.
+## Open the website locally
 
-View your app in AI Studio: https://ai.studio/apps/99ac179c-205c-4767-9077-0635d56acbda
+1. Install [Node.js](https://nodejs.org/) if it is not already installed.
+2. Open PowerShell in this folder.
+3. Run `npm install` once.
+4. Run `npm run dev` whenever you want to work on the site.
+5. Open `http://localhost:3000/` in your browser.
 
-## Run Locally
+Keep the PowerShell window open while viewing the website. Press `Ctrl+C` in that window to stop it.
 
-**Prerequisites:**  Node.js
+## Modify the website
 
+- Main page, styles, content, and interactions: `index.html`
+- Social preview artwork: `public/og.png`
+- Build settings: `vite.config.ts`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Most public content can also be updated through the website's Admin section.
+
+## Create a production copy
+
+Run `npm run build`. The finished static files will be generated in the `dist` folder.
