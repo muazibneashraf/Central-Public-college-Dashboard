@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" href="/school-logo-transparent.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- FontAwesome CDN for modern, responsive iconography -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -1133,6 +1133,7 @@
         margin: 0 auto;
         max-width: 650px;
         font-size: clamp(1rem, 1.6vw, 1.2rem);
+        font-family: 'Noto Sans Bengali', 'DM Sans', sans-serif;
         color: rgba(255,255,255,.78);
         animation: riseIn .9s .28s both;
       }
@@ -1436,7 +1437,7 @@
           <div class="hero-content">
             <div class="hero-kicker"><i class="fa-solid fa-sparkles"></i> Education · Character · Community</div>
             <h1 id="hero-title-text"><span class="welcome-line">Welcome to</span><strong>Gazipur Central Public College</strong></h1>
-            <p id="hero-subtitle-text">Nurturing values, sparking intellect, and promoting academic excellence.</p>
+            <p id="hero-subtitle-text" lang="bn">আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ</p>
             <div class="hero-actions">
               <button class="hero-btn primary" type="button" onclick="showPage('info')">Explore academics <i class="fa-solid fa-arrow-right"></i></button>
               <button class="hero-btn secondary" type="button" onclick="showPage('contact')"><i class="fa-regular fa-comments"></i> Admission enquiry</button>
@@ -2161,7 +2162,7 @@
         },
         home: {
           heroTitle: "Welcome to Gazipur Central Public College",
-          heroSubtitle: "Nurturing values, sparking intellect, and promoting absolute academic excellence to lead in an ever-advancing global society.",
+          heroSubtitle: "আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ",
           heroBg: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
           whyChooseUsTitle: "Why Choose Us?",
           whyChooseUsDesc: "Gazipur Central Public College is a premier academic institution committed to preparing students for higher educational success. Built on pillars of moral code, scholastic discipline, and modern facilities, we help secondary and higher secondary candidates realize their ultimate potential.",
@@ -2364,7 +2365,7 @@
           heroBanner.style.backgroundImage = `url('${data.home.heroBg}')`;
         }
         document.getElementById("hero-title-text").innerHTML = `<span class="welcome-line">Welcome to</span><strong>${officialCollegeName}</strong>`;
-        document.getElementById("hero-subtitle-text").innerText = data.home.heroSubtitle;
+        document.getElementById("hero-subtitle-text").innerText = "আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ";
         document.getElementById("wcu-title").innerText = data.home.whyChooseUsTitle;
         document.getElementById("wcu-description").innerText = data.home.whyChooseUsDesc;
 
