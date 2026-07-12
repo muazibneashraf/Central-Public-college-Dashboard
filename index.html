@@ -1305,6 +1305,41 @@
         .features-grid { grid-template-columns: 1fr; }
         .gallery-item:nth-child(3n+1) { min-height: 280px; }
       }
+
+      /* Fluid desktop layout: use the full browser width instead of a centered cap. */
+      @media (min-width: 921px) {
+        .topbar-inner,
+        .nav-container {
+          width: 100%;
+          max-width: none;
+          padding-left: clamp(1.5rem, 3vw, 4rem);
+          padding-right: clamp(1.5rem, 3vw, 4rem);
+        }
+
+        .page-section {
+          width: 100%;
+          max-width: none;
+          padding-left: clamp(1.25rem, 2.5vw, 3rem);
+          padding-right: clamp(1.25rem, 2.5vw, 3rem);
+        }
+
+        .hero {
+          width: 100%;
+          height: min(760px, 76vh);
+        }
+
+        .quick-access {
+          width: calc(100% - clamp(3rem, 8vw, 10rem));
+          max-width: none;
+        }
+
+        .content-box,
+        .stats-band,
+        .school-grid,
+        .admission-banner {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1955,7 +1990,7 @@
 
     <!-- Footer & Copy Rights -->
     <footer id="app-footer-area">
-      <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="width: 100%; max-width: none; margin: 0 auto; padding: 0 clamp(1.5rem, 3vw, 4rem);">
         <div class="footer-socials" id="social-connect">
           <a href="#"><i class="fa-brands fa-facebook"></i></a>
           <a href="#"><i class="fa-brands fa-twitter"></i></a>
