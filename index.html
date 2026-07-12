@@ -1052,7 +1052,7 @@
         height: min(690px, 72vh);
         min-height: 560px;
         border-radius: 32px;
-        justify-content: flex-start;
+        justify-content: center;
         background-position: center 44%;
         box-shadow: 0 30px 80px rgba(5,43,53,.22);
         isolation: isolate;
@@ -1076,7 +1076,13 @@
         background: linear-gradient(90deg, rgba(4,35,44,.96) 0%, rgba(4,35,44,.78) 46%, rgba(4,35,44,.20) 100%);
       }
 
-      .hero-content { text-align: left; max-width: 780px; padding: clamp(2rem, 7vw, 5.2rem); }
+      .hero-content {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(2rem, 7vw, 5.2rem);
+        text-align: center;
+      }
 
       .hero-kicker, .eyebrow {
         display: inline-flex;
@@ -1102,12 +1108,27 @@
         font-size: clamp(2.5rem, 5.2vw, 4.8rem);
         line-height: 1.04;
         letter-spacing: -.055em;
-        max-width: 740px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
         animation: riseIn .9s .18s both;
       }
 
+      .hero-content h1 .welcome-line {
+        display: block;
+        margin-bottom: .16em;
+        font-size: .64em;
+        font-weight: 600;
+        letter-spacing: -.035em;
+      }
+
+      .hero-content h1 strong {
+        display: block;
+        font-weight: 800;
+      }
+
       .hero-content p {
-        margin: 0;
+        margin: 0 auto;
         max-width: 650px;
         font-size: clamp(1rem, 1.6vw, 1.2rem);
         color: rgba(255,255,255,.78);
@@ -1119,7 +1140,7 @@
         to { opacity: 1; transform: none; }
       }
 
-      .hero-actions { display: flex; gap: .9rem; margin-top: 2rem; flex-wrap: wrap; animation: riseIn .9s .38s both; }
+      .hero-actions { display: flex; justify-content: center; gap: .9rem; margin-top: 2rem; flex-wrap: wrap; animation: riseIn .9s .38s both; }
 
       .hero-btn, .section-cta {
         min-height: 50px;
@@ -1412,7 +1433,7 @@
           <div class="hero-overlay"></div>
           <div class="hero-content">
             <div class="hero-kicker"><i class="fa-solid fa-sparkles"></i> Education · Character · Community</div>
-            <h1 id="hero-title-text">Gazipur Central Public College</h1>
+            <h1 id="hero-title-text"><span class="welcome-line">Welcome to</span><strong>Gazipur Central Public College.</strong></h1>
             <p id="hero-subtitle-text">Nurturing values, sparking intellect, and promoting academic excellence.</p>
             <div class="hero-actions">
               <button class="hero-btn primary" type="button" onclick="showPage('info')">Explore academics <i class="fa-solid fa-arrow-right"></i></button>
@@ -2340,7 +2361,7 @@
         if (heroBanner) {
           heroBanner.style.backgroundImage = `url('${data.home.heroBg}')`;
         }
-        document.getElementById("hero-title-text").innerText = data.home.heroTitle;
+        document.getElementById("hero-title-text").innerHTML = `<span class="welcome-line">Welcome to</span><strong>${officialCollegeName}.</strong>`;
         document.getElementById("hero-subtitle-text").innerText = data.home.heroSubtitle;
         document.getElementById("wcu-title").innerText = data.home.whyChooseUsTitle;
         document.getElementById("wcu-description").innerText = data.home.whyChooseUsDesc;
