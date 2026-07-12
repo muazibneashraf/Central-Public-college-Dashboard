@@ -15,6 +15,8 @@
     <meta name="twitter:description" content="Education, character and community — discover student life and academic opportunities at GCPC." />
     <meta name="twitter:image" content="/og.png" />
     <title>Gazipur Central Public College</title>
+    <link rel="icon" type="image/jpeg" href="/school-logo.jpeg" />
+    <link rel="apple-touch-icon" href="/school-logo.jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -952,7 +954,27 @@
         padding: .9rem 2rem;
       }
 
-      .logo { font-size: 1.12rem; max-width: 330px; line-height: 1.2; }
+      .logo {
+        max-width: none;
+        flex-shrink: 0;
+        font-size: 1.12rem;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .logo span { white-space: nowrap; }
+
+      .logo img {
+        width: 52px;
+        height: 52px;
+        display: block;
+        flex: none;
+        object-fit: cover;
+        border: 2px solid rgba(11,104,115,.16);
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(8,47,58,.14);
+      }
 
       .logo i {
         width: 48px;
@@ -1282,8 +1304,9 @@
 
       @media (max-width: 640px) {
         .nav-container { padding: .75rem 1rem; }
-        .logo { font-size: .92rem; }
+        .logo { font-size: clamp(.72rem, 2.8vw, .92rem); gap: .45rem; }
         .logo i { width: 42px; height: 42px; border-radius: 12px; }
+        .logo img { width: 42px; height: 42px; }
         nav { top: 68px; }
         .page-section { padding: 0 .8rem; margin-top: 1rem; }
         .hero { min-height: 520px; height: 72vh; border-radius: 24px; }
@@ -1362,8 +1385,7 @@
     <header id="app-header">
       <div class="nav-container">
         <div class="logo" id="branding-logo">
-          <!-- Populated dynamically -->
-          <i class="fa-solid fa-school"></i>
+          <img src="/school-logo.jpeg" alt="Gazipur Central Public College logo" width="52" height="52" />
           <span>Gazipur Central Public College</span>
         </div>
         <nav id="navbar-links">
@@ -2295,7 +2317,8 @@
         if (!data) return;
 
         // Branding & Headers
-        document.title = data.branding.collegeName;
+        const officialCollegeName = "Gazipur Central Public College";
+        document.title = officialCollegeName;
         
         const verificationMeta = document.querySelector('meta[name="google-site-verification"]');
         if (verificationMeta) {
@@ -2304,12 +2327,12 @@
 
         const brandingLogo = document.getElementById("branding-logo");
         if (brandingLogo) {
-          brandingLogo.innerHTML = `<i class="fa-solid ${data.branding.logoIcon}"></i><span>${data.branding.collegeName}</span>`;
+          brandingLogo.innerHTML = `<img src="/school-logo.jpeg" alt="${officialCollegeName} logo" width="52" height="52" /><span>${officialCollegeName}</span>`;
         }
 
         const footerCollegeName = document.getElementById("footer-college-name");
         if (footerCollegeName) {
-          footerCollegeName.innerText = data.branding.collegeName;
+          footerCollegeName.innerText = officialCollegeName;
         }
 
         // Home Section
