@@ -12,13 +12,9 @@
         "logoIcon": {
           "type": "string",
           "description": "The FontAwesome icon class for the college logo."
-        },
-        "verificationCode": {
-          "type": "string",
-          "description": "The Google Site Verification meta tag content."
         }
       },
-      "required": ["collegeName", "logoIcon", "verificationCode"]
+      "required": ["collegeName", "logoIcon"]
     },
     "FeatureCard": {
       "title": "Feature Card",

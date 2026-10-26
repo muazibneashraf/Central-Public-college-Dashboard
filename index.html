@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="GLnhY0Qo5TyofEvixjF8P0XcpRlMD-SjH4oPLqjHnKI" />
     <meta name="description" content="Gazipur Central Public College — a future-focused school community in Gazipur, Bangladesh." />
     <meta name="theme-color" content="#072b36" />
     <meta property="og:type" content="website" />
@@ -15,7 +14,7 @@
     <meta name="twitter:description" content="Education, character and community — discover student life and academic opportunities at GCPC." />
     <meta name="twitter:image" content="/og.png" />
     <title>Gazipur Central Public College</title>
-    <link rel="icon" type="image/png" href="/school-logo-transparent.png" />
+    <link rel="icon" href="/school-logo-transparent.png" />
     <link rel="apple-touch-icon" href="/school-logo-transparent.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,6 +97,9 @@
         display: flex;
         align-items: center;
         gap: 0.6rem;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
       }
       
       .logo i {
@@ -1295,6 +1297,101 @@
       .gallery-item img { transition: transform .7s cubic-bezier(.2,.8,.2,1); }
       .gallery-caption { padding: 2.5rem 1.2rem 1.2rem; }
 
+      .teachers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 320px));
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .teacher-card {
+        background: #f6fbfa;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 26px rgba(8,47,58,.08);
+      }
+
+      .teacher-photo {
+        width: 100%;
+        height: 340px;
+        object-fit: contain;
+        background: #e6eceb;
+        display: block;
+      }
+
+      .teacher-meta {
+        padding: 1rem 1.05rem 1.15rem;
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .teacher-name {
+        font-family: Manrope;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .teacher-designation {
+        color: #0f766e;
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .teacher-subject {
+        color: #3b555b;
+        font-size: 0.9rem;
+      }
+
+      .teacher-contact {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.2rem;
+        color: var(--teal);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .teacher-contact:hover {
+        color: var(--deep);
+      }
+
+      .admin-teacher-item-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        flex-wrap: wrap;
+      }
+
+      .admin-teacher-item-row img {
+        width: 84px;
+        height: 84px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+      }
+
+      .admin-teacher-item-row .details {
+        flex: 1;
+        min-width: 280px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 0.55rem;
+      }
+
+      .admin-teacher-item-row .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
       .form-control { border-radius: 11px; padding: .95rem 1rem; }
       .form-control:focus { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(11,104,115,.10); }
       .btn-submit { background: var(--ink); border-radius: 11px; }
@@ -1400,22 +1497,23 @@
 
     <div class="school-topbar">
       <div class="topbar-inner">
-        <span><i class="fa-solid fa-location-dot"></i> Joydebpur, Gazipur, Bangladesh</span>
-        <span><i class="fa-regular fa-clock"></i> Sunday–Thursday · 8:00 AM–3:00 PM</span>
+        <span><i class="fa-solid fa-location-dot"></i><span id="topbar-address">Gazipur, Bangladesh</span></span>
+        <span><i class="fa-regular fa-clock"></i><span id="topbar-hours">Sunday–Thursday · 8:00 AM–3:00 PM</span></span>
       </div>
     </div>
 
     <!-- Sticky Header & Navigation -->
     <header id="app-header">
       <div class="nav-container">
-        <div class="logo" id="branding-logo">
+        <a class="logo" id="branding-logo" href="#home" onclick="showPage('home'); return false;">
           <img src="/school-logo-transparent.png" alt="Gazipur Central Public College logo" width="52" height="52" />
           <span>Gazipur Central Public College</span>
-        </div>
+        </a>
         <nav id="navbar-links">
           <span class="nav-link active-link" onclick="showPage('home')" id="nav-home">Home</span>
           <span class="nav-link" onclick="showPage('about')" id="nav-about">About Us</span>
           <span class="nav-link" onclick="showPage('info')" id="nav-info">Information</span>
+          <span class="nav-link" onclick="showPage('teachers')" id="nav-teachers">Teachers</span>
           <span class="nav-link" onclick="showPage('gallery')" id="nav-gallery">Gallery</span>
           <span class="nav-link" onclick="showPage('contact')" id="nav-contact">Contact Us</span>
           <span class="nav-link" onclick="showPage('admin')" id="nav-admin" style="font-weight: 600;"><i class="fa-solid fa-lock"></i> Admin</span>
@@ -1435,33 +1533,21 @@
         <div class="hero" id="home-hero-banner">
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <div class="hero-kicker"><i class="fa-solid fa-sparkles"></i> Education · Character · Community</div>
             <h1 id="hero-title-text"><span class="welcome-line">Welcome to</span><strong>Gazipur Central Public College</strong></h1>
             <p id="hero-subtitle-text" lang="bn">আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ</p>
             <div class="hero-actions">
-              <button class="hero-btn primary" type="button" onclick="showPage('info')">Explore academics <i class="fa-solid fa-arrow-right"></i></button>
-              <button class="hero-btn secondary" type="button" onclick="showPage('contact')"><i class="fa-regular fa-comments"></i> Admission enquiry</button>
+              <button class="hero-btn primary" type="button" onclick="showPage('info')"><span id="hero-primary-label">Explore academics</span> <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="hero-btn secondary" type="button" onclick="showPage('contact')"><i class="fa-regular fa-comments"></i><span id="hero-secondary-label">Admission enquiry</span></button>
             </div>
           </div>
         </div>
 
-        <div class="quick-access" aria-label="Quick access">
-          <button class="quick-link" type="button" onclick="showPage('info')"><i class="fa-solid fa-file-signature"></i><span><strong>Admissions</strong><small>Start your journey</small></span></button>
-          <button class="quick-link" type="button" onclick="showPage('info')"><i class="fa-solid fa-book-open-reader"></i><span><strong>Programs</strong><small>Academic pathways</small></span></button>
-          <button class="quick-link" type="button" onclick="showPage('gallery')"><i class="fa-regular fa-images"></i><span><strong>Campus life</strong><small>See our community</small></span></button>
-          <button class="quick-link" type="button" onclick="showPage('contact')"><i class="fa-solid fa-headset"></i><span><strong>Help desk</strong><small>We are here to help</small></span></button>
-        </div>
+        <div class="quick-access reveal" id="home-quick-links-container"></div>
 
-        <div class="stats-band reveal" aria-label="College at a glance">
-          <div class="stat"><span class="stat-number" data-count="1200" data-suffix="+">0</span><span class="stat-label">Active learners</span></div>
-          <div class="stat"><span class="stat-number" data-count="45" data-suffix="+">0</span><span class="stat-label">Dedicated educators</span></div>
-          <div class="stat"><span class="stat-number" data-count="3">0</span><span class="stat-label">Academic streams</span></div>
-          <div class="stat"><span class="stat-number" data-count="100" data-suffix="%">0</span><span class="stat-label">Student-focused learning</span></div>
-        </div>
+        <div class="stats-band reveal" id="home-stats-container"></div>
         
         <!-- Why Choose Us Content Box -->
         <div class="content-box feature-showcase reveal">
-          <span class="eyebrow">The GCPC advantage</span>
           <h2 id="wcu-title">Why Choose Us?</h2>
           <p id="wcu-description" style="color: #475569; font-size: 1.05rem; margin-bottom: 2rem;"></p>
           
@@ -1471,42 +1557,38 @@
         </div>
 
         <div class="school-grid reveal">
-          <section class="news-panel" aria-labelledby="notice-heading">
-            <div class="mini-title"><h3 id="notice-heading">Latest notices</h3><button class="text-link" type="button" onclick="showPage('info')">View academics <i class="fa-solid fa-arrow-right"></i></button></div>
-            <article class="notice">
-              <div class="notice-date">15<small>JUL</small></div>
-              <div><h4>Admission information for the new session</h4><p>Eligibility, required documents and the enquiry process.</p></div>
-              <i class="fa-solid fa-chevron-right"></i>
-            </article>
-            <article class="notice">
-              <div class="notice-date">20<small>JUL</small></div>
-              <div><h4>Updated class and assessment schedule</h4><p>Students can collect the latest routine from the office.</p></div>
-              <i class="fa-solid fa-chevron-right"></i>
-            </article>
-            <article class="notice">
-              <div class="notice-date">01<small>AUG</small></div>
-              <div><h4>Parent–teacher meeting</h4><p>A collaborative session focused on student progress.</p></div>
-              <i class="fa-solid fa-chevron-right"></i>
-            </article>
-          </section>
+          <div class="news-panel">
+            <div class="mini-title">
+              <div>
+                <span class="eyebrow">Latest Updates</span>
+                <h3>What parents and students should know</h3>
+              </div>
+              <button class="text-link" type="button" onclick="showPage('contact')">Contact office</button>
+            </div>
+            <div id="home-updates-container"></div>
+          </div>
 
-          <section class="events-panel" aria-labelledby="events-heading">
-            <div class="mini-title"><h3 id="events-heading">Campus highlights</h3><button class="text-link" type="button" onclick="showPage('gallery')">Gallery <i class="fa-solid fa-arrow-right"></i></button></div>
-            <article class="event-card">
-              <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=420&q=80" alt="Teacher guiding students in a classroom" referrerpolicy="no-referrer" />
-              <div><span>Learning</span><h4>Interactive classrooms</h4><p>Curious minds learn through discussion, teamwork and practical inquiry.</p></div>
-            </article>
-            <article class="event-card">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=420&q=80" alt="Students collaborating around a table" referrerpolicy="no-referrer" />
-              <div><span>Community</span><h4>Clubs and co-curricular life</h4><p>Students build confidence, leadership and lasting friendships.</p></div>
-            </article>
-          </section>
+          <div class="events-panel">
+            <div class="mini-title">
+              <div>
+                <span class="eyebrow">Campus Highlights</span>
+                <h3>Student life and learning in motion</h3>
+              </div>
+              <button class="text-link" type="button" onclick="showPage('gallery')">View gallery</button>
+            </div>
+            <div id="home-highlights-container"></div>
+          </div>
         </div>
 
-        <section class="admission-banner reveal" aria-labelledby="admission-title">
-          <div><span class="eyebrow" style="color: #082f3a;">Your next chapter starts here</span><h2 id="admission-title">Ready to learn, lead and grow with us?</h2><p>Speak with our admission desk about programs, requirements and campus life at Gazipur Central Public College.</p></div>
-          <button class="section-cta" type="button" onclick="showPage('contact')">Contact admission <i class="fa-solid fa-arrow-right"></i></button>
-        </section>
+        <div class="admission-banner reveal">
+          <div>
+            <span class="eyebrow" id="home-admission-eyebrow" style="color: rgba(4,35,44,.7);">Start here</span>
+            <h2 id="home-admission-title">Looking for a serious, supportive place to continue higher secondary study?</h2>
+            <p id="home-admission-desc">Visit the college, check the academic streams, and speak with the administration team to begin the admission process.</p>
+          </div>
+          <button class="hero-btn section-cta" type="button" onclick="showPage('contact')" id="home-admission-button">Contact admissions</button>
+        </div>
+
       </div>
 
       <!-- 2. About Us Section (#about) -->
@@ -1563,7 +1645,21 @@
         </div>
       </div>
 
-      <!-- 4. Gallery Section (#gallery) -->
+      <!-- 4. Teachers Section (#teachers) -->
+      <div class="page-section" id="teachers">
+        <div class="content-box" id="teachers-box">
+          <h2 id="teachers-title-text">Our Teachers</h2>
+          <p id="teachers-intro-text" style="color: #475569; font-size: 1.05rem; margin-bottom: 2rem;">
+            Meet our experienced faculty who guide students with care and discipline.
+          </p>
+
+          <div class="teachers-grid" id="teachers-grid-list">
+            <!-- Loaded dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Gallery Section (#gallery) -->
       <div class="page-section" id="gallery">
         <!-- White Content Box: Photo Gallery -->
         <div class="content-box" id="photo-gallery-box">
@@ -1579,7 +1675,7 @@
         </div>
       </div>
 
-      <!-- 5. Contact Us Section (#contact) -->
+      <!-- 6. Contact Us Section (#contact) -->
       <div class="page-section" id="contact">
         <!-- White Content Box: Get In Touch -->
         <div class="content-box" id="get-in-touch-box">
@@ -1662,7 +1758,7 @@
         </div>
       </div>
 
-      <!-- 6. Admin Panel Section (#admin) -->
+      <!-- 7. Admin Panel Section (#admin) -->
       <div class="page-section" id="admin">
         <div class="content-box">
           <h2>Admin Control Center</h2>
@@ -1718,6 +1814,7 @@
                 <span class="admin-tab-btn" data-tab="home"><i class="fa-solid fa-house"></i> Home Page Settings</span>
                 <span class="admin-tab-btn" data-tab="about"><i class="fa-solid fa-circle-info"></i> About Page Settings</span>
                 <span class="admin-tab-btn" data-tab="info"><i class="fa-solid fa-graduation-cap"></i> Academics & Streams</span>
+                <span class="admin-tab-btn" data-tab="teachers"><i class="fa-solid fa-chalkboard-user"></i> Teachers Directory</span>
                 <span class="admin-tab-btn" data-tab="gallery"><i class="fa-solid fa-images"></i> Dynamic Photo Gallery</span>
                 <span class="admin-tab-btn" data-tab="contact"><i class="fa-solid fa-address-book"></i> Contacts & Address</span>
                 <span class="admin-tab-btn" data-tab="security" style="color: #b45309;"><i class="fa-solid fa-key"></i> System Passcode</span>
@@ -1737,12 +1834,8 @@
                       <input type="text" id="inp-brand-name" class="form-control" required />
                     </div>
                     <div class="form-group" style="margin-bottom: 1rem;">
-                      <label>College Icon class (FontAwesome)</label>
-                      <input type="text" id="inp-brand-icon" class="form-control" placeholder="fa-school" required />
-                    </div>
-                    <div class="form-group" style="margin-bottom: 1.5rem;">
-                      <label>Google Site Verification Meta Key</label>
-                      <input type="text" id="inp-brand-verification" class="form-control" required />
+                      <label>College Logo URL or Local Path</label>
+                      <input type="text" id="inp-brand-logo-url" class="form-control" placeholder="/school-logo-transparent.png" required />
                     </div>
                     <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Branding Settings</button>
                   </form>
@@ -1755,7 +1848,11 @@
                   </h4>
                   <form id="form-home-cms">
                     <div class="form-group" style="margin-bottom: 1rem;">
-                      <label>Hero Welcome Title</label>
+                      <label>Hero Top Label</label>
+                      <input type="text" id="inp-home-kicker" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Hero Welcome Line</label>
                       <input type="text" id="inp-home-hero-title" class="form-control" required />
                     </div>
                     <div class="form-group" style="margin-bottom: 1rem;">
@@ -1764,7 +1861,17 @@
                     </div>
                     <div class="form-group" style="margin-bottom: 1.5rem;">
                       <label>Hero Background Banner URL</label>
-                      <input type="text" id="inp-home-hero-bg" class="form-control" required />
+                      <input type="text" id="inp-home-hero-bg" class="form-control" placeholder="Leave blank to use the branded gradient" />
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                      <div class="form-group">
+                        <label>Academics Button Label</label>
+                        <input type="text" id="inp-home-primary-label" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label>Admission Button Label</label>
+                        <input type="text" id="inp-home-secondary-label" class="form-control" required />
+                      </div>
                     </div>
                     
                     <div class="form-group" style="margin-bottom: 1rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
@@ -1779,7 +1886,7 @@
                     <h5 style="color: #1a237e; margin-bottom: 0.8rem; font-weight: 600;">Three Value Cards:</h5>
                     <!-- Card 1 -->
                     <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
-                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 1: Scholastic Rigor</span>
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Value Card 1</span>
                       <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
                         <input type="text" id="inp-home-f1-icon" class="form-control" placeholder="Icon" required />
                         <input type="text" id="inp-home-f1-title" class="form-control" placeholder="Title" required />
@@ -1788,7 +1895,7 @@
                     </div>
                     <!-- Card 2 -->
                     <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
-                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 2: Advanced Labs</span>
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Value Card 2</span>
                       <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
                         <input type="text" id="inp-home-f2-icon" class="form-control" placeholder="Icon" required />
                         <input type="text" id="inp-home-f2-title" class="form-control" placeholder="Title" required />
@@ -1797,12 +1904,106 @@
                     </div>
                     <!-- Card 3 -->
                     <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
-                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Card 3: Skilled Mentorship</span>
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Value Card 3</span>
                       <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem; margin-top: 0.4rem; margin-bottom: 0.4rem;">
                         <input type="text" id="inp-home-f3-icon" class="form-control" placeholder="Icon" required />
                         <input type="text" id="inp-home-f3-title" class="form-control" placeholder="Title" required />
                       </div>
                       <textarea id="inp-home-f3-desc" class="form-control" rows="2" placeholder="Description" required></textarea>
+                    </div>
+
+                    <h5 style="color: #1a237e; margin: 1.3rem 0 0.8rem; font-weight: 600;">Home Spotlight Content:</h5>
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Quick Link Cards</span>
+                      <div style="display: grid; gap: 0.8rem; margin-top: 0.5rem;">
+                        <input type="text" id="inp-home-ql1-title" class="form-control" placeholder="Quick Link 1 Title" required />
+                        <input type="text" id="inp-home-ql1-desc" class="form-control" placeholder="Quick Link 1 Description" required />
+                        <input type="text" id="inp-home-ql2-title" class="form-control" placeholder="Quick Link 2 Title" required />
+                        <input type="text" id="inp-home-ql2-desc" class="form-control" placeholder="Quick Link 2 Description" required />
+                        <input type="text" id="inp-home-ql3-title" class="form-control" placeholder="Quick Link 3 Title" required />
+                        <input type="text" id="inp-home-ql3-desc" class="form-control" placeholder="Quick Link 3 Description" required />
+                        <input type="text" id="inp-home-ql4-title" class="form-control" placeholder="Quick Link 4 Title" required />
+                        <input type="text" id="inp-home-ql4-desc" class="form-control" placeholder="Quick Link 4 Description" required />
+                      </div>
+                    </div>
+
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Stats Bar</span>
+                      <div style="display: grid; gap: 0.8rem; margin-top: 0.5rem;">
+                        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem;">
+                          <input type="text" id="inp-home-st1-number" class="form-control" placeholder="Stat 1 Number" required />
+                          <input type="text" id="inp-home-st1-label" class="form-control" placeholder="Stat 1 Label" required />
+                        </div>
+                        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem;">
+                          <input type="text" id="inp-home-st2-number" class="form-control" placeholder="Stat 2 Number" required />
+                          <input type="text" id="inp-home-st2-label" class="form-control" placeholder="Stat 2 Label" required />
+                        </div>
+                        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem;">
+                          <input type="text" id="inp-home-st3-number" class="form-control" placeholder="Stat 3 Number" required />
+                          <input type="text" id="inp-home-st3-label" class="form-control" placeholder="Stat 3 Label" required />
+                        </div>
+                        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 0.8rem;">
+                          <input type="text" id="inp-home-st4-number" class="form-control" placeholder="Stat 4 Number" required />
+                          <input type="text" id="inp-home-st4-label" class="form-control" placeholder="Stat 4 Label" required />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Latest Updates List</span>
+                      <div style="display: grid; gap: 0.8rem; margin-top: 0.5rem;">
+                        <input type="text" id="inp-home-up1-tag" class="form-control" placeholder="Update 1 Tag" required />
+                        <input type="text" id="inp-home-up1-title" class="form-control" placeholder="Update 1 Headline" required />
+                        <textarea id="inp-home-up1-desc" class="form-control" rows="2" placeholder="Update 1 Description" required></textarea>
+                        <input type="text" id="inp-home-up2-tag" class="form-control" placeholder="Update 2 Tag" required />
+                        <input type="text" id="inp-home-up2-title" class="form-control" placeholder="Update 2 Headline" required />
+                        <textarea id="inp-home-up2-desc" class="form-control" rows="2" placeholder="Update 2 Description" required></textarea>
+                        <input type="text" id="inp-home-up3-tag" class="form-control" placeholder="Update 3 Tag" required />
+                        <input type="text" id="inp-home-up3-title" class="form-control" placeholder="Update 3 Headline" required />
+                        <textarea id="inp-home-up3-desc" class="form-control" rows="2" placeholder="Update 3 Description" required></textarea>
+                      </div>
+                    </div>
+
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Campus Highlights / Photos</span>
+                      <div style="display: grid; gap: 0.8rem; margin-top: 0.5rem;">
+                        <div class="form-group">
+                          <label>Highlight 1 Photo</label>
+                          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                            <input type="file" id="inp-home-h1-file" accept="image/*" class="form-control" style="padding: 0.55rem 0.75rem;" />
+                            <button type="button" id="btn-home-h1-browse" class="btn-submit" style="background-color: #1a237e; padding: 0.65rem 1rem;">
+                              <i class="fa-solid fa-folder-open"></i> Browse Photo
+                            </button>
+                          </div>
+                          <p id="home-h1-file-name" style="color: #64748b; font-size: 0.85rem; margin-top: 0.45rem;">Current image loaded</p>
+                        </div>
+                        <input type="text" id="inp-home-h1-eyebrow" class="form-control" placeholder="Highlight 1 Label" required />
+                        <input type="text" id="inp-home-h1-title" class="form-control" placeholder="Highlight 1 Title" required />
+                        <textarea id="inp-home-h1-desc" class="form-control" rows="2" placeholder="Highlight 1 Description" required></textarea>
+                        <div class="form-group">
+                          <label>Highlight 2 Photo</label>
+                          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                            <input type="file" id="inp-home-h2-file" accept="image/*" class="form-control" style="padding: 0.55rem 0.75rem;" />
+                            <button type="button" id="btn-home-h2-browse" class="btn-submit" style="background-color: #1a237e; padding: 0.65rem 1rem;">
+                              <i class="fa-solid fa-folder-open"></i> Browse Photo
+                            </button>
+                          </div>
+                          <p id="home-h2-file-name" style="color: #64748b; font-size: 0.85rem; margin-top: 0.45rem;">Current image loaded</p>
+                        </div>
+                        <input type="text" id="inp-home-h2-eyebrow" class="form-control" placeholder="Highlight 2 Label" required />
+                        <input type="text" id="inp-home-h2-title" class="form-control" placeholder="Highlight 2 Title" required />
+                        <textarea id="inp-home-h2-desc" class="form-control" rows="2" placeholder="Highlight 2 Description" required></textarea>
+                      </div>
+                    </div>
+
+                    <div style="background-color: #f8fafc; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                      <span style="font-size: 0.85rem; font-weight: 700; color: #1a237e;">Admission Banner</span>
+                      <div style="display: grid; gap: 0.8rem; margin-top: 0.5rem;">
+                        <input type="text" id="inp-home-adm-eyebrow" class="form-control" placeholder="Admission Ribbon Text" required />
+                        <input type="text" id="inp-home-adm-title" class="form-control" placeholder="Admission Banner Title" required />
+                        <textarea id="inp-home-adm-desc" class="form-control" rows="2" placeholder="Admission Banner Description" required></textarea>
+                        <input type="text" id="inp-home-adm-button" class="form-control" placeholder="Admission Button Label" required />
+                      </div>
                     </div>
 
                     <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Home Settings</button>
@@ -1932,13 +2133,62 @@
                   </form>
                 </div>
 
-                <!-- TAB 5: Photo Gallery Manager -->
+                <!-- TAB 5: Teachers Manager -->
+                <div id="admin-form-teachers" class="admin-tab-form" style="display: none;">
+                  <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-chalkboard-user"></i> Teachers Directory CMS
+                  </h4>
+
+                  <form id="form-teachers-cms" style="margin-bottom: 1.5rem;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Teachers Section Title</label>
+                      <input type="text" id="inp-teachers-title" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Teachers Section Intro</label>
+                      <textarea id="inp-teachers-intro" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" style="background-color: #1a237e;"><i class="fa-solid fa-floppy-disk"></i> Save Teachers Header</button>
+                  </form>
+
+                  <div style="background-color: #f1f5f9; padding: 1.5rem; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 1.8rem;">
+                    <h5 style="color: #1a237e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                      <i class="fa-solid fa-user-plus"></i> Add New Teacher
+                    </h5>
+                    <form id="form-teacher-add">
+                      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin-bottom: 0.9rem;">
+                        <input type="text" id="inp-teacher-new-name" class="form-control" placeholder="Teacher name" required />
+                        <input type="text" id="inp-teacher-new-subject" class="form-control" placeholder="Subject" required />
+                        <input type="text" id="inp-teacher-new-designation" class="form-control" placeholder="Designation" required />
+                        <input type="text" id="inp-teacher-new-contact" class="form-control" placeholder="Contact number" required />
+                      </div>
+                      <div class="form-group" style="margin-bottom: 1rem;">
+                        <label>Teacher Photo</label>
+                        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                          <input type="file" id="inp-teacher-new-file" accept="image/*" class="form-control" style="padding: 0.55rem 0.75rem;" required />
+                          <button type="button" id="btn-teacher-browse" class="btn-submit" style="background-color: #1a237e; padding: 0.65rem 1rem;">
+                            <i class="fa-solid fa-folder-open"></i> Browse Photo
+                          </button>
+                        </div>
+                        <p id="teacher-file-name" style="color: #64748b; font-size: 0.85rem; margin-top: 0.45rem;">No file selected</p>
+                      </div>
+                      <button type="submit" class="btn-submit" style="background-color: #10b981;"><i class="fa-solid fa-plus"></i> Add Teacher</button>
+                    </form>
+                  </div>
+
+                  <h5 style="color: #1a237e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-users-gear"></i> Manage Teachers (<span id="teachers-count">0</span>)
+                  </h5>
+                  <div id="admin-teachers-rows-container" style="display: flex; flex-direction: column; gap: 0.9rem;"></div>
+                </div>
+
+                <!-- TAB 6: Photo Gallery Manager -->
                 <div id="admin-form-gallery" class="admin-tab-form" style="display: none;">
                   <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
                     <i class="fa-solid fa-images"></i> Dynamic Photo Gallery CMS
                   </h4>
                   <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
-                    Upload new photos by URL and caption. Clear existing ones or edit their titles. Reflects instantly in the main college Gallery grid.
+                    Browse photos from your device and add captions. Clear existing ones or edit their titles. Reflects instantly in the main college Gallery grid.
                   </p>
                   
                   <!-- Form to Add Image -->
@@ -1948,8 +2198,14 @@
                     </h5>
                     <form id="form-gallery-add">
                       <div class="form-group" style="margin-bottom: 1rem;">
-                        <label>Image URL (Unsplash or any hosted image link)</label>
-                        <input type="text" id="inp-gallery-new-url" class="form-control" placeholder="https://images.unsplash.com/photo-..." required />
+                        <label>Choose Photo From Device</label>
+                        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                          <input type="file" id="inp-gallery-new-file" accept="image/*" class="form-control" style="padding: 0.55rem 0.75rem;" required />
+                          <button type="button" id="btn-gallery-browse" class="btn-submit" style="background-color: #1a237e; padding: 0.65rem 1rem;">
+                            <i class="fa-solid fa-folder-open"></i> Browse Photo
+                          </button>
+                        </div>
+                        <p id="gallery-file-name" style="color: #64748b; font-size: 0.85rem; margin-top: 0.45rem;">No file selected</p>
                       </div>
                       <div class="form-group" style="margin-bottom: 1.2rem;">
                         <label>Image Caption / Description</label>
@@ -1968,7 +2224,7 @@
                   </div>
                 </div>
 
-                <!-- TAB 6: Contact & Address -->
+                <!-- TAB 7: Contact & Address -->
                 <div id="admin-form-contact" class="admin-tab-form" style="display: none;">
                   <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
                     <i class="fa-solid fa-address-book"></i> Contacts & Address CMS
@@ -1987,6 +2243,10 @@
                       <input type="text" id="inp-contact-address" class="form-control" required />
                     </div>
                     <div class="form-group" style="margin-bottom: 1rem;">
+                      <label>Office Days and Hours</label>
+                      <input type="text" id="inp-contact-hours" class="form-control" required />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
                       <label>Official Email Address</label>
                       <input type="email" id="inp-contact-email" class="form-control" required />
                     </div>
@@ -2002,7 +2262,7 @@
                   </form>
                 </div>
 
-                <!-- TAB 7: Security Passcode Change -->
+                <!-- TAB 8: Security Passcode Change -->
                 <div id="admin-form-security" class="admin-tab-form" style="display: none;">
                   <h4 style="color: #1a237e; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid #ffca28; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
                     <i class="fa-solid fa-key"></i> System Passcode Manager
@@ -2038,12 +2298,9 @@
     <footer id="app-footer-area">
       <div style="width: 100%; max-width: none; margin: 0 auto; padding: 0 clamp(1.5rem, 3vw, 4rem);">
         <div class="footer-socials" id="social-connect">
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
           <a href="#" id="footer-whatsapp-anchor" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
-        <p>© 2026 <span id="footer-college-name">Gazipur Central Public College</span>. All Rights Reserved.</p>
+        <p>© <span id="footer-year">2026</span> <span id="footer-college-name">Gazipur Central Public College</span>. All Rights Reserved.</p>
         <p style="font-size: 0.8rem; color: #475569; margin-top: 0.3rem;" id="footer-address-label"></p>
         <a href="#admin" onclick="showPage('admin'); return false;" style="color: #64748b; font-size: 0.82rem; text-decoration: underline; margin-top: 1.2rem; display: inline-flex; align-items: center; gap: 0.3rem;">
           <i class="fa-solid fa-lock-open" style="font-size: 0.75rem;"></i> Admin Panel Portal
@@ -2089,37 +2346,6 @@
 
         document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-        const stats = document.querySelectorAll('[data-count]');
-        let countersStarted = false;
-        const countUp = () => {
-          if (countersStarted) return;
-          countersStarted = true;
-          stats.forEach((node) => {
-            const target = Number(node.dataset.count || 0);
-            const suffix = node.dataset.suffix || '';
-            const duration = 1250;
-            const startedAt = performance.now();
-            const tick = (now) => {
-              const progress = Math.min((now - startedAt) / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              node.textContent = `${Math.round(target * eased).toLocaleString()}${suffix}`;
-              if (progress < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-          });
-        };
-
-        const statsBand = document.querySelector('.stats-band');
-        if (statsBand) {
-          const statsObserver = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) {
-              countUp();
-              statsObserver.disconnect();
-            }
-          }, { threshold: .35 });
-          statsObserver.observe(statsBand);
-        }
-
         // Ensure the public site remains usable if the live content service is slow.
         window.setTimeout(() => {
           const loader = document.getElementById('app-loader');
@@ -2157,13 +2383,15 @@
       const defaultSiteData = {
         branding: {
           collegeName: "Gazipur Central Public College",
-          logoIcon: "fa-school",
-          verificationCode: "GLnhY0Qo5TyofEvixjF8P0XcpRlMD-SjH4oPLqjHnKI"
+          logoUrl: "/school-logo-transparent.png"
         },
         home: {
-          heroTitle: "Welcome to Gazipur Central Public College",
+          kicker: "Education · Character · Community",
+          heroTitle: "Welcome to",
           heroSubtitle: "আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ",
-          heroBg: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
+          heroBg: "",
+          primaryButtonLabel: "Explore academics",
+          secondaryButtonLabel: "Admission enquiry",
           whyChooseUsTitle: "Why Choose Us?",
           whyChooseUsDesc: "Gazipur Central Public College is a premier academic institution committed to preparing students for higher educational success. Built on pillars of moral code, scholastic discipline, and modern facilities, we help secondary and higher secondary candidates realize their ultimate potential.",
           features: [
@@ -2182,7 +2410,88 @@
               title: "Skilled Mentorship",
               desc: "A highly-credentialed staff that focuses on individual students with constant feedback cycles."
             }
-          ]
+          ],
+          quickLinks: [
+            {
+              icon: "fa-book-open",
+              title: "Academic Programs",
+              desc: "Explore streams and curriculum",
+              pageId: "info"
+            },
+            {
+              icon: "fa-images",
+              title: "Campus Gallery",
+              desc: "See events and student life",
+              pageId: "gallery"
+            },
+            {
+              icon: "fa-phone-volume",
+              title: "Admissions Help",
+              desc: "Reach the office instantly",
+              pageId: "contact"
+            },
+            {
+              icon: "fa-school",
+              title: "About the College",
+              desc: "Mission, vision and milestones",
+              pageId: "about"
+            }
+          ],
+          stats: [
+            {
+              number: "3",
+              label: "Academic streams offered"
+            },
+            {
+              number: "24/7",
+              label: "Student support mindset"
+            },
+            {
+              number: "100%",
+              label: "Board-aligned curriculum focus"
+            },
+            {
+              number: "Safe",
+              label: "Campus and learning environment"
+            }
+          ],
+          updates: [
+            {
+              tag: "ADMIT 2026",
+              title: "Admission guidance available from the college office",
+              desc: "Ask about forms, academic groups, and required documents before visiting."
+            },
+            {
+              tag: "BOARD READY",
+              title: "Curriculum stays aligned with Dhaka Board standards",
+              desc: "Lessons, assessments, and student support are organized around exam success."
+            },
+            {
+              tag: "SUPPORT FAST",
+              title: "Direct communication through phone, WhatsApp, and email",
+              desc: "Families can reach the administration quickly for routine help or urgent questions."
+            }
+          ],
+          highlights: [
+            {
+              imageUrl: "/school-logo-transparent.png",
+              eyebrow: "Academic culture",
+              title: "Focused classes, regular mentoring, and exam preparation",
+              desc: "A calm environment and supportive teachers keep students on track across all streams."
+            },
+            {
+              imageUrl: "/school-logo-transparent.png",
+              eyebrow: "Community focus",
+              title: "Activities that build confidence, discipline, and responsibility",
+              desc: "Clubs, celebrations, and academic events help students feel connected to campus life."
+            }
+          ],
+          admissionBanner: {
+            eyebrow: "Start here",
+            title: "Looking for a serious, supportive place to continue higher secondary study?",
+            desc: "Visit the college, check the academic streams, and speak with the administration team to begin the admission process.",
+            buttonLabel: "Contact admissions"
+          }
         },
         about: {
           title: "About The College",
@@ -2237,62 +2546,34 @@
           guidelinesTitle: "Board Curriculum & Admission Standard",
           guidelinesDesc: "Our operations adhere to the official textbook declarations of the National Curriculum and Textbook Board (NCTB), Bangladesh. Formal admission applications open instantly post SSC board results and must be lodged online through the single gateway regulated by the Dhaka Board."
         },
-        gallery: [
-          {
-            id: "1",
-            url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80",
-            caption: "Main College Campus Building"
-          },
-          {
-            id: "2",
-            url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80",
-            caption: "Interactive Smart Classroom"
-          },
-          {
-            id: "3",
-            url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
-            caption: "Resource-Rich Multimedia Library"
-          },
-          {
-            id: "4",
-            url: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80",
-            caption: "Fully Equipped Chemistry Lab"
-          },
-          {
-            id: "5",
-            url: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80",
-            caption: "Advanced Computer and IT Lab"
-          },
-          {
-            id: "6",
-            url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80",
-            caption: "Annual Inter-College Science Fair"
-          },
-          {
-            id: "7",
-            url: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
-            caption: "National Level Debating Competition"
-          },
-          {
-            id: "8",
-            url: "https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?auto=format&fit=crop&w=600&q=80",
-            caption: "Outdoor Sports & Athletics Ground"
-          },
-          {
-            id: "9",
-            url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80",
-            caption: "Annual Convocation Day Celebration"
-          },
-          {
-            id: "10",
-            url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80",
-            caption: "Career Counseling Workshop Seminars"
-          }
-        ],
+        teachers: {
+          title: "Our Teachers",
+          intro: "Meet the respected teachers who lead every classroom with expertise and commitment.",
+          list: [
+            {
+              id: "1",
+              photoUrl: "/school-logo-transparent.png",
+              name: "Md. Hasan Mahmud",
+              subject: "Mathematics",
+              designation: "Senior Lecturer",
+              contact: "01309131217"
+            },
+            {
+              id: "2",
+              photoUrl: "/school-logo-transparent.png",
+              name: "Sharmin Akter",
+              subject: "Chemistry",
+              designation: "Lecturer",
+              contact: "01309131218"
+            }
+          ]
+        },
+        gallery: [],
         contact: {
           title: "Get In Touch",
           intro: "Our administrative front desk remains accessible Sunday through Thursday from 8:00 AM to 3:00 PM. Please use the contacts below or leave a quick digital message.",
-          address: "Gazipur Pubile Road, Joydebpur, Gazipur",
+          address: "Gazipur Public Road, Joydebpur, Gazipur",
+          officeHours: "Sunday–Thursday · 8:00 AM–3:00 PM",
           email: "gcpc131217@gmail.com",
           whatsapp: "8801776371675",
           phone: "01309131217"
@@ -2304,19 +2585,85 @@
       let siteData = null;
       let isAdminLoggedIn = false;
 
+      function prepareSiteData(rawData) {
+        const data = rawData || {};
+        data.branding = data.branding || {};
+        data.home = data.home || {};
+        data.contact = data.contact || {};
+        data.teachers = data.teachers || {};
+
+        data.branding.collegeName = data.branding.collegeName || defaultSiteData.branding.collegeName;
+        data.branding.logoUrl = data.branding.logoUrl || defaultSiteData.branding.logoUrl;
+
+        data.home.kicker = data.home.kicker || defaultSiteData.home.kicker;
+        if (!data.home.heroTitle || data.home.heroTitle === "Welcome to Gazipur Central Public College") {
+          data.home.heroTitle = defaultSiteData.home.heroTitle;
+        }
+        if (!data.home.heroSubtitle || data.home.heroSubtitle.startsWith("Nurturing values")) {
+          data.home.heroSubtitle = defaultSiteData.home.heroSubtitle;
+        }
+        if (data.home.heroBg?.includes("images.unsplash.com")) {
+          data.home.heroBg = "";
+        }
+        data.home.primaryButtonLabel = data.home.primaryButtonLabel || defaultSiteData.home.primaryButtonLabel;
+        data.home.secondaryButtonLabel = data.home.secondaryButtonLabel || defaultSiteData.home.secondaryButtonLabel;
+        data.home.whyChooseUsTitle = data.home.whyChooseUsTitle || defaultSiteData.home.whyChooseUsTitle;
+        data.home.whyChooseUsDesc = data.home.whyChooseUsDesc || defaultSiteData.home.whyChooseUsDesc;
+        data.home.features = Array.isArray(data.home.features) && data.home.features.length >= 3
+          ? data.home.features
+          : defaultSiteData.home.features;
+        data.home.quickLinks = Array.isArray(data.home.quickLinks) && data.home.quickLinks.length >= 4
+          ? data.home.quickLinks
+          : defaultSiteData.home.quickLinks;
+        data.home.stats = Array.isArray(data.home.stats) && data.home.stats.length >= 4
+          ? data.home.stats
+          : defaultSiteData.home.stats;
+        data.home.updates = Array.isArray(data.home.updates) && data.home.updates.length >= 3
+          ? data.home.updates
+          : defaultSiteData.home.updates;
+        data.home.highlights = Array.isArray(data.home.highlights) && data.home.highlights.length >= 2
+          ? data.home.highlights
+          : defaultSiteData.home.highlights;
+        data.home.admissionBanner = data.home.admissionBanner || defaultSiteData.home.admissionBanner;
+
+        if (Array.isArray(data.gallery) && data.gallery.length > 0 && data.gallery.every((item) => item.url?.includes("images.unsplash.com"))) {
+          data.gallery = [];
+        }
+
+        data.teachers.title = data.teachers.title || defaultSiteData.teachers.title;
+        data.teachers.intro = data.teachers.intro || defaultSiteData.teachers.intro;
+        data.teachers.list = Array.isArray(data.teachers.list) ? data.teachers.list : defaultSiteData.teachers.list;
+
+        data.teachers.list = data.teachers.list
+          .map((teacher, index) => ({
+            id: String(teacher.id || index + 1),
+            photoUrl: teacher.photoUrl || "/school-logo-transparent.png",
+            name: teacher.name || "Unnamed Teacher",
+            subject: teacher.subject || "Subject not set",
+            designation: teacher.designation || "Teacher",
+            contact: teacher.contact || "N/A"
+          }));
+
+        if (data.contact.address === "Gazipur Pubile Road, Joydebpur, Gazipur") {
+          data.contact.address = "Gazipur Public Road, Joydebpur, Gazipur";
+        }
+        data.contact.officeHours = data.contact.officeHours || defaultSiteData.contact.officeHours;
+        return data;
+      }
+
       // 4. Fetch/Listen for Website data in real-time from Firebase Realtime Database
       const siteDataRef = ref(db, "college_website_data");
       onValue(siteDataRef, (snapshot) => {
         const val = snapshot.val();
         if (val) {
-          siteData = val;
+          siteData = prepareSiteData(val);
           renderSite(siteData);
         } else {
           // If no data exists yet (fresh project setup), automatically seed defaults!
           console.log("No existing data found in Firebase path /college_website_data. Seeding default content...");
           set(siteDataRef, defaultSiteData)
             .then(() => {
-              siteData = defaultSiteData;
+              siteData = prepareSiteData(defaultSiteData);
               renderSite(siteData);
             })
             .catch((err) => {
@@ -2341,18 +2688,20 @@
         if (!data) return;
 
         // Branding & Headers
-        const officialCollegeName = "Gazipur Central Public College";
+        const officialCollegeName = data.branding.collegeName;
+        const logoUrl = data.branding.logoUrl;
         document.title = officialCollegeName;
-        
-        const verificationMeta = document.querySelector('meta[name="google-site-verification"]');
-        if (verificationMeta) {
-          verificationMeta.setAttribute('content', data.branding.verificationCode);
-        }
 
         const brandingLogo = document.getElementById("branding-logo");
         if (brandingLogo) {
-          brandingLogo.innerHTML = `<img src="/school-logo-transparent.png" alt="${officialCollegeName} logo" width="52" height="52" /><span>${officialCollegeName}</span>`;
+          brandingLogo.innerHTML = `<img src="${logoUrl}" alt="${officialCollegeName} logo" width="52" height="52" /><span>${officialCollegeName}</span>`;
         }
+
+        document.querySelector('link[rel="icon"]')?.setAttribute('href', logoUrl);
+        document.querySelector('link[rel="apple-touch-icon"]')?.setAttribute('href', logoUrl);
+
+        document.getElementById("topbar-address").innerText = data.contact.address;
+        document.getElementById("topbar-hours").innerText = data.contact.officeHours;
 
         const footerCollegeName = document.getElementById("footer-college-name");
         if (footerCollegeName) {
@@ -2362,10 +2711,12 @@
         // Home Section
         const heroBanner = document.getElementById("home-hero-banner");
         if (heroBanner) {
-          heroBanner.style.backgroundImage = `url('${data.home.heroBg}')`;
+          heroBanner.style.backgroundImage = data.home.heroBg ? `url('${data.home.heroBg}')` : "none";
         }
-        document.getElementById("hero-title-text").innerHTML = `<span class="welcome-line">Welcome to</span><strong>${officialCollegeName}</strong>`;
-        document.getElementById("hero-subtitle-text").innerText = "আধুনিক, মানসম্মত এবং কর্মমুখী শিক্ষার এক নির্ভরযোগ্য প্রতিষ্ঠান। দক্ষ শিক্ষক মণ্ডলী ও চমৎকার পরিবেশের মাধ্যমে আমরা শিক্ষার্থীদের আদর্শ নাগরিক এবং ভবিষ্যৎ চ্যালেঞ্জ মোকাবিলার যোগ্য করে গড়ে তুলতে প্রতিশ্রুতিবদ্ধ";
+        document.getElementById("hero-title-text").innerHTML = `<span class="welcome-line">${data.home.heroTitle}</span><strong>${officialCollegeName}</strong>`;
+        document.getElementById("hero-subtitle-text").innerText = data.home.heroSubtitle;
+        document.getElementById("hero-primary-label").innerText = data.home.primaryButtonLabel;
+        document.getElementById("hero-secondary-label").innerText = data.home.secondaryButtonLabel;
         document.getElementById("wcu-title").innerText = data.home.whyChooseUsTitle;
         document.getElementById("wcu-description").innerText = data.home.whyChooseUsDesc;
 
@@ -2385,6 +2736,63 @@
             featuresContainer.appendChild(card);
           });
         }
+
+        const quickLinksContainer = document.getElementById("home-quick-links-container");
+        if (quickLinksContainer && data.home.quickLinks) {
+          quickLinksContainer.innerHTML = data.home.quickLinks.map((item) => `
+            <button class="quick-link" type="button" onclick="showPage('${item.pageId}')">
+              <i class="fa-solid ${item.icon}"></i>
+              <span><strong>${item.title}</strong><small>${item.desc}</small></span>
+            </button>
+          `).join("");
+        }
+
+        const statsContainer = document.getElementById("home-stats-container");
+        if (statsContainer && data.home.stats) {
+          statsContainer.innerHTML = data.home.stats.map((item) => `
+            <div class="stat">
+              <span class="stat-number">${item.number}</span>
+              <div class="stat-label">${item.label}</div>
+            </div>
+          `).join("");
+        }
+
+        const updatesContainer = document.getElementById("home-updates-container");
+        if (updatesContainer && data.home.updates) {
+          updatesContainer.innerHTML = data.home.updates.map((item) => `
+            <div class="notice">
+              <div class="notice-date"><small>${(item.tag || "").split(" ")[0] || "NEWS"}</small>${(item.tag || "").split(" ").slice(1).join(" ") || ""}</div>
+              <div>
+                <h4>${item.title}</h4>
+                <p>${item.desc}</p>
+              </div>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          `).join("");
+        }
+
+        const highlightsContainer = document.getElementById("home-highlights-container");
+        if (highlightsContainer && data.home.highlights) {
+          highlightsContainer.innerHTML = data.home.highlights.map((item) => `
+            <div class="event-card">
+              <img src="${item.imageUrl}" alt="${item.title}" />
+              <div>
+                <span>${item.eyebrow}</span>
+                <h4>${item.title}</h4>
+                <p>${item.desc}</p>
+              </div>
+            </div>
+          `).join("");
+        }
+
+        const admissionEyebrow = document.getElementById("home-admission-eyebrow");
+        const admissionTitle = document.getElementById("home-admission-title");
+        const admissionDesc = document.getElementById("home-admission-desc");
+        const admissionButton = document.getElementById("home-admission-button");
+        if (admissionEyebrow) admissionEyebrow.innerText = data.home.admissionBanner.eyebrow;
+        if (admissionTitle) admissionTitle.innerText = data.home.admissionBanner.title;
+        if (admissionDesc) admissionDesc.innerText = data.home.admissionBanner.desc;
+        if (admissionButton) admissionButton.innerText = data.home.admissionBanner.buttonLabel;
 
         // About Section
         document.getElementById("about-title-text").innerText = data.about.title;
@@ -2433,6 +2841,39 @@
         }
         document.getElementById("guidelines-title-text").innerHTML = `<i class="fa-solid fa-circle-check"></i>${data.info.guidelinesTitle}`;
         document.getElementById("guidelines-desc-text").innerText = data.info.guidelinesDesc;
+
+        // Teachers Section
+        document.getElementById("teachers-title-text").innerText = data.teachers.title;
+        document.getElementById("teachers-intro-text").innerText = data.teachers.intro;
+
+        const teachersGrid = document.getElementById("teachers-grid-list");
+        if (teachersGrid) {
+          teachersGrid.innerHTML = "";
+          if (data.teachers.list && data.teachers.list.length > 0) {
+            data.teachers.list.forEach((teacher) => {
+              const teacherCard = document.createElement("article");
+              teacherCard.className = "teacher-card";
+              teacherCard.innerHTML = `
+                <img class="teacher-photo" src="${teacher.photoUrl}" alt="${teacher.name}" referrerpolicy="no-referrer" />
+                <div class="teacher-meta">
+                  <div class="teacher-name">${teacher.name}</div>
+                  <div class="teacher-designation">${teacher.designation}</div>
+                  <div class="teacher-subject">Subject: ${teacher.subject}</div>
+                  <a class="teacher-contact" href="tel:${teacher.contact}"><i class="fa-solid fa-phone"></i><span>${teacher.contact}</span></a>
+                </div>
+              `;
+              teachersGrid.appendChild(teacherCard);
+            });
+          } else {
+            teachersGrid.innerHTML = `
+              <div style="grid-column: 1 / -1; text-align: center; padding: 2.2rem; color: #64748b; border: 1px dashed #cbd5e1; border-radius: 10px;">
+                <i class="fa-solid fa-chalkboard-user" style="font-size: 2.2rem; margin-bottom: 0.8rem; color: #94a3b8;"></i>
+                <p style="font-weight: 600;">No teachers listed yet.</p>
+                <p style="font-size: 0.9rem; margin-top: 4px;">Use the Admin panel to upload teacher photos and details.</p>
+              </div>
+            `;
+          }
+        }
 
         // Gallery Rendering
         const galleryGrid = document.getElementById("college-gallery-grid");
@@ -2494,7 +2935,8 @@
         }
 
         // Footer Address line
-        document.getElementById("footer-address-label").innerText = `${data.contact.address} | Approved by Board of Intermediate and Secondary Education, Dhaka`;
+        document.getElementById("footer-year").innerText = new Date().getFullYear();
+        document.getElementById("footer-address-label").innerText = data.contact.address;
 
         // If logged in, reload cms form values with current database state
         if (isAdminLoggedIn) {
@@ -2594,13 +3036,15 @@
 
         // Branding
         document.getElementById("inp-brand-name").value = siteData.branding.collegeName;
-        document.getElementById("inp-brand-icon").value = siteData.branding.logoIcon;
-        document.getElementById("inp-brand-verification").value = siteData.branding.verificationCode;
+        document.getElementById("inp-brand-logo-url").value = siteData.branding.logoUrl;
 
         // Home
+        document.getElementById("inp-home-kicker").value = siteData.home.kicker;
         document.getElementById("inp-home-hero-title").value = siteData.home.heroTitle;
         document.getElementById("inp-home-hero-subtitle").value = siteData.home.heroSubtitle;
         document.getElementById("inp-home-hero-bg").value = siteData.home.heroBg;
+        document.getElementById("inp-home-primary-label").value = siteData.home.primaryButtonLabel;
+        document.getElementById("inp-home-secondary-label").value = siteData.home.secondaryButtonLabel;
         document.getElementById("inp-home-wcu-title").value = siteData.home.whyChooseUsTitle;
         document.getElementById("inp-home-wcu-desc").value = siteData.home.whyChooseUsDesc;
         // Feature Cards
@@ -2613,6 +3057,52 @@
         document.getElementById("inp-home-f3-icon").value = siteData.home.features[2].icon;
         document.getElementById("inp-home-f3-title").value = siteData.home.features[2].title;
         document.getElementById("inp-home-f3-desc").value = siteData.home.features[2].desc;
+
+        // Home spotlight content
+        document.getElementById("inp-home-ql1-title").value = siteData.home.quickLinks[0].title;
+        document.getElementById("inp-home-ql1-desc").value = siteData.home.quickLinks[0].desc;
+        document.getElementById("inp-home-ql2-title").value = siteData.home.quickLinks[1].title;
+        document.getElementById("inp-home-ql2-desc").value = siteData.home.quickLinks[1].desc;
+        document.getElementById("inp-home-ql3-title").value = siteData.home.quickLinks[2].title;
+        document.getElementById("inp-home-ql3-desc").value = siteData.home.quickLinks[2].desc;
+        document.getElementById("inp-home-ql4-title").value = siteData.home.quickLinks[3].title;
+        document.getElementById("inp-home-ql4-desc").value = siteData.home.quickLinks[3].desc;
+
+        document.getElementById("inp-home-st1-number").value = siteData.home.stats[0].number;
+        document.getElementById("inp-home-st1-label").value = siteData.home.stats[0].label;
+        document.getElementById("inp-home-st2-number").value = siteData.home.stats[1].number;
+        document.getElementById("inp-home-st2-label").value = siteData.home.stats[1].label;
+        document.getElementById("inp-home-st3-number").value = siteData.home.stats[2].number;
+        document.getElementById("inp-home-st3-label").value = siteData.home.stats[2].label;
+        document.getElementById("inp-home-st4-number").value = siteData.home.stats[3].number;
+        document.getElementById("inp-home-st4-label").value = siteData.home.stats[3].label;
+
+        document.getElementById("inp-home-up1-tag").value = siteData.home.updates[0].tag;
+        document.getElementById("inp-home-up1-title").value = siteData.home.updates[0].title;
+        document.getElementById("inp-home-up1-desc").value = siteData.home.updates[0].desc;
+        document.getElementById("inp-home-up2-tag").value = siteData.home.updates[1].tag;
+        document.getElementById("inp-home-up2-title").value = siteData.home.updates[1].title;
+        document.getElementById("inp-home-up2-desc").value = siteData.home.updates[1].desc;
+        document.getElementById("inp-home-up3-tag").value = siteData.home.updates[2].tag;
+        document.getElementById("inp-home-up3-title").value = siteData.home.updates[2].title;
+        document.getElementById("inp-home-up3-desc").value = siteData.home.updates[2].desc;
+
+        document.getElementById("inp-home-h1-eyebrow").value = siteData.home.highlights[0].eyebrow;
+        document.getElementById("inp-home-h1-title").value = siteData.home.highlights[0].title;
+        document.getElementById("inp-home-h1-desc").value = siteData.home.highlights[0].desc;
+        document.getElementById("inp-home-h2-eyebrow").value = siteData.home.highlights[1].eyebrow;
+        document.getElementById("inp-home-h2-title").value = siteData.home.highlights[1].title;
+        document.getElementById("inp-home-h2-desc").value = siteData.home.highlights[1].desc;
+
+        const homeH1FileName = document.getElementById("home-h1-file-name");
+        const homeH2FileName = document.getElementById("home-h2-file-name");
+        if (homeH1FileName) homeH1FileName.innerText = "Current image loaded";
+        if (homeH2FileName) homeH2FileName.innerText = "Current image loaded";
+
+        document.getElementById("inp-home-adm-eyebrow").value = siteData.home.admissionBanner.eyebrow;
+        document.getElementById("inp-home-adm-title").value = siteData.home.admissionBanner.title;
+        document.getElementById("inp-home-adm-desc").value = siteData.home.admissionBanner.desc;
+        document.getElementById("inp-home-adm-button").value = siteData.home.admissionBanner.buttonLabel;
 
         // About Us
         document.getElementById("inp-about-title").value = siteData.about.title;
@@ -2650,6 +3140,11 @@
         document.getElementById("inp-info-guidelines-title").value = siteData.info.guidelinesTitle;
         document.getElementById("inp-info-guidelines-desc").value = siteData.info.guidelinesDesc;
 
+        // Teachers
+        document.getElementById("inp-teachers-title").value = siteData.teachers.title;
+        document.getElementById("inp-teachers-intro").value = siteData.teachers.intro;
+        populateTeacherRows();
+
         // Gallery List Rows
         populateGalleryRows();
 
@@ -2657,12 +3152,57 @@
         document.getElementById("inp-contact-title").value = siteData.contact.title;
         document.getElementById("inp-contact-intro").value = siteData.contact.intro;
         document.getElementById("inp-contact-address").value = siteData.contact.address;
+        document.getElementById("inp-contact-hours").value = siteData.contact.officeHours;
         document.getElementById("inp-contact-email").value = siteData.contact.email;
         document.getElementById("inp-contact-whatsapp").value = siteData.contact.whatsapp;
         document.getElementById("inp-contact-phone").value = siteData.contact.phone;
 
         // Security passcode
         document.getElementById("inp-security-passcode").value = siteData.adminPasscode;
+      }
+
+      // Populate Teachers list dynamically in the Admin Tab
+      function populateTeacherRows() {
+        const rowsContainer = document.getElementById("admin-teachers-rows-container");
+        const countSpan = document.getElementById("teachers-count");
+        if (!rowsContainer || !siteData?.teachers) return;
+
+        const items = siteData.teachers.list || [];
+        rowsContainer.innerHTML = "";
+        countSpan.innerText = String(items.length);
+
+        if (items.length === 0) {
+          rowsContainer.innerHTML = `
+            <p style="color: #64748b; font-size: 0.95rem; font-style: italic; text-align: center; padding: 1.5rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px;">
+              No teachers added yet. Use the form above to upload the first teacher profile.
+            </p>
+          `;
+          return;
+        }
+
+        items.forEach((teacher, index) => {
+          const row = document.createElement("div");
+          row.className = "admin-teacher-item-row";
+          row.innerHTML = `
+            <img src="${teacher.photoUrl}" alt="${teacher.name}" referrerpolicy="no-referrer" />
+            <div class="details">
+              <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.photoUrl}" id="inp-teacher-${index}-photo" />
+              <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.name}" id="inp-teacher-${index}-name" />
+              <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.subject}" id="inp-teacher-${index}-subject" />
+              <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.designation}" id="inp-teacher-${index}-designation" />
+              <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.contact}" id="inp-teacher-${index}-contact" />
+            </div>
+            <div class="actions">
+              <button class="btn-submit" onclick="saveTeacherRow(${index})" style="background-color: #3b82f6; padding: 0.5rem 0.8rem; font-size: 0.8rem;">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Update
+              </button>
+              <button class="btn-submit" onclick="deleteTeacherRow(${index})" style="background-color: #ef4444; padding: 0.5rem 0.8rem; font-size: 0.8rem;">
+                <i class="fa-solid fa-trash-can"></i> Delete
+              </button>
+            </div>
+          `;
+          rowsContainer.appendChild(row);
+        });
       }
 
       // Populate Gallery list dynamically in the Admin Tab
@@ -2691,7 +3231,7 @@
             <img src="${pic.url}" alt="${pic.caption}" referrerpolicy="no-referrer" />
             <div class="details">
               <div class="form-group">
-                <label style="font-size: 0.75rem; font-weight: 700; color: #64748b;">Image Hosted URL</label>
+                <label style="font-size: 0.75rem; font-weight: 700; color: #64748b;">Image Source / Data URL</label>
                 <input type="text" class="form-control" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;" value="${pic.url}" id="inp-gal-${index}-url" />
               </div>
               <div class="form-group">
@@ -2716,16 +3256,42 @@
       document.getElementById("form-branding-cms").addEventListener("submit", (e) => {
         e.preventDefault();
         siteData.branding.collegeName = document.getElementById("inp-brand-name").value;
-        siteData.branding.logoIcon = document.getElementById("inp-brand-icon").value;
-        siteData.branding.verificationCode = document.getElementById("inp-brand-verification").value;
+        siteData.branding.logoUrl = document.getElementById("inp-brand-logo-url").value;
         writeSiteDataToFirebase("Branding details updated successfully!");
       });
 
-      document.getElementById("form-home-cms").addEventListener("submit", (e) => {
+      document.getElementById("btn-home-h1-browse").addEventListener("click", () => {
+        document.getElementById("inp-home-h1-file").click();
+      });
+
+      document.getElementById("btn-home-h2-browse").addEventListener("click", () => {
+        document.getElementById("inp-home-h2-file").click();
+      });
+
+      document.getElementById("inp-home-h1-file").addEventListener("change", () => {
+        const fileInput = document.getElementById("inp-home-h1-file");
+        const label = document.getElementById("home-h1-file-name");
+        if (label) {
+          label.innerText = fileInput.files?.[0]?.name || "Current image loaded";
+        }
+      });
+
+      document.getElementById("inp-home-h2-file").addEventListener("change", () => {
+        const fileInput = document.getElementById("inp-home-h2-file");
+        const label = document.getElementById("home-h2-file-name");
+        if (label) {
+          label.innerText = fileInput.files?.[0]?.name || "Current image loaded";
+        }
+      });
+
+      document.getElementById("form-home-cms").addEventListener("submit", async (e) => {
         e.preventDefault();
+        siteData.home.kicker = document.getElementById("inp-home-kicker").value;
         siteData.home.heroTitle = document.getElementById("inp-home-hero-title").value;
         siteData.home.heroSubtitle = document.getElementById("inp-home-hero-subtitle").value;
         siteData.home.heroBg = document.getElementById("inp-home-hero-bg").value;
+        siteData.home.primaryButtonLabel = document.getElementById("inp-home-primary-label").value;
+        siteData.home.secondaryButtonLabel = document.getElementById("inp-home-secondary-label").value;
         siteData.home.whyChooseUsTitle = document.getElementById("inp-home-wcu-title").value;
         siteData.home.whyChooseUsDesc = document.getElementById("inp-home-wcu-desc").value;
         // Feature cards
@@ -2738,6 +3304,62 @@
         siteData.home.features[2].icon = document.getElementById("inp-home-f3-icon").value;
         siteData.home.features[2].title = document.getElementById("inp-home-f3-title").value;
         siteData.home.features[2].desc = document.getElementById("inp-home-f3-desc").value;
+
+        const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject(reader.error || new Error("Unable to read file"));
+          reader.readAsDataURL(file);
+        });
+
+        const homeH1File = document.getElementById("inp-home-h1-file").files?.[0];
+        const homeH2File = document.getElementById("inp-home-h2-file").files?.[0];
+
+        if (homeH1File) {
+          siteData.home.highlights[0].imageUrl = await readFileAsDataUrl(homeH1File);
+        }
+        if (homeH2File) {
+          siteData.home.highlights[1].imageUrl = await readFileAsDataUrl(homeH2File);
+        }
+
+        siteData.home.quickLinks[0].title = document.getElementById("inp-home-ql1-title").value;
+        siteData.home.quickLinks[0].desc = document.getElementById("inp-home-ql1-desc").value;
+        siteData.home.quickLinks[1].title = document.getElementById("inp-home-ql2-title").value;
+        siteData.home.quickLinks[1].desc = document.getElementById("inp-home-ql2-desc").value;
+        siteData.home.quickLinks[2].title = document.getElementById("inp-home-ql3-title").value;
+        siteData.home.quickLinks[2].desc = document.getElementById("inp-home-ql3-desc").value;
+        siteData.home.quickLinks[3].title = document.getElementById("inp-home-ql4-title").value;
+        siteData.home.quickLinks[3].desc = document.getElementById("inp-home-ql4-desc").value;
+
+        siteData.home.stats[0].number = document.getElementById("inp-home-st1-number").value;
+        siteData.home.stats[0].label = document.getElementById("inp-home-st1-label").value;
+        siteData.home.stats[1].number = document.getElementById("inp-home-st2-number").value;
+        siteData.home.stats[1].label = document.getElementById("inp-home-st2-label").value;
+        siteData.home.stats[2].number = document.getElementById("inp-home-st3-number").value;
+        siteData.home.stats[2].label = document.getElementById("inp-home-st3-label").value;
+        siteData.home.stats[3].number = document.getElementById("inp-home-st4-number").value;
+        siteData.home.stats[3].label = document.getElementById("inp-home-st4-label").value;
+
+        siteData.home.updates[0].tag = document.getElementById("inp-home-up1-tag").value;
+        siteData.home.updates[0].title = document.getElementById("inp-home-up1-title").value;
+        siteData.home.updates[0].desc = document.getElementById("inp-home-up1-desc").value;
+        siteData.home.updates[1].tag = document.getElementById("inp-home-up2-tag").value;
+        siteData.home.updates[1].title = document.getElementById("inp-home-up2-title").value;
+        siteData.home.updates[1].desc = document.getElementById("inp-home-up2-desc").value;
+        siteData.home.updates[2].tag = document.getElementById("inp-home-up3-tag").value;
+        siteData.home.updates[2].title = document.getElementById("inp-home-up3-title").value;
+        siteData.home.updates[2].desc = document.getElementById("inp-home-up3-desc").value;
+        siteData.home.highlights[0].eyebrow = document.getElementById("inp-home-h1-eyebrow").value;
+        siteData.home.highlights[0].title = document.getElementById("inp-home-h1-title").value;
+        siteData.home.highlights[0].desc = document.getElementById("inp-home-h1-desc").value;
+        siteData.home.highlights[1].eyebrow = document.getElementById("inp-home-h2-eyebrow").value;
+        siteData.home.highlights[1].title = document.getElementById("inp-home-h2-title").value;
+        siteData.home.highlights[1].desc = document.getElementById("inp-home-h2-desc").value;
+
+        siteData.home.admissionBanner.eyebrow = document.getElementById("inp-home-adm-eyebrow").value;
+        siteData.home.admissionBanner.title = document.getElementById("inp-home-adm-title").value;
+        siteData.home.admissionBanner.desc = document.getElementById("inp-home-adm-desc").value;
+        siteData.home.admissionBanner.buttonLabel = document.getElementById("inp-home-adm-button").value;
 
         writeSiteDataToFirebase("Home Page details and columns updated!");
       });
@@ -2786,11 +3408,19 @@
         writeSiteDataToFirebase("Curriculum guidelines and streams saved!");
       });
 
+      document.getElementById("form-teachers-cms").addEventListener("submit", (e) => {
+        e.preventDefault();
+        siteData.teachers.title = document.getElementById("inp-teachers-title").value;
+        siteData.teachers.intro = document.getElementById("inp-teachers-intro").value;
+        writeSiteDataToFirebase("Teachers section header updated.");
+      });
+
       document.getElementById("form-contact-cms").addEventListener("submit", (e) => {
         e.preventDefault();
         siteData.contact.title = document.getElementById("inp-contact-title").value;
         siteData.contact.intro = document.getElementById("inp-contact-intro").value;
         siteData.contact.address = document.getElementById("inp-contact-address").value;
+        siteData.contact.officeHours = document.getElementById("inp-contact-hours").value;
         siteData.contact.email = document.getElementById("inp-contact-email").value;
         siteData.contact.whatsapp = document.getElementById("inp-contact-whatsapp").value;
         siteData.contact.phone = document.getElementById("inp-contact-phone").value;
@@ -2810,27 +3440,120 @@
       });
 
       // Dynamic Gallery Operations: Create, Read, Update, Delete (CRUD)
+      document.getElementById("btn-gallery-browse").addEventListener("click", () => {
+        document.getElementById("inp-gallery-new-file").click();
+      });
+
+      document.getElementById("inp-gallery-new-file").addEventListener("change", () => {
+        const fileInput = document.getElementById("inp-gallery-new-file");
+        const fileName = document.getElementById("gallery-file-name");
+        if (fileName) {
+          fileName.innerText = fileInput.files?.[0]?.name || "No file selected";
+        }
+      });
+
+      document.getElementById("btn-teacher-browse").addEventListener("click", () => {
+        document.getElementById("inp-teacher-new-file").click();
+      });
+
+      document.getElementById("inp-teacher-new-file").addEventListener("change", () => {
+        const fileInput = document.getElementById("inp-teacher-new-file");
+        const fileName = document.getElementById("teacher-file-name");
+        if (fileName) {
+          fileName.innerText = fileInput.files?.[0]?.name || "No file selected";
+        }
+      });
+
+      document.getElementById("form-teacher-add").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("inp-teacher-new-name").value.trim();
+        const subject = document.getElementById("inp-teacher-new-subject").value.trim();
+        const designation = document.getElementById("inp-teacher-new-designation").value.trim();
+        const contact = document.getElementById("inp-teacher-new-contact").value.trim();
+        const fileInput = document.getElementById("inp-teacher-new-file");
+        const selectedFile = fileInput.files?.[0];
+
+        if (!selectedFile) {
+          alert("Please choose a teacher photo first.");
+          return;
+        }
+
+        if (!siteData.teachers) {
+          siteData.teachers = { ...defaultSiteData.teachers, list: [] };
+        }
+
+        if (!Array.isArray(siteData.teachers.list)) {
+          siteData.teachers.list = [];
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          siteData.teachers.list.push({
+            id: String(Date.now()),
+            photoUrl: String(reader.result || ""),
+            name,
+            subject,
+            designation,
+            contact
+          });
+
+          writeSiteDataToFirebase("Teacher profile added successfully.");
+
+          document.getElementById("inp-teacher-new-name").value = "";
+          document.getElementById("inp-teacher-new-subject").value = "";
+          document.getElementById("inp-teacher-new-designation").value = "";
+          document.getElementById("inp-teacher-new-contact").value = "";
+          fileInput.value = "";
+          document.getElementById("teacher-file-name").innerText = "No file selected";
+        };
+
+        reader.onerror = () => {
+          alert("Could not read the selected teacher image file.");
+        };
+
+        reader.readAsDataURL(selectedFile);
+      });
+
       document.getElementById("form-gallery-add").addEventListener("submit", (e) => {
         e.preventDefault();
-        const newUrl = document.getElementById("inp-gallery-new-url").value.trim();
+        const fileInput = document.getElementById("inp-gallery-new-file");
         const newCaption = document.getElementById("inp-gallery-new-caption").value.trim();
+        const selectedFile = fileInput.files?.[0];
+
+        if (!selectedFile) {
+          alert("Please choose a photo file first.");
+          return;
+        }
 
         if (!siteData.gallery) siteData.gallery = [];
 
-        // Generate simple incremental ID
-        const nextId = String(siteData.gallery.length + 1);
-        siteData.gallery.push({
-          id: nextId,
-          url: newUrl,
-          caption: newCaption
-        });
+        const reader = new FileReader();
+        reader.onload = () => {
+          const imageDataUrl = reader.result;
 
-        // Save to Database
-        writeSiteDataToFirebase("Added image card successfully to the gallery!");
-        
-        // Reset Fields
-        document.getElementById("inp-gallery-new-url").value = "";
-        document.getElementById("inp-gallery-new-caption").value = "";
+          // Generate simple incremental ID
+          const nextId = String(siteData.gallery.length + 1);
+          siteData.gallery.push({
+            id: nextId,
+            url: imageDataUrl,
+            caption: newCaption
+          });
+
+          // Save to Database
+          writeSiteDataToFirebase("Added image card successfully to the gallery!");
+
+          // Reset Fields
+          fileInput.value = "";
+          document.getElementById("gallery-file-name").innerText = "No file selected";
+          document.getElementById("inp-gallery-new-caption").value = "";
+        };
+
+        reader.onerror = () => {
+          alert("Could not read the selected image file.");
+        };
+
+        reader.readAsDataURL(selectedFile);
       });
 
       window.saveGalleryRow = function(index) {
@@ -2838,7 +3561,7 @@
         const captionVal = document.getElementById(`inp-gal-${index}-caption`).value.trim();
 
         if (!urlVal || !captionVal) {
-          alert("Image URL and caption cannot be empty!");
+          alert("Image source and caption cannot be empty!");
           return;
         }
 
@@ -2854,6 +3577,39 @@
         }
         siteData.gallery.splice(index, 1);
         writeSiteDataToFirebase("Removed image from photo gallery.");
+      };
+
+      window.saveTeacherRow = function(index) {
+        const photoUrl = document.getElementById(`inp-teacher-${index}-photo`).value.trim();
+        const name = document.getElementById(`inp-teacher-${index}-name`).value.trim();
+        const subject = document.getElementById(`inp-teacher-${index}-subject`).value.trim();
+        const designation = document.getElementById(`inp-teacher-${index}-designation`).value.trim();
+        const contact = document.getElementById(`inp-teacher-${index}-contact`).value.trim();
+
+        if (!photoUrl || !name || !subject || !designation || !contact) {
+          alert("Please complete all teacher fields before updating.");
+          return;
+        }
+
+        siteData.teachers.list[index] = {
+          ...siteData.teachers.list[index],
+          photoUrl,
+          name,
+          subject,
+          designation,
+          contact
+        };
+
+        writeSiteDataToFirebase("Teacher profile updated.");
+      };
+
+      window.deleteTeacherRow = function(index) {
+        if (!confirm("Are you sure you want to delete this teacher profile?")) {
+          return;
+        }
+
+        siteData.teachers.list.splice(index, 1);
+        writeSiteDataToFirebase("Teacher profile removed.");
       };
 
       // Helper function to commit memory siteData to Firebase Ref

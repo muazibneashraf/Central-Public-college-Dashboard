@@ -1,25 +1,35 @@
 # Gazipur Central Public College Website
 
-This is a normal local website project. It does not require a ChatGPT sign-in.
+The official single-page website for Gazipur Central Public College.
 
-## Open the website locally
+## Features
 
-1. Install [Node.js](https://nodejs.org/) if it is not already installed.
-2. Open PowerShell in this folder.
-3. Run `npm install` once.
-4. Run `npm run dev` whenever you want to work on the site.
-5. Open `http://localhost:3000/` in your browser.
+- Responsive homepage with Bengali and English content
+- Sticky navigation with mobile menu
+- Academic programs and admission guidance
+- About, mission, vision, milestones, and campus gallery sections
+- Contact details with phone, email, and WhatsApp links
+- Admin portal for editing site content
+- Firebase Realtime Database integration with fallback content
+- Loading state, scroll-reveal animations, and responsive layouts
 
-Keep the PowerShell window open while viewing the website. Press `Ctrl+C` in that window to stop it.
+## Run locally
 
-## Modify the website
+Requirements: Node.js 18 or newer.
 
-- Main page, styles, content, and interactions: `index.html`
-- Social preview artwork: `public/og.png`
-- Build settings: `vite.config.ts`
+```bash
+npm install
+npm run dev
+```
 
-Most public content can also be updated through the website's Admin section.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Create a production copy
+## Validate and build
 
-Run `npm run build`. The finished static files will be generated in the `dist` folder.
+```bash
+npm run lint
+npm run build
+```
+
+The Firebase configuration and editable content model are documented in
+[`firebase-blueprint.json`](./firebase-blueprint.json).
