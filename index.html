@@ -1136,6 +1136,47 @@
 
       @keyframes orbit { to { transform: translate(-35px,-25px) scale(1.05); } }
 
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: -20%;
+        z-index: -1;
+        background:
+          radial-gradient(circle at 18% 28%, rgba(244,185,66,.22), transparent 22%),
+          radial-gradient(circle at 82% 72%, rgba(31,157,150,.25), transparent 24%);
+        filter: blur(12px);
+        animation: heroGlow 12s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+
+      @keyframes heroGlow {
+        from { transform: translate3d(-2%, -1%, 0) scale(1); opacity: .7; }
+        to { transform: translate3d(3%, 2%, 0) scale(1.08); opacity: 1; }
+      }
+
+      .hero-particle {
+        position: absolute;
+        z-index: 1;
+        width: var(--particle-size, 5px);
+        height: var(--particle-size, 5px);
+        left: var(--particle-x);
+        top: var(--particle-y);
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 18px rgba(244,185,66,.8);
+        opacity: .55;
+        pointer-events: none;
+        animation: particleFloat var(--particle-duration, 7s) ease-in-out infinite alternate;
+        animation-delay: var(--particle-delay, 0s);
+      }
+
+      @keyframes particleFloat {
+        to { transform: translate3d(var(--particle-drift-x), var(--particle-drift-y), 0) scale(1.7); opacity: .15; }
+      }
+
+      .hero-content { transform: translate3d(var(--hero-shift-x, 0px), var(--hero-shift-y, 0px), 0); transition: transform .18s ease-out; }
+      .hero-overlay { transition: background-position .2s ease-out; }
+
       .hero-overlay {
         background: linear-gradient(90deg, rgba(4,35,44,.96) 0%, rgba(4,35,44,.78) 46%, rgba(4,35,44,.20) 100%);
       }
@@ -1261,6 +1302,8 @@
       }
 
       .quick-link:hover { background: var(--teal-soft); transform: translateY(-2px); }
+      .quick-link i { transition: transform .3s cubic-bezier(.2,.8,.2,1), background .3s; }
+      .quick-link:hover i { transform: rotate(-8deg) scale(1.08); background: var(--teal); }
       .quick-link i { width: 42px; height: 42px; display: grid; place-items: center; background: var(--ink); color: var(--gold); border-radius: 12px; flex: none; }
       .quick-link strong { display: block; font-family: Manrope; font-size: .88rem; }
       .quick-link small { color: var(--muted); font-size: .73rem; }
@@ -1280,6 +1323,9 @@
       .stat + .stat::before { content: ''; position: absolute; left: 0; top: 22%; bottom: 22%; width: 1px; background: rgba(255,255,255,.13); }
       .stat-number { display: block; color: var(--gold); font-size: clamp(1.8rem, 3vw, 2.65rem); font-weight: 800; letter-spacing: -.05em; }
       .stat-label { color: rgba(255,255,255,.65); font-size: .82rem; }
+      .stat { transition: background .3s, transform .3s; }
+      .stat:hover { background: rgba(255,255,255,.06); transform: translateY(-3px); }
+      .stat-number { font-variant-numeric: tabular-nums; }
 
       .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.6rem; }
       .section-heading h2 { margin: .45rem 0 0; font-size: clamp(1.65rem, 3vw, 2.4rem); letter-spacing: -.045em; }
@@ -1304,6 +1350,16 @@
       .feature-card:hover::after { transform: scale(1.35); }
       .feature-card i { width: 52px; height: 52px; display: grid; place-items: center; background: var(--ink); color: var(--gold); border-radius: 15px; font-size: 1.3rem; }
       .feature-card h3 { color: var(--ink); }
+      .feature-card, .news-panel, .events-panel, .stream-card, .about-card, .gallery-item, .teacher-card {
+        --tilt-x: 0deg;
+        --tilt-y: 0deg;
+        transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+        transition: transform .22s ease-out, box-shadow .3s ease, background .3s ease;
+        will-change: transform;
+      }
+      .feature-card:hover, .news-panel:hover, .events-panel:hover, .stream-card:hover, .about-card:hover, .gallery-item:hover, .teacher-card:hover {
+        box-shadow: 0 24px 48px rgba(8,47,58,.14);
+      }
 
       .school-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 1.25rem; margin: 2rem 0; }
       .news-panel, .events-panel { background: white; border-radius: 24px; padding: clamp(1.4rem,3vw,2.2rem); border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(8,47,58,.07); }
@@ -1339,6 +1395,17 @@
         overflow: hidden;
       }
       .admission-banner::after { content: ''; position: absolute; width: 300px; height: 300px; border: 45px solid rgba(255,255,255,.18); border-radius: 50%; right: -90px; top: -140px; }
+      .admission-banner::before {
+        content: '';
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        left: 45%;
+        bottom: -90px;
+        border: 22px solid rgba(7,43,54,.08);
+        border-radius: 50%;
+        animation: orbit 7s ease-in-out infinite alternate-reverse;
+      }
       .admission-banner > * { position: relative; z-index: 1; }
       .admission-banner h2 { font-size: clamp(1.8rem,4vw,3.2rem); letter-spacing: -.05em; max-width: 650px; line-height: 1.1; }
       .admission-banner p { margin-top: .8rem; max-width: 620px; opacity: .75; }
@@ -1492,6 +1559,9 @@
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
         .reveal { opacity: 1; transform: none; }
+        .hero-particle { display: none; }
+        .hero-content { transform: none !important; }
+        .feature-card, .news-panel, .events-panel, .stream-card, .about-card, .gallery-item, .teacher-card { transform: none !important; }
       }
 
       @media (max-width: 920px) {
@@ -2436,6 +2506,90 @@
         window.addEventListener('scroll', updateScrollUi, { passive: true });
         backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         updateScrollUi();
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hero = document.getElementById('home-hero-banner');
+        if (hero && !reduceMotion) {
+          const particleCount = window.innerWidth < 640 ? 8 : 15;
+          for (let index = 0; index < particleCount; index += 1) {
+            const particle = document.createElement('span');
+            particle.className = 'hero-particle';
+            particle.style.setProperty('--particle-x', `${8 + Math.random() * 84}%`);
+            particle.style.setProperty('--particle-y', `${10 + Math.random() * 78}%`);
+            particle.style.setProperty('--particle-size', `${3 + Math.random() * 5}px`);
+            particle.style.setProperty('--particle-duration', `${5 + Math.random() * 6}s`);
+            particle.style.setProperty('--particle-delay', `${Math.random() * -6}s`);
+            particle.style.setProperty('--particle-drift-x', `${-18 + Math.random() * 36}px`);
+            particle.style.setProperty('--particle-drift-y', `${-24 - Math.random() * 30}px`);
+            hero.appendChild(particle);
+          }
+
+          hero.addEventListener('pointermove', (event) => {
+            const bounds = hero.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width - .5;
+            const y = (event.clientY - bounds.top) / bounds.height - .5;
+            hero.style.setProperty('--hero-shift-x', `${x * 7}px`);
+            hero.style.setProperty('--hero-shift-y', `${y * 5}px`);
+            hero.querySelector('.hero-overlay')?.style.setProperty('background-position', `${50 + x * 8}% ${50 + y * 8}%`);
+          });
+          hero.addEventListener('pointerleave', () => {
+            hero.style.setProperty('--hero-shift-x', '0px');
+            hero.style.setProperty('--hero-shift-y', '0px');
+          });
+        }
+
+        const setupMotionCards = (root = document) => {
+          if (reduceMotion) return;
+          root.querySelectorAll('.feature-card, .news-panel, .events-panel, .stream-card, .about-card, .gallery-item, .teacher-card').forEach((card) => {
+            if (card.dataset.motionReady) return;
+            card.dataset.motionReady = 'true';
+            card.addEventListener('pointermove', (event) => {
+              const bounds = card.getBoundingClientRect();
+              const x = (event.clientX - bounds.left) / bounds.width - .5;
+              const y = (event.clientY - bounds.top) / bounds.height - .5;
+              card.style.setProperty('--tilt-x', `${y * -4}deg`);
+              card.style.setProperty('--tilt-y', `${x * 4}deg`);
+            });
+            card.addEventListener('pointerleave', () => {
+              card.style.setProperty('--tilt-x', '0deg');
+              card.style.setProperty('--tilt-y', '0deg');
+            });
+          });
+        };
+        setupMotionCards();
+        new MutationObserver((records) => {
+          records.forEach((record) => record.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) setupMotionCards(node);
+          }));
+        }).observe(document.getElementById('main-content-area'), { childList: true, subtree: true });
+
+        const animateStats = () => {
+          document.querySelectorAll('.stat-number:not([data-counted])').forEach((element) => {
+            const raw = element.textContent.trim();
+            const match = raw.match(/^(\d+(?:\.\d+)?)(.*)$/);
+            element.dataset.counted = 'true';
+            if (!match || reduceMotion) return;
+            const target = Number(match[1]);
+            const suffix = match[2];
+            const start = performance.now();
+            const duration = 900;
+            const tick = (now) => {
+              const progress = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              element.textContent = `${target % 1 ? (target * eased).toFixed(1) : Math.round(target * eased)}${suffix}`;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        };
+        const statsObserver = new IntersectionObserver((entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            animateStats();
+            statsObserver.disconnect();
+          }
+        }, { threshold: .35 });
+        const statsBand = document.getElementById('home-stats-container');
+        if (statsBand) statsObserver.observe(statsBand);
 
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
