@@ -38,6 +38,38 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
+
+      :focus-visible {
+        outline: 3px solid #ffca28;
+        outline-offset: 3px;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10001;
+        padding: .7rem 1rem;
+        border-radius: 10px;
+        background: #ffca28;
+        color: #102a43;
+        font-weight: 800;
+        transform: translateY(-180%);
+        transition: transform .2s ease;
+      }
+
+      .skip-link:focus { transform: none; }
+
+      .scroll-progress {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 1002;
+        height: 3px;
+        background: #ffca28;
+        transform: scaleX(0);
+        transform-origin: left;
+        pointer-events: none;
+      }
       
       /* --- App Loader --- */
       #app-loader {
@@ -114,6 +146,8 @@
       }
       
       .nav-link {
+        border: 0;
+        background: transparent;
         color: #ffffff;
         text-decoration: none;
         font-weight: 500;
@@ -146,6 +180,34 @@
         height: 3px;
         background-color: #ffca28;
         border-radius: 2px;
+      }
+
+      .nav-link[aria-current="page"] { color: #ffca28; }
+
+      .back-to-top {
+        position: fixed;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        z-index: 998;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,.25);
+        border-radius: 50%;
+        background: var(--deep, #072b36);
+        color: #fff;
+        box-shadow: 0 10px 24px rgba(7,43,54,.22);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity .25s ease, visibility .25s ease, transform .25s ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
       }
       
       /* --- Sections & Content Blocks --- */
@@ -1405,6 +1467,28 @@
       .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
       .reveal.visible { opacity: 1; transform: none; }
 
+      .features-grid > *,
+      .quick-access > *,
+      .gallery-grid > *,
+      .teachers-grid > * {
+        animation: cardIn .65s cubic-bezier(.2,.8,.2,1) both;
+      }
+
+      .features-grid > :nth-child(2),
+      .quick-access > :nth-child(2),
+      .gallery-grid > :nth-child(2),
+      .teachers-grid > :nth-child(2) { animation-delay: .08s; }
+
+      .features-grid > :nth-child(3),
+      .quick-access > :nth-child(3),
+      .gallery-grid > :nth-child(3),
+      .teachers-grid > :nth-child(3) { animation-delay: .16s; }
+
+      @keyframes cardIn {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
         .reveal { opacity: 1; transform: none; }
@@ -1448,6 +1532,7 @@
         .admission-banner { align-items: flex-start; flex-direction: column; }
         .features-grid { grid-template-columns: 1fr; }
         .gallery-item:nth-child(3n+1) { min-height: 280px; }
+        .back-to-top { right: .8rem; bottom: 4.8rem; }
       }
 
       /* Fluid desktop layout: use the full browser width instead of a centered cap. */
@@ -1487,6 +1572,8 @@
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#main-content-area">Skip to main content</a>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <!-- Dynamic App Loader Screen -->
     <div id="app-loader">
@@ -1510,13 +1597,13 @@
           <span>Gazipur Central Public College</span>
         </a>
         <nav id="navbar-links">
-          <span class="nav-link active-link" onclick="showPage('home')" id="nav-home">Home</span>
-          <span class="nav-link" onclick="showPage('about')" id="nav-about">About Us</span>
-          <span class="nav-link" onclick="showPage('info')" id="nav-info">Information</span>
-          <span class="nav-link" onclick="showPage('teachers')" id="nav-teachers">Teachers</span>
-          <span class="nav-link" onclick="showPage('gallery')" id="nav-gallery">Gallery</span>
-          <span class="nav-link" onclick="showPage('contact')" id="nav-contact">Contact Us</span>
-          <span class="nav-link" onclick="showPage('admin')" id="nav-admin" style="font-weight: 600;"><i class="fa-solid fa-lock"></i> Admin</span>
+          <button class="nav-link active-link" type="button" onclick="showPage('home')" id="nav-home" aria-current="page">Home</button>
+          <button class="nav-link" type="button" onclick="showPage('about')" id="nav-about">About Us</button>
+          <button class="nav-link" type="button" onclick="showPage('info')" id="nav-info">Information</button>
+          <button class="nav-link" type="button" onclick="showPage('teachers')" id="nav-teachers">Teachers</button>
+          <button class="nav-link" type="button" onclick="showPage('gallery')" id="nav-gallery">Gallery</button>
+          <button class="nav-link" type="button" onclick="showPage('contact')" id="nav-contact">Contact Us</button>
+          <button class="nav-link" type="button" onclick="showPage('admin')" id="nav-admin" style="font-weight: 600;"><i class="fa-solid fa-lock"></i> Admin</button>
         </nav>
         <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navbar-links">
           <i class="fa-solid fa-bars"></i>
@@ -1735,7 +1822,7 @@
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Direct Inquiry Desk</span>
               </div>
-              <form class="contact-form" id="inquiry-form" onsubmit="event.preventDefault(); alert('Your message has been logged securely and sent to the college administration team. Thank you!'); this.reset();">
+              <form class="contact-form" id="inquiry-form">
                 <div class="form-group">
                   <label for="name-input">Full Name</label>
                   <input type="text" id="name-input" class="form-control" placeholder="E.g., Anisur Rahman" required />
@@ -2309,9 +2396,12 @@
     </footer>
 
     <!-- Fixed, circular, green (#25d366) WhatsApp floating action button -->
-    <a href="#" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="floating-whatsapp-action">
-      <i class="fa-brands fa-whatsapp"></i>
+    <a href="#" class="whatsapp-float" target="_blank" rel="noopener noreferrer"     id="floating-whatsapp-action">
+    <i class="fa-brands fa-whatsapp"></i>
     </a>
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script>
       (() => {
@@ -2335,6 +2425,18 @@
         navigation?.addEventListener('click', closeMenu);
         window.addEventListener('resize', () => { if (window.innerWidth > 920) closeMenu(); });
 
+        const progress = document.getElementById('scroll-progress');
+        const backToTop = document.getElementById('back-to-top');
+        const updateScrollUi = () => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+          if (progress) progress.style.transform = `scaleX(${Math.min(1, ratio)})`;
+          backToTop?.classList.toggle('visible', window.scrollY > 560);
+        };
+        window.addEventListener('scroll', updateScrollUi, { passive: true });
+        backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        updateScrollUi();
+
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -2353,7 +2455,23 @@
             loader.style.opacity = '0';
             window.setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
           }
-        }, 3500);
+        }, 1800);
+
+        const inquiryForm = document.getElementById('inquiry-form');
+        inquiryForm?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const form = event.currentTarget;
+          const name = form.querySelector('#name-input').value.trim();
+          const email = form.querySelector('#email-input').value.trim();
+          const message = form.querySelector('#msg-input').value.trim();
+          const recipient = document.getElementById('val-email-link')?.textContent?.trim();
+          if (!recipient) return;
+          const subject = encodeURIComponent(`Admission enquiry from ${name}`);
+          const body = encodeURIComponent(`${message}\n\nName: ${name}\nEmail: ${email}`);
+          window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+          form.reset();
+          window.showToast?.('Your email draft is ready to send to the college office.');
+        });
       })();
     </script>
 
@@ -2775,7 +2893,7 @@
         if (highlightsContainer && data.home.highlights) {
           highlightsContainer.innerHTML = data.home.highlights.map((item) => `
             <div class="event-card">
-              <img src="${item.imageUrl}" alt="${item.title}" />
+              <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" decoding="async" />
               <div>
                 <span>${item.eyebrow}</span>
                 <h4>${item.title}</h4>
@@ -2884,7 +3002,7 @@
               const item = document.createElement("div");
               item.className = "gallery-item";
               item.innerHTML = `
-                <img src="${pic.url}" alt="${pic.caption}" referrerpolicy="no-referrer" />
+                <img src="${pic.url}" alt="${pic.caption}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
                 <div class="gallery-caption">${pic.caption}</div>
               `;
               galleryGrid.appendChild(item);
@@ -2959,19 +3077,31 @@
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach((link) => {
           link.classList.remove('active-link');
+          link.removeAttribute('aria-current');
         });
         
         const targetNavLink = document.getElementById('nav-' + pageId);
         if (targetNavLink) {
           targetNavLink.classList.add('active-link');
+          targetNavLink.setAttribute('aria-current', 'page');
         }
         
-        window.scrollTo(0, 0);
+        if (window.location.hash !== '#' + pageId) {
+          history.pushState({ pageId }, '', '#' + pageId);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        targetSection?.querySelector('h1, h2')?.setAttribute('tabindex', '-1');
+        targetSection?.querySelector('h1, h2')?.focus({ preventScroll: true });
       };
 
       // Dom Loaded Trigger
       window.addEventListener('DOMContentLoaded', () => {
-        window.showPage('home');
+        const initialPage = window.location.hash.slice(1);
+        window.showPage(document.getElementById(initialPage) ? initialPage : 'home');
+      });
+      window.addEventListener('popstate', () => {
+        const pageId = window.location.hash.slice(1);
+        window.showPage(document.getElementById(pageId) ? pageId : 'home');
       });
 
       // 7. Admin CMS Authentication and Portal Interactions
@@ -3184,7 +3314,7 @@
           const row = document.createElement("div");
           row.className = "admin-teacher-item-row";
           row.innerHTML = `
-            <img src="${teacher.photoUrl}" alt="${teacher.name}" referrerpolicy="no-referrer" />
+            <img src="${teacher.photoUrl}" alt="${teacher.name}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
             <div class="details">
               <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.photoUrl}" id="inp-teacher-${index}-photo" />
               <input type="text" class="form-control" style="padding: 0.45rem 0.6rem; font-size: 0.85rem;" value="${teacher.name}" id="inp-teacher-${index}-name" />
@@ -3228,7 +3358,7 @@
           const row = document.createElement("div");
           row.className = "admin-gallery-item-row";
           row.innerHTML = `
-            <img src="${pic.url}" alt="${pic.caption}" referrerpolicy="no-referrer" />
+            <img src="${pic.url}" alt="${pic.caption}" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
             <div class="details">
               <div class="form-group">
                 <label style="font-size: 0.75rem; font-weight: 700; color: #64748b;">Image Source / Data URL</label>
@@ -3636,6 +3766,7 @@
           }, 4000);
         }
       }
+      window.showToast = showToast;
 
     </script>
   </body>
