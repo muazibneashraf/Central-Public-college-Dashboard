@@ -1,4 +1,4 @@
-# Gazipur Central Public College Website
+ Central Public College Website
 
 The official single-page website for Gazipur Central Public College.
 
