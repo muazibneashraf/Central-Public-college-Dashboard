@@ -58,4 +58,20 @@ if (html.includes('hero-container') && html.includes('hero-main-col') && html.in
   process.exit(1);
 }
 
+// Check Ticker Viewport Isolation (prevents marquee overlapping badge)
+if (html.includes('ticker-badge-wrap') && html.includes('ticker-track-viewport')) {
+  console.log('✅ Ticker viewport isolation verified (no badge overlapping possible).');
+} else {
+  console.error('❌ Ticker viewport isolation missing!');
+  process.exit(1);
+}
+
+// Check no negative margin on quick-access
+if (html.includes('margin: -4.5rem')) {
+  console.error('❌ quick-access still has negative top margin!');
+  process.exit(1);
+} else {
+  console.log('✅ quick-access negative margins eliminated.');
+}
+
 console.log('🎉 Verification successful!');

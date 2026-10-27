@@ -146,26 +146,36 @@ export const styles = `
         background: linear-gradient(90deg, #04181f 0%, #082d38 50%, #04181f 100%);
         color: rgba(255,255,255,0.92);
         font-size: 0.82rem;
-        padding: 0.45rem 1rem;
+        padding: 0.45rem 1.5rem;
         border-bottom: 1px solid rgba(244,185,66,0.22);
         display: flex;
         align-items: center;
         overflow: hidden;
         position: relative;
         z-index: 1001;
+        gap: 1.25rem;
+      }
+
+      .ticker-badge-wrap {
+        flex-shrink: 0;
+        z-index: 10;
+        position: relative;
+        background: #04181f;
+        padding-right: 0.6rem;
+        display: flex;
+        align-items: center;
       }
 
       .ticker-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
+        gap: 0.45rem;
         background: var(--gold);
         color: var(--deep);
         font-weight: 800;
         font-size: 0.72rem;
-        padding: 0.2rem 0.65rem;
+        padding: 0.22rem 0.7rem;
         border-radius: 999px;
-        margin-right: 1rem;
         flex-shrink: 0;
         box-shadow: 0 0 12px rgba(244,185,66,0.5);
       }
@@ -179,10 +189,22 @@ export const styles = `
         50% { transform: translateY(-2px); }
       }
 
+      .ticker-track-viewport {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 24px), transparent 100%);
+      }
+
       .ticker-content {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         white-space: nowrap;
         animation: marquee 35s linear infinite;
+        padding-left: 100%;
       }
 
       .ticker-content:hover {
@@ -192,8 +214,9 @@ export const styles = `
       .ticker-item {
         display: inline-flex;
         align-items: center;
-        margin-right: 2.5rem;
+        margin-right: 3.5rem;
         color: rgba(255,255,255,0.88);
+        flex-shrink: 0;
       }
 
       .ticker-item i {
@@ -210,7 +233,7 @@ export const styles = `
       }
 
       @keyframes marquee {
-        0% { transform: translateX(100%); }
+        0% { transform: translateX(0); }
         100% { transform: translateX(-100%); }
       }
 
@@ -551,7 +574,7 @@ export const styles = `
         overflow: hidden;
         display: flex;
         align-items: center;
-        margin-bottom: 3.5rem;
+        margin-bottom: 2rem;
         background: #062833;
         background-size: cover;
         background-position: center;
@@ -1031,7 +1054,7 @@ export const styles = `
         gap: 1.1rem;
         max-width: 1400px;
         width: 100%;
-        margin: -4.5rem auto 2.8rem;
+        margin: 0 auto 3rem;
         position: relative;
         z-index: 20;
         background: rgba(255,255,255,0.96);
@@ -2531,20 +2554,20 @@ export const styles = `
           visibility: visible;
         }
         .nav-link { width: 100%; padding: 0.75rem 1rem; }
-        .quick-access { grid-template-columns: repeat(2, 1fr); margin-top: -3rem; }
+        .quick-access { grid-template-columns: repeat(2, 1fr); margin: 0 auto 2.5rem; }
         .school-grid, .contact-layout, .calc-body { grid-template-columns: 1fr; }
       }
 
       @media (max-width: 640px) {
         .nav-container { padding: 0.65rem 1rem; }
         .brand-title { font-size: 0.98rem; }
-        .hero { min-height: auto; border-radius: var(--radius-lg); margin-bottom: 2.5rem; }
+        .hero { min-height: auto; border-radius: var(--radius-lg); margin-bottom: 1.8rem; }
         .hero-container { padding: 2rem 1.2rem; gap: 2rem; }
         .hero-main-col h1 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
         .hero-actions { flex-direction: column; }
         .hero-btn { width: 100%; }
         .hero-trust-strip { gap: 0.8rem; }
-        .quick-access { grid-template-columns: 1fr; padding: 0.8rem; margin-top: -2rem; }
+        .quick-access { grid-template-columns: 1fr; padding: 0.8rem; margin: 0 auto 2rem; }
         .stats-band { grid-template-columns: 1fr 1fr; }
         .features-grid, .facilities-grid, .academic-streams-container { grid-template-columns: 1fr; }
         .footer-inner { grid-template-columns: 1fr; }

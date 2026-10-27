@@ -1,12 +1,16 @@
 export const markup = `
     <!-- Top Announcement Live Marquee Ticker -->
     <div class="ticker-bar" id="live-ticker-bar">
-      <div class="ticker-badge"><i class="fa-solid fa-bullhorn"></i> ANNOUNCEMENT</div>
-      <div class="ticker-content" id="ticker-content-track">
-        <span class="ticker-item"><i class="fa-solid fa-graduation-cap"></i> <strong>Admissions Open:</strong> Online registration and academic counseling ongoing. <a onclick="showPage('info')">Explore Streams & Requirements</a></span>
-        <span class="ticker-item"><i class="fa-solid fa-award"></i> <strong>Merit Scholarships:</strong> Up to 100% tuition waiver for outstanding academic achievers. <a onclick="openCalcModal()">Calculate Fee Waiver</a></span>
-        <span class="ticker-item"><i class="fa-solid fa-microscope"></i> <strong>Modern Campus:</strong> State-of-the-art science laboratories and high-speed digital computing center.</span>
-        <span class="ticker-item"><i class="fa-solid fa-phone-volume"></i> <strong>Admissions Help Desk:</strong> Direct telephone & WhatsApp counseling available.</span>
+      <div class="ticker-badge-wrap">
+        <div class="ticker-badge"><i class="fa-solid fa-bullhorn"></i> ANNOUNCEMENT</div>
+      </div>
+      <div class="ticker-track-viewport">
+        <div class="ticker-content" id="ticker-content-track">
+          <span class="ticker-item"><i class="fa-solid fa-graduation-cap"></i> <strong>Admissions Open:</strong> Online registration and academic counseling ongoing. <a onclick="showPage('info')">Explore Streams & Requirements</a></span>
+          <span class="ticker-item"><i class="fa-solid fa-award"></i> <strong>Merit Scholarships:</strong> Up to 100% tuition waiver for outstanding academic achievers. <a onclick="openCalcModal()">Calculate Fee Waiver</a></span>
+          <span class="ticker-item"><i class="fa-solid fa-microscope"></i> <strong>Modern Campus:</strong> State-of-the-art science laboratories and high-speed digital computing center.</span>
+          <span class="ticker-item"><i class="fa-solid fa-phone-volume"></i> <strong>Admissions Help Desk:</strong> Direct telephone & WhatsApp counseling available.</span>
+        </div>
       </div>
     </div>
 
