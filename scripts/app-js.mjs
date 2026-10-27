@@ -242,7 +242,7 @@ export const appJs = `
           const email = form.querySelector('#email-input').value.trim();
           const stream = form.querySelector('#stream-select').value;
           const message = form.querySelector('#msg-input').value.trim();
-          const recipient = document.getElementById('val-email-link')?.textContent?.trim() || 'gcpc131217@gmail.com';
+          const recipient = document.getElementById('val-email-link')?.textContent?.trim() || 'admissions@centralcollege.edu';
           const subject = encodeURIComponent(\`Admission Inquiry - \${stream} - from \${name}\`);
           const body = encodeURIComponent(\`Name: \${name}\\nEmail: \${email}\\nStream Interest: \${stream}\\n\\nMessage:\\n\${message}\`);
           window.location.href = \`mailto:\${recipient}?subject=\${subject}&body=\${body}\`;
@@ -952,7 +952,7 @@ export const appJs = `
 
         document.getElementById('modal-notice-title').innerText = notice.title;
         document.getElementById('modal-notice-date').innerHTML = \`<i class="fa-solid fa-calendar-days"></i> \${notice.date}\`;
-        document.getElementById('modal-notice-body').innerHTML = \`<p>\${notice.body || notice.desc}</p><p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">Notice Reference: GCPC/2026/ACAD-\${index + 101}</p>\`;
+        document.getElementById('modal-notice-body').innerHTML = \`<p>\${notice.body || notice.desc}</p><p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">Notice Reference: CPC/2026/ACAD-\${index + 101}</p>\`;
         document.getElementById('notice-modal')?.classList.add('open');
       };
       window.closeNoticeModal = function() {

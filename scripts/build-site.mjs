@@ -17,13 +17,13 @@ const finalHtml = `<!doctype html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Gazipur Central Public College — A premier higher secondary academic institution under Dhaka Board in Gazipur, Bangladesh." />
+    <meta name="description" content="Central Public College — A premier higher secondary academic institution fostering excellence, integrity, and leadership." />
     <meta name="theme-color" content="#041b22" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Gazipur Central Public College" />
-    <meta property="og:description" content="Education, character and community — explore HSC Science, Business Studies and Humanities curriculum at GCPC." />
+    <meta property="og:title" content="Central Public College" />
+    <meta property="og:description" content="Excellence, Integrity, Leadership — explore HSC Science, Business Studies and Humanities curriculum at Central Public College." />
     <meta property="og:image" content="/og.png" />
-    <title>Gazipur Central Public College | Official Portal</title>
+    <title>Central Public College | Official Portal</title>
     <link rel="icon" href="/school-logo-transparent.png" />
     <link rel="apple-touch-icon" href="/school-logo-transparent.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +45,7 @@ ${styles}
     <div id="app-loader">
       <img src="/school-logo-transparent.png" alt="Loading College Portal..." class="loader-logo" />
       <div class="spinner"></div>
-      <p style="margin-top: 1rem; font-weight: 700; letter-spacing: 0.05em; font-size: 0.95rem; color: #f4b942;">GAZIPUR CENTRAL PUBLIC COLLEGE</p>
+      <p style="margin-top: 1rem; font-weight: 700; letter-spacing: 0.05em; font-size: 0.95rem; color: #f4b942;">CENTRAL PUBLIC COLLEGE</p>
     </div>
 
 ${markup}

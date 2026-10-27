@@ -67,27 +67,96 @@ export const markup = `
         <!-- Hero Section -->
         <div class="hero tilt-card" id="home-hero-banner">
           <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <div class="hero-kicker" id="hero-kicker-tag">
-              <i class="fa-solid fa-award"></i> Board Accredited Higher Secondary College · Code: 131217
+          <div class="hero-container">
+            <!-- Left Column: Primary Typography & Authority Actions -->
+            <div class="hero-main-col">
+              <div class="hero-kicker" id="hero-kicker-tag">
+                <i class="fa-solid fa-award"></i> Board Accredited Higher Secondary College · Code: 131217
+              </div>
+              <h1 id="hero-title-text">
+                <span class="welcome-line">Welcome to</span>
+                <strong id="hero-college-name">Central Public College</strong>
+              </h1>
+              <p id="hero-subtitle-text">
+                A premier institution fostering intellectual curiosity, moral integrity, and modern technological competence. Empowering learners with cutting-edge laboratories, dedicated mentorship, and an exam-focused curriculum designed for higher educational success.
+              </p>
+              <div class="hero-actions">
+                <button class="hero-btn primary" type="button" onclick="showPage('info')">
+                  <span id="hero-primary-label">Explore Academics</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="hero-btn calc" type="button" onclick="openCalcModal()">
+                  <i class="fa-solid fa-calculator"></i> <span>Check Eligibility & Fees</span>
+                </button>
+                <button class="hero-btn secondary" type="button" onclick="showPage('contact')">
+                  <i class="fa-regular fa-comments"></i> <span id="hero-secondary-label">Admission Enquiry</span>
+                </button>
+              </div>
+
+              <!-- Trust Indicators / Institutional Highlights Strip -->
+              <div class="hero-trust-strip">
+                <div class="trust-item">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span><strong>100%</strong> Board Aligned</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fa-solid fa-microscope"></i>
+                  <span><strong>Modern</strong> Labs & Research</span>
+                </div>
+                <div class="trust-item">
+                  <i class="fa-solid fa-award"></i>
+                  <span><strong>Merit</strong> Scholarships</span>
+                </div>
+              </div>
             </div>
-            <h1 id="hero-title-text">
-              <span class="welcome-line">Welcome to</span>
-              <strong id="hero-college-name">Central Public College</strong>
-            </h1>
-            <p id="hero-subtitle-text">
-              A premier institution fostering intellectual curiosity, moral integrity, and modern technological competence. Empowering learners with cutting-edge laboratories, dedicated mentorship, and an exam-focused curriculum designed for higher educational success.
-            </p>
-            <div class="hero-actions">
-              <button class="hero-btn primary" type="button" onclick="showPage('info')">
-                <span id="hero-primary-label">Explore academics</span> <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <button class="hero-btn calc" type="button" onclick="openCalcModal()">
-                <i class="fa-solid fa-calculator"></i> <span>Check Eligibility & Fees</span>
-              </button>
-              <button class="hero-btn secondary" type="button" onclick="showPage('contact')">
-                <i class="fa-regular fa-comments"></i> <span id="hero-secondary-label">Admission enquiry</span>
-              </button>
+
+            <!-- Right Column: Interactive Admissions Glass Card -->
+            <div class="hero-card-col">
+              <div class="hero-glass-card">
+                <div class="glass-card-header">
+                  <div class="live-status-pill">
+                    <span class="status-dot"></span> Admissions Ongoing
+                  </div>
+                  <span class="batch-tag">HSC Intake</span>
+                </div>
+
+                <h3 class="glass-card-title">Academic Admissions & Counseling</h3>
+                <p class="glass-card-desc">Direct admission guidance and seat reservation across Science, Business Studies, and Humanities streams.</p>
+
+                <div class="glass-streams-mini">
+                  <div class="mini-stream-badge" onclick="showPage('info')">
+                    <i class="fa-solid fa-atom"></i>
+                    <div>
+                      <strong>Science Stream</strong>
+                      <small>Physics · Chemistry · Biology · Math</small>
+                    </div>
+                  </div>
+                  <div class="mini-stream-badge" onclick="showPage('info')">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                      <strong>Business Studies</strong>
+                      <small>Accounting · Finance · Management</small>
+                    </div>
+                  </div>
+                  <div class="mini-stream-badge" onclick="showPage('info')">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <div>
+                      <strong>Humanities Stream</strong>
+                      <small>Economics · Civics · Logic · Social Work</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="glass-card-footer">
+                  <div class="quick-help-row">
+                    <a href="tel:01309131217" class="glass-phone-link"><i class="fa-solid fa-phone"></i> 01309-131217</a>
+                    <a href="https://api.whatsapp.com/send?phone=8801776371675" target="_blank" rel="noopener noreferrer" class="glass-wa-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp Desk</a>
+                  </div>
+                  <button type="button" class="glass-cta-btn" onclick="openCalcModal()">
+                    <span><i class="fa-solid fa-calculator" style="margin-right:0.4rem;"></i> Calculate Fee Waiver</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
