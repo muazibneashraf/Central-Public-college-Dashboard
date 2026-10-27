@@ -35,7 +35,7 @@ export const markup = `
       <div class="nav-container">
         <a class="logo" id="branding-logo" href="#home" onclick="showPage('home'); return false;">
           <div class="logo-img-wrapper">
-            <img src="/school-logo-transparent.png" alt="Central Public College crest" width="40" height="40" />
+            <img src="/college-crest.svg" alt="Central Public College crest" width="40" height="40" />
           </div>
           <div class="brand-text-block">
             <span class="brand-title" id="nav-brand-title">Central Public College</span>
@@ -1151,7 +1151,7 @@ export const markup = `
       <div class="footer-inner">
         <div class="footer-col">
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-            <img src="/school-logo-transparent.png" alt="Logo" width="44" height="44" style="background:#fff; border-radius: 50%; padding: 2px;" />
+            <img src="/college-crest.svg" alt="Logo" width="44" height="44" style="background:#fff; border-radius: 50%; padding: 2px;" />
             <div>
               <div style="font-weight: 800; font-size: 1.15rem; color: #fff;" id="footer-college-name">Central Public College</div>
               <div style="font-size: 0.76rem; color: var(--gold);">Board Affiliated Higher Secondary College · Code: 131217</div>

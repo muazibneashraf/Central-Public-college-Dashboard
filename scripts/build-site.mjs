@@ -24,8 +24,8 @@ const finalHtml = `<!doctype html>
     <meta property="og:description" content="Excellence, Integrity, Leadership — explore HSC Science, Business Studies and Humanities curriculum at Central Public College." />
     <meta property="og:image" content="/og.png" />
     <title>Central Public College | Official Portal</title>
-    <link rel="icon" href="/school-logo-transparent.png" />
-    <link rel="apple-touch-icon" href="/school-logo-transparent.png" />
+    <link rel="icon" href="/college-crest.svg" />
+    <link rel="apple-touch-icon" href="/college-crest.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Manrope:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -43,7 +43,7 @@ ${styles}
 
     <!-- App Initial Loader -->
     <div id="app-loader">
-      <img src="/school-logo-transparent.png" alt="Loading College Portal..." class="loader-logo" />
+      <img src="/college-crest.svg" alt="Loading College Portal..." class="loader-logo" />
       <div class="spinner"></div>
       <p style="margin-top: 1rem; font-weight: 700; letter-spacing: 0.05em; font-size: 0.95rem; color: #f4b942;">CENTRAL PUBLIC COLLEGE</p>
     </div>

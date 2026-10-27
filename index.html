@@ -10,8 +10,8 @@
     <meta property="og:description" content="Excellence, Integrity, Leadership — explore HSC Science, Business Studies and Humanities curriculum at Central Public College." />
     <meta property="og:image" content="/og.png" />
     <title>Central Public College | Official Portal</title>
-    <link rel="icon" href="/school-logo-transparent.png" />
-    <link rel="apple-touch-icon" href="/school-logo-transparent.png" />
+    <link rel="icon" href="/college-crest.svg" />
+    <link rel="apple-touch-icon" href="/college-crest.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Manrope:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -2604,7 +2604,7 @@
 
     <!-- App Initial Loader -->
     <div id="app-loader">
-      <img src="/school-logo-transparent.png" alt="Loading College Portal..." class="loader-logo" />
+      <img src="/college-crest.svg" alt="Loading College Portal..." class="loader-logo" />
       <div class="spinner"></div>
       <p style="margin-top: 1rem; font-weight: 700; letter-spacing: 0.05em; font-size: 0.95rem; color: #f4b942;">CENTRAL PUBLIC COLLEGE</p>
     </div>
@@ -2646,7 +2646,7 @@
       <div class="nav-container">
         <a class="logo" id="branding-logo" href="#home" onclick="showPage('home'); return false;">
           <div class="logo-img-wrapper">
-            <img src="/school-logo-transparent.png" alt="Central Public College crest" width="40" height="40" />
+            <img src="/college-crest.svg" alt="Central Public College crest" width="40" height="40" />
           </div>
           <div class="brand-text-block">
             <span class="brand-title" id="nav-brand-title">Central Public College</span>
@@ -3762,7 +3762,7 @@
       <div class="footer-inner">
         <div class="footer-col">
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-            <img src="/school-logo-transparent.png" alt="Logo" width="44" height="44" style="background:#fff; border-radius: 50%; padding: 2px;" />
+            <img src="/college-crest.svg" alt="Logo" width="44" height="44" style="background:#fff; border-radius: 50%; padding: 2px;" />
             <div>
               <div style="font-weight: 800; font-size: 1.15rem; color: #fff;" id="footer-college-name">Central Public College</div>
               <div style="font-size: 0.76rem; color: var(--gold);">Board Affiliated Higher Secondary College · Code: 131217</div>
@@ -4098,13 +4098,13 @@
       const defaultSiteData = {
         branding: {
           collegeName: "Central Public College",
-          logoUrl: "/school-logo-transparent.png"
+          logoUrl: "/college-crest.svg"
         },
         home: {
           kicker: "Board Affiliated Institution · Code: 131217",
           heroTitle: "Welcome to",
           heroSubtitle: "A premier academic institution fostering intellectual curiosity, moral integrity, and modern technological competence. Empowering learners with cutting-edge laboratories, dedicated mentorship, and an exam-focused curriculum designed for higher educational success.",
-          heroBg: "",
+          heroBg: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80",
           primaryButtonLabel: "Explore academics",
           secondaryButtonLabel: "Admission enquiry",
           whyChooseUsTitle: "Why Choose Us?",
@@ -4157,16 +4157,22 @@
           ],
           highlights: [
             {
-              imageUrl: "/school-logo-transparent.png",
-              eyebrow: "Scholastic Excellence",
-              title: "Focused classes, regular mentoring, and board exam drills",
-              desc: "Supportive lecturers maintain discipline and high academic standards across all batches."
+              imageUrl: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80",
+              eyebrow: "Science & Innovation",
+              title: "Advanced Research Laboratories & Practical Cohorts",
+              desc: "Weekly laboratory practicals with digital microscopes, analytical balances, and dedicated safety apparatus."
             },
             {
-              imageUrl: "/school-logo-transparent.png",
-              eyebrow: "Campus Co-Curricular",
-              title: "Debating, science exhibitions, and annual cultural events",
-              desc: "Clubs and celebrations ensure every student develops leadership and communication skills."
+              imageUrl: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80",
+              eyebrow: "Leadership & Expression",
+              title: "Debating Platform, Public Speaking & Seminars",
+              desc: "Active student debate club, Model UN symposiums, and leadership mentoring for university preparedness."
+            },
+            {
+              imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+              eyebrow: "Digital Skills",
+              title: "High-Speed Computing Lab & Technology Projects",
+              desc: "Multi-core workstations, coding environments, and digital creativity suites for 21st century readiness."
             }
           ],
           admissionBanner: {
@@ -4224,35 +4230,51 @@
           list: [
             {
               id: "1",
-              photoUrl: "/school-logo-transparent.png",
-              name: "Dr. Hasan Mahmud",
-              subject: "Mathematics & Statistics",
-              designation: "Senior Lecturer",
-              contact: "01309131217"
+              photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+              name: "Dr. Tariqul Islam",
+              subject: "Theoretical Physics & Mechanics",
+              designation: "Principal & Senior Lecturer",
+              contact: "01309-131217"
             },
             {
               id: "2",
-              photoUrl: "/school-logo-transparent.png",
-              name: "Sharmin Akter",
-              subject: "Chemistry & Bio-Sciences",
-              designation: "Lecturer",
-              contact: "01309131218"
+              photoUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+              name: "Prof. Sharmin Akter",
+              subject: "Organic & Physical Chemistry",
+              designation: "Associate Professor & Lab Head",
+              contact: "01309-131218"
             },
             {
               id: "3",
-              photoUrl: "/school-logo-transparent.png",
-              name: "Rafiqul Islam",
-              subject: "Physics & Computing",
-              designation: "Lecturer",
-              contact: "01309131219"
+              photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+              name: "Tanvir Ahmed",
+              subject: "Higher Mathematics & Statistics",
+              designation: "Assistant Professor",
+              contact: "01309-131219"
             },
             {
               id: "4",
-              photoUrl: "/school-logo-transparent.png",
+              photoUrl: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80",
+              name: "Dr. Farhana Yasmin",
+              subject: "Cell Biology & Genetics",
+              designation: "Senior Lecturer",
+              contact: "01309-131220"
+            },
+            {
+              id: "5",
+              photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+              name: "Mahmudur Rahman",
+              subject: "Accounting & Financial Management",
+              designation: "Lecturer, Business Studies",
+              contact: "01309-131221"
+            },
+            {
+              id: "6",
+              photoUrl: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80",
               name: "Nusrat Jahan",
-              subject: "Biology & Genetics",
-              designation: "Lecturer",
-              contact: "01309131220"
+              subject: "English Literature & Communication",
+              designation: "Lecturer, Humanities",
+              contact: "01309-131222"
             }
           ]
         },
@@ -4289,8 +4311,57 @@
         gallery: [
           {
             id: "1",
-            url: "/school-logo-transparent.png",
-            caption: "Central Public College Academic Crest & Insignia"
+            url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
+            caption: "Central Academic Quadrangle & Administrative Building",
+            category: "campus"
+          },
+          {
+            id: "2",
+            url: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
+            caption: "Advanced Science Research Station & Chemistry Laboratory",
+            category: "labs"
+          },
+          {
+            id: "3",
+            url: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80",
+            caption: "Central Air-Cooled Reference Archives & Silent Reading Hall",
+            category: "campus"
+          },
+          {
+            id: "4",
+            url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+            caption: "High-Speed Computing Lab & Programming Workstations",
+            category: "labs"
+          },
+          {
+            id: "5",
+            url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
+            caption: "Smart Classroom Multimedia Lecture & Interactive Discussion",
+            category: "campus"
+          },
+          {
+            id: "6",
+            url: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80",
+            caption: "Annual Inter-College Debate Championship & Seminar",
+            category: "events"
+          },
+          {
+            id: "7",
+            url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+            caption: "Student Collaborative Study Group at the Campus Center",
+            category: "campus"
+          },
+          {
+            id: "8",
+            url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+            caption: "Robotics & Innovation Showcase at the Annual Science Fair",
+            category: "labs"
+          },
+          {
+            id: "9",
+            url: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
+            caption: "Campus Athletics & Inter-House Sports Championship",
+            category: "events"
           }
         ],
         contact: {
@@ -4322,7 +4393,11 @@
           data.branding.collegeName = defaultSiteData.branding.collegeName;
         }
         data.branding.collegeName = data.branding.collegeName.replace(new RegExp('\\bcollege\\b', 'gi'), 'College');
-        data.branding.logoUrl = data.branding.logoUrl || defaultSiteData.branding.logoUrl;
+        
+        // Ensure universal crest
+        if (!data.branding.logoUrl || data.branding.logoUrl.includes("school-logo")) {
+          data.branding.logoUrl = defaultSiteData.branding.logoUrl;
+        }
 
         if (!data.contact.address || data.contact.address.includes("Gazipur")) {
           data.contact.address = defaultSiteData.contact.address;
@@ -4330,7 +4405,11 @@
         if (!data.contact.email || data.contact.email.includes("gcpc")) {
           data.contact.email = defaultSiteData.contact.email;
         }
-        data.branding.logoUrl = data.branding.logoUrl || defaultSiteData.branding.logoUrl;
+
+        // Hero Background demo picture
+        if (!data.home.heroBg || data.home.heroBg.includes("school-logo")) {
+          data.home.heroBg = defaultSiteData.home.heroBg;
+        }
 
         data.home.kicker = data.home.kicker || defaultSiteData.home.kicker;
         data.home.heroTitle = data.home.heroTitle || defaultSiteData.home.heroTitle;
@@ -4343,7 +4422,12 @@
         data.home.quickLinks = Array.isArray(data.home.quickLinks) && data.home.quickLinks.length >= 4 ? data.home.quickLinks : defaultSiteData.home.quickLinks;
         data.home.stats = Array.isArray(data.home.stats) && data.home.stats.length >= 4 ? data.home.stats : defaultSiteData.home.stats;
         data.home.updates = Array.isArray(data.home.updates) && data.home.updates.length >= 3 ? data.home.updates : defaultSiteData.home.updates;
-        data.home.highlights = Array.isArray(data.home.highlights) && data.home.highlights.length >= 2 ? data.home.highlights : defaultSiteData.home.highlights;
+
+        // Ensure Demo Pictures on Home Highlights
+        if (!Array.isArray(data.home.highlights) || data.home.highlights.length < 2 || data.home.highlights.some(h => !h.imageUrl || h.imageUrl.includes("school-logo"))) {
+          data.home.highlights = defaultSiteData.home.highlights;
+        }
+
         data.home.admissionBanner = data.home.admissionBanner || defaultSiteData.home.admissionBanner;
 
         data.about = data.about || defaultSiteData.about;
@@ -4356,9 +4440,17 @@
 
         data.teachers.title = data.teachers.title || defaultSiteData.teachers.title;
         data.teachers.intro = data.teachers.intro || defaultSiteData.teachers.intro;
-        data.teachers.list = Array.isArray(data.teachers.list) && data.teachers.list.length > 0 ? data.teachers.list : defaultSiteData.teachers.list;
 
-        data.gallery = Array.isArray(data.gallery) && data.gallery.length > 0 ? data.gallery : defaultSiteData.gallery;
+        // Ensure Demo Pictures for Faculty
+        if (!Array.isArray(data.teachers.list) || data.teachers.list.length < 4 || data.teachers.list.some(t => !t.photoUrl || t.photoUrl.includes("school-logo"))) {
+          data.teachers.list = defaultSiteData.teachers.list;
+        }
+
+        // Ensure Demo Pictures for Gallery
+        if (!Array.isArray(data.gallery) || data.gallery.length < 4 || data.gallery.some(g => !g.url || g.url.includes("school-logo"))) {
+          data.gallery = defaultSiteData.gallery;
+        }
+
         data.contact.address = data.contact.address || defaultSiteData.contact.address;
         data.contact.officeHours = data.contact.officeHours || defaultSiteData.contact.officeHours;
         data.contact.email = data.contact.email || defaultSiteData.contact.email;
@@ -4599,7 +4691,7 @@
         grid.innerHTML = list.map((teacher) => `
           <article class="teacher-card tilt-card">
             <div class="teacher-photo-wrapper">
-              <img class="teacher-photo" src="${teacher.photoUrl || '/school-logo-transparent.png'}" alt="${teacher.name}" loading="lazy" onerror="this.src='/school-logo-transparent.png'" />
+              <img class="teacher-photo" src="${teacher.photoUrl || '/college-crest.svg'}" alt="${teacher.name}" loading="lazy" onerror="this.src='/college-crest.svg'" />
             </div>
             <div class="teacher-meta">
               <div class="teacher-name">${teacher.name}</div>
@@ -4622,7 +4714,7 @@
 
         grid.innerHTML = list.map((item, index) => `
           <div class="gallery-item tilt-card" onclick="openLightbox(${index})">
-            <img src="${item.url}" alt="${item.caption}" loading="lazy" onerror="this.src='/school-logo-transparent.png'" />
+            <img src="${item.url}" alt="${item.caption}" loading="lazy" onerror="this.src='/college-crest.svg'" />
             <div class="gallery-caption">${item.caption}</div>
           </div>
         `).join("");
@@ -4995,7 +5087,7 @@
 
         container.innerHTML = siteData.teachers.list.map((teacher, index) => `
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:1rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-            <img src="${teacher.photoUrl}" alt="${teacher.name}" width="50" height="50" style="border-radius:50%; object-fit:cover;" onerror="this.src='/school-logo-transparent.png'" />
+            <img src="${teacher.photoUrl}" alt="${teacher.name}" width="50" height="50" style="border-radius:50%; object-fit:cover;" onerror="this.src='/college-crest.svg'" />
             <div style="flex:1; min-width:200px;">
               <strong>${teacher.name}</strong> (${teacher.designation})<br />
               <small style="color:#64748b;">${teacher.subject} · ${teacher.contact}</small>
@@ -5013,7 +5105,7 @@
 
         container.innerHTML = siteData.gallery.map((item, index) => `
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:1rem; display:flex; gap:1rem; align-items:center;">
-            <img src="${item.url}" alt="${item.caption}" width="60" height="45" style="border-radius:6px; object-fit:cover;" onerror="this.src='/school-logo-transparent.png'" />
+            <img src="${item.url}" alt="${item.caption}" width="60" height="45" style="border-radius:6px; object-fit:cover;" onerror="this.src='/college-crest.svg'" />
             <div style="flex:1;">
               <strong>${item.caption}</strong>
             </div>
@@ -5115,7 +5207,7 @@
         reader.onload = () => {
           siteData.teachers.list.push({
             id: String(Date.now()),
-            photoUrl: String(reader.result || "/school-logo-transparent.png"),
+            photoUrl: String(reader.result || "/college-crest.svg"),
             name,
             subject,
             designation,

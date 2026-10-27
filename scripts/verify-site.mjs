@@ -74,4 +74,18 @@ if (html.includes('margin: -4.5rem')) {
   console.log('✅ quick-access negative margins eliminated.');
 }
 
+// Check Demo Pictures
+if (html.includes('images.unsplash.com') && html.includes('college-crest.svg')) {
+  console.log('✅ Demo pictures and universal collegiate crest verified.');
+} else {
+  console.error('❌ Demo pictures missing from index.html!');
+  process.exit(1);
+}
+
+if (html.includes('/school-logo-transparent.png')) {
+  console.warn('⚠️ Warning: school-logo-transparent.png still present in index.html');
+} else {
+  console.log('✅ Old specific college logos completely removed.');
+}
+
 console.log('🎉 Verification successful!');
